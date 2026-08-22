@@ -50,5 +50,5 @@ COPY --from=build /app/frontend/.next/static ./frontend/.next/static
 COPY --from=build /app/frontend/public ./frontend/public
 
 WORKDIR /app/frontend
-EXPOSE 3000
+EXPOSE 8080
 CMD ["node", "server.js"]
