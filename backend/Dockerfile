@@ -42,6 +42,9 @@ COPY --from=build /app/backend/dist ./backend/dist
 
 WORKDIR /app/backend
 EXPOSE 4000
-# `prisma migrate deploy` applies any pending migrations non-interactively
-# before the app starts — safe to run on every deploy, no-ops if none pending.
-CMD ["sh", "-c", "node_modules/.bin/prisma migrate deploy && node dist/index.js"]
+# `pnpm start` (backend/package.json) runs `prisma migrate deploy` before
+# `node dist/index.js` — deliberately kept in the npm script rather than only
+# here, because some platforms invoke `pnpm start` directly and ignore this
+# CMD. Either way it applies pending migrations non-interactively before the
+# app starts; safe on every deploy, no-ops if none are pending.
+CMD ["pnpm", "start"]

@@ -34,7 +34,11 @@ RUN pnpm --filter frontend build
 # --- Runner stage: standalone server only ---------------------------------
 FROM base AS runner
 ENV NODE_ENV=production
-ENV PORT=3000
+# No hardcoded PORT: the standalone server.js reads process.env.PORT itself
+# (defaulting to 3000), and Railway injects its own PORT at runtime — baking
+# one in here would make the app listen on the wrong port if Railway assigns
+# something else, and the healthcheck prober would hit that mismatch as
+# "service unavailable" with no visible crash in the logs.
 
 # outputFileTracingRoot is the repo root, so .next/standalone mirrors the
 # whole repo-relative path (frontend/server.js, root-level node_modules,
