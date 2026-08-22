@@ -7,14 +7,9 @@ builder = "DOCKERFILE"
 dockerfilePath = "frontend/Dockerfile"
 
 [deploy]
-# TEMPORARILY DISABLED for diagnosis — every documented Railway healthcheck
-# failure cause (PORT binding, hostname allowlisting) has been ruled out by
-# direct testing against this exact image, yet the deploy still fails. This
-# isolates whether the HTTP probe itself is the blocker, or whether the
-# container is being killed for an unrelated reason (OOM, crash-loop, etc.)
-# that a "container stays running" check will surface differently. Restore
-# healthcheckPath = "/en" (and a real timeout) once the cause is found.
-# healthcheckPath = "/en"
-# healthcheckTimeout = 30
+# Not "/" — the i18n middleware 307-redirects it to "/en", and the
+# healthcheck shouldn't depend on redirect-following behavior.
+healthcheckPath = "/en"
+healthcheckTimeout = 30
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3

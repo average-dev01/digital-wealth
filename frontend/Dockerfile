@@ -39,6 +39,16 @@ ENV NODE_ENV=production
 # one in here would make the app listen on the wrong port if Railway assigns
 # something else, and the healthcheck prober would hit that mismatch as
 # "service unavailable" with no visible crash in the logs.
+#
+# HOSTNAME is different: Docker auto-sets it to the container ID, and the
+# standalone server.js does `hostname = process.env.HOSTNAME || '0.0.0.0'` —
+# so without this override it binds to that container-ID hostname (which
+# resolves to the container's own specific IP) instead of all interfaces.
+# Confirmed via /proc/net/tcp: without this, the listening socket showed the
+# container's single IP, not 0.0.0.0 — works by accident under Docker
+# Desktop's NAT, but not under Railway's real proxy networking, causing
+# "Application failed to respond" even though the app itself is healthy.
+ENV HOSTNAME=0.0.0.0
 
 # outputFileTracingRoot is the repo root, so .next/standalone mirrors the
 # whole repo-relative path (frontend/server.js, root-level node_modules,
