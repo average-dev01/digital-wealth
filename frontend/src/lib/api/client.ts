@@ -1,7 +1,12 @@
 // Backend client. Every `lib/api/*.ts` domain file calls through `fetchApi()`
 // below — there is no mock data layer any more.
 
-export const API_BASE_URL = process.env["NEXT_PUBLIC_API_URL"] ?? "http://localhost:4000";
+// Always relative: requests go through the `/api/:path*` rewrite in
+// next.config.mjs, which proxies to the real backend server-side. Every
+// caller here runs client-side ("use client"), so the browser resolves this
+// against its own origin — see next.config.mjs for why this has to stay
+// same-origin rather than pointing at the backend's URL directly.
+const API_BASE_URL = "/api";
 
 function readCookie(name: string): string | undefined {
   if (typeof document === "undefined") return undefined;

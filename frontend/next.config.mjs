@@ -11,6 +11,25 @@ const nextConfig = {
   outputFileTracingRoot: path.join(__dirname, ".."),
   // Docker image ships only the traced server bundle, not full node_modules.
   output: "standalone",
+  // Proxies every browser-facing API call through the frontend's own origin
+  // instead of the backend's. Railway's generated `*.up.railway.app` domains
+  // are on the Public Suffix List (each subdomain is its own "site" to the
+  // browser), so a directly cross-origin frontend->backend call can never
+  // carry the httpOnly session cookies (sameSite: "strict") or let client JS
+  // read the CSRF cookie (document.cookie is origin-scoped) — see
+  // docs/RAILWAY_DEPLOY.md. Routing through this rewrite makes every request
+  // same-origin from the browser's point of view, which both mechanisms need.
+  // middleware.ts's matcher already excludes `/api` from locale redirection
+  // for exactly this reason. `NEXT_PUBLIC_API_URL` is read at build time
+  // (same requirement as before, already wired through frontend/Dockerfile).
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`,
+      },
+    ];
+  },
   images: {
     // Asset logos served by the market data provider. Currency icons are
     // stored as absolute URLs on the Currency row, so the host has to be
