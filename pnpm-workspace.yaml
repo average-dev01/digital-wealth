@@ -1,0 +1,18 @@
+packages:
+  - "frontend"
+  - "backend"
+# Transitive deps pinned past known CVEs (see `pnpm audit`): sharp (via
+# next's optional image-optimization dep, libvips CVE-2026-33327/28/35590/91),
+# postcss (via next, GHSA-6g55-p6wh-862q/its incomplete fix/GHSA-7fh5-64p2-3v2j
+# source-map path traversal), deepmerge-ts (via prisma's @prisma/config,
+# stack-exhaustion DoS). None are direct dependencies of either package.
+overrides:
+  sharp: ">=0.35.0"
+  postcss: ">=8.5.23"
+  deepmerge-ts: ">=8.0.0"
+allowBuilds:
+  '@prisma/client': true
+  '@prisma/engines': true
+  esbuild: true
+  prisma: true
+  unrs-resolver: true

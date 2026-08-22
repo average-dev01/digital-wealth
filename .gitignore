@@ -1,0 +1,46 @@
+# Dependencies
+node_modules
+
+# Env
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Build output
+dist
+dist-ssr
+build
+.next
+out
+.output
+.vinxi
+.tanstack/**
+.nitro
+*.local
+
+# Wrangler / Cloudflare
+.wrangler/
+.dev.vars
+
+# TanStack Router (auto-generated)
+routeTree.gen.ts
+
+# Prisma
+backend/prisma/generated
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker-data

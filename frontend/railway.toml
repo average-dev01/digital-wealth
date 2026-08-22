@@ -1,0 +1,15 @@
+# Point this service's "Config File Path" (Railway dashboard → service →
+# Settings → Config-as-code) at frontend/railway.toml. Root Directory stays
+# the repo root for both services — see docs/RAILWAY_DEPLOY.md for why.
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "frontend/Dockerfile"
+
+[deploy]
+# Not "/" — the i18n middleware 307-redirects it to "/en", and the
+# healthcheck shouldn't depend on redirect-following behavior.
+healthcheckPath = "/en"
+healthcheckTimeout = 30
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3

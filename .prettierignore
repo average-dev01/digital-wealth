@@ -1,0 +1,9 @@
+node_modules
+dist
+.next
+.output
+.vinxi
+.turbo
+pnpm-lock.yaml
+routeTree.gen.ts
+backend/prisma/migrations

@@ -1,0 +1,619 @@
+{
+  "meta": {
+    "title": "Digital Wealth Partners — Gestion de patrimoine en actifs numériques",
+    "description": "Conservation de qualité institutionnelle et gestion de portefeuilles crypto multidevises pour une clientèle privée.",
+    "ogTitle": "Digital Wealth Partners",
+    "ogDescription": "Conservation et gestion de portefeuille d'actifs numériques de qualité institutionnelle."
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Fonctionnement",
+    "security": "Sécurité",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "mainLabel": "Navigation principale",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "myPortfolio": "Mon portefeuille",
+    "adminPanel": "Panneau d'administration",
+    "logIn": "Se connecter",
+    "openAccount": "Ouvrir un compte"
+  },
+  "language": {
+    "label": "Langue",
+    "change": "Changer de langue"
+  },
+  "footer": {
+    "tagline": "Conservation et gestion de portefeuille d'actifs numériques de qualité institutionnelle, conçues pour la clientèle privée et les family offices.",
+    "supportedAssets": "Actifs pris en charge : {assets}",
+    "company": "Société",
+    "about": "À propos",
+    "howItWorks": "Fonctionnement",
+    "securityCompliance": "Sécurité et conformité",
+    "faq": "FAQ",
+    "clientAccess": "Accès client",
+    "logIn": "Se connecter",
+    "openAccount": "Ouvrir un compte",
+    "contactUs": "Nous contacter",
+    "riskDisclaimer": "<strong>Avertissement sur les risques.</strong> Le cours des actifs numériques est très volatil et peut entraîner la perte totale du capital. Aucun élément de ce site ne constitue un conseil financier, d'investissement, juridique ou fiscal, ni une offre ou une sollicitation d'achat ou de vente d'un quelconque actif. Les performances passées ne préjugent pas des résultats futurs. Il vous appartient d'obtenir un avis professionnel indépendant avant toute transaction.",
+    "copyright": "© {year} Digital Wealth Partners. Environnement de démonstration."
+  },
+  "about": {
+    "meta": {
+      "title": "À propos — Digital Wealth Partners",
+      "description": "Qui nous sommes : un gestionnaire de patrimoine en actifs numériques fondé par des professionnels de la banque privée, de la conservation et de la conformité.",
+      "ogDescription": "Un gestionnaire de patrimoine en actifs numériques fondé par des professionnels de la banque privée et de la conservation."
+    },
+    "eyebrow": "À propos",
+    "title": "Conçu pour des clients qui attendent d'une conservation qu'elle soit sans surprise",
+    "description": "Digital Wealth Partners est né d'un constat simple : les actifs numériques méritent la même rigueur opérationnelle que toute autre composante d'un portefeuille sérieux.",
+    "storyHeading": "Notre histoire",
+    "story1": "[PLACEHOLDER COPY] Nous avons démarré en 2019, après avoir vu des clients détenir des positions importantes en actifs numériques réparties entre comptes de plateformes, portefeuilles matériels et tableurs — sans vue consolidée ni dispositif de conservation crédible.",
+    "story2": "Nous administrons aujourd'hui des comptes multidevises pour des clients privés, des family offices et des conseillers indépendants, en associant les pratiques de conservation institutionnelles à un reporting qui s'intègre aux structures patrimoniales existantes.",
+    "story3": "Nous sommes délibérément prudents. Nous prenons en charge un petit nombre d'actifs liquides, nous documentons chaque mouvement de solde, et nous préférons décliner un mandat plutôt que de forcer nos contrôles.",
+    "pillars": {
+      "mission": {
+        "title": "Notre mission",
+        "body": "Offrir aux clients un point d'ancrage unique, vérifié et bien contrôlé pour leurs actifs numériques, avec un reporting présentable à un auditeur."
+      },
+      "principles": {
+        "title": "Nos principes",
+        "body": "La conservation avant le rendement. La documentation avant la croissance. Des frais clairs, aucun écart de cours caché, aucun produit que nous ne puissions expliquer en une page."
+      },
+      "clients": {
+        "title": "Qui nous servons",
+        "body": "Des clients privés, des family offices et des conseillers qui ont besoin d'une vue consolidée de leurs positions en actifs numériques aux côtés de leurs avoirs traditionnels."
+      }
+    },
+    "leadership": "Direction",
+    "leadershipNote": "Les informations sur l'équipe ci-dessous sont provisoires et propres à la version de démonstration.",
+    "team": {
+      "ceo": {
+        "name": "[Placeholder] Elena Marsh",
+        "role": "Directrice générale",
+        "bio": "Vingt ans en banque privée et en gestion de portefeuille discrétionnaire."
+      },
+      "cco": {
+        "name": "[Placeholder] Daniel Osei",
+        "role": "Directeur de la conformité",
+        "bio": "Ancien responsable LCB-FT chez un conservateur de premier plan ; supervise le KYC et le filtrage des sanctions."
+      },
+      "custody": {
+        "name": "[Placeholder] Priya Raghunath",
+        "role": "Responsable des opérations de conservation",
+        "bio": "Conçoit la gestion des clés, le stockage à froid et les contrôles de retrait à approbations multiples."
+      },
+      "reporting": {
+        "name": "[Placeholder] Tomas Berg",
+        "role": "Responsable du reporting client",
+        "bio": "Construit les relevés, les valorisations et les exports fiscaux sur lesquels les clients s'appuient."
+      }
+    }
+  },
+  "security": {
+    "meta": {
+      "title": "Sécurité et conformité — Digital Wealth Partners",
+      "description": "Stockage à froid, authentification à deux facteurs, retraits à approbations multiples, programme KYC/LCB-FT et informations réglementaires.",
+      "ogDescription": "Stockage à froid, 2FA, retraits à approbations multiples et notre programme KYC/LCB-FT."
+    },
+    "eyebrow": "Sécurité et conformité",
+    "title": "Des contrôles que vous pouvez présenter à un auditeur",
+    "description": "Notre dispositif de sécurité est conçu autour d'une seule question : que se passe-t-il si une personne, un appareil ou un prestataire est compromis ?",
+    "controlsHeading": "Contrôles opérationnels",
+    "controls": {
+      "coldStorage": {
+        "title": "Stockage à froid par défaut",
+        "body": "La majorité des actifs clients sont conservés hors ligne dans des sites répartis géographiquement, avec des cérémonies de clés inviolables. [Placeholder ratio: 97.5% cold / 2.5% operational.]"
+      },
+      "keyManagement": {
+        "title": "Gestion des clés multipartite",
+        "body": "Les clés de signature sont réparties entre conservateurs indépendants. Aucune personne seule ne peut construire une transaction sortante valide."
+      },
+      "twoFactor": {
+        "title": "Authentification à deux facteurs",
+        "body": "Les codes à usage unique basés sur le temps sont pris en charge sur chaque compte client et peuvent être imposés pour les retraits."
+      },
+      "identity": {
+        "title": "Vérification d'identité",
+        "body": "Chaque compte réalise son KYC avant de pouvoir transiger : nom légal, date de naissance, pays de résidence et pièce d'identité officielle."
+      },
+      "monitoring": {
+        "title": "Surveillance des transactions",
+        "body": "Les dépôts et les retraits sont filtrés au regard des listes de sanctions et d'adresses à haut risque avant règlement."
+      },
+      "records": {
+        "title": "Registres auditables",
+        "body": "Chaque variation de solde inscrit une écriture immuable au registre, indiquant le type, le montant, l'auteur et l'horodatage."
+      }
+    },
+    "amlHeading": "Déclaration KYC / LCB-FT",
+    "aml1": "Digital Wealth Partners applique un programme de lutte contre le blanchiment fondé sur les risques. Avant qu'un compte puisse transiger, nous vérifions l'identité du client, confirmons son pays de résidence, effectuons un filtrage au regard des listes de sanctions et de personnes politiquement exposées applicables, et consignons l'origine des fonds lorsque les seuils l'exigent.",
+    "aml2": "Nous conservons les justificatifs de vérification pendant la durée exigée par la loi applicable et revérifions les comptes périodiquement ou en cas de changement significatif de situation. Nous déclarons aux autorités compétentes lorsque nous y sommes tenus, et nous pouvons geler ou clôturer un compte dans l'attente d'un examen, sans préavis.",
+    "aml3": "Les statuts de vérification utilisés sur cette plateforme sont <pending></pending>, <verified></verified> et <rejected></rejected>. Les comptes peuvent explorer le tableau de bord pendant l'examen, mais l'approvisionnement et les retraits ne sont activés qu'après vérification dans une configuration de production.",
+    "statusPending": "en attente",
+    "statusVerified": "vérifié",
+    "statusRejected": "rejeté",
+    "disclaimerHeading": "Avertissement réglementaire",
+    "disclaimer1": "Digital Wealth Partners est une entité de démonstration et n'est actuellement ni agréée, ni enregistrée, ni autorisée par une quelconque autorité de régulation financière. Aucun élément de ce site ne constitue une offre, une sollicitation ou une recommandation d'acheter, de vendre ou de détenir un actif numérique.",
+    "disclaimer2": "Les actifs numériques sont volatils, ne sont généralement pas couverts par les dispositifs de garantie des dépôts ou d'indemnisation des investisseurs, et peuvent perdre toute valeur. Les soldes, cours, taux de conversion et chiffres de performance de cet environnement sont simulés et ne doivent pas servir de référence."
+  },
+  "faq": {
+    "meta": {
+      "title": "Questions fréquentes — Digital Wealth Partners",
+      "description": "Réponses sur la conservation, la vérification, les dépôts, les retraits, les frais, les actifs pris en charge et la sécurité du compte.",
+      "ogDescription": "Conservation, vérification, dépôts, retraits, frais et sécurité du compte expliqués."
+    },
+    "eyebrow": "FAQ",
+    "title": "Les questions que les clients posent avant d'approvisionner",
+    "description": "Si votre question ne trouve pas de réponse ici, notre équipe client vous répondra sous un jour ouvré.",
+    "questions": {
+      "custody": {
+        "q": "Qui détient mes actifs ?",
+        "a": "Les actifs sont détenus dans des structures de portefeuille ségréguées administrées par Digital Wealth Partners. Le registre de votre compte enregistre vos droits par actif, et chaque mouvement est consigné avec un horodatage et un motif."
+      },
+      "verification": {
+        "q": "Combien de temps prend la vérification ?",
+        "a": "La plupart des contrôles d'identité sont examinés sous un jour ouvré. Vous pouvez explorer votre tableau de bord pendant l'examen ; une bannière indique votre statut actuel."
+      },
+      "deposit": {
+        "q": "Comment effectuer un dépôt ?",
+        "a": "Choisissez l'actif dans votre tableau de bord, copiez l'adresse de dépôt affichée pour ce réseau, envoyez vos fonds, puis confirmez le transfert. Les opérations rapprochent le dépôt et créditent votre portefeuille."
+      },
+      "withdrawal": {
+        "q": "Comment fonctionnent les retraits ?",
+        "a": "Indiquez une adresse de destination et un montant. La demande est filtrée et approuvée avant règlement. Elle apparaît en attente dans votre historique de transactions jusqu'à son exécution."
+      },
+      "assets": {
+        "q": "Quels actifs prenez-vous en charge ?",
+        "a": "Ceux qui figurent dans votre tableau de bord. Nous prenons délibérément en charge un petit nombre d'actifs liquides plutôt qu'une longue liste, et celle-ci est tenue à jour par notre desk."
+      },
+      "fees": {
+        "q": "Quels sont vos tarifs ?",
+        "a": "Des frais d'administration annuels provisoires de 0,55 %, le coût réseau majoré de 0,10 % sur les retraits, et 0,35 % sur les conversions. Consultez la grille tarifaire pour la liste complète."
+      },
+      "live": {
+        "q": "Cet environnement est-il réel ?",
+        "a": "Non. Il s'agit d'une version de démonstration. Les soldes, cours, adresses de dépôt et taux de conversion sont simulés, et aucun fonds réel ni transaction blockchain n'est en jeu."
+      },
+      "twoFactor": {
+        "q": "Puis-je activer l'authentification à deux facteurs ?",
+        "a": "Oui — l'authentification à deux facteurs est proposée dans vos paramètres de sécurité et peut être exigée pour les retraits."
+      }
+    },
+    "askTeam": "Interroger notre équipe client",
+    "openAccount": "Ouvrir un compte"
+  },
+  "services": {
+    "meta": {
+      "title": "Fonctionnement et frais — Digital Wealth Partners",
+      "description": "Notre modèle de conservation, le parcours de dépôt et de retrait, les réseaux pris en charge et une grille tarifaire provisoire et claire.",
+      "ogDescription": "Modèle de conservation, parcours de dépôt, réseaux pris en charge et grille tarifaire."
+    },
+    "eyebrow": "Services",
+    "title": "Le fonctionnement de votre compte, de bout en bout",
+    "description": "De la vérification à la conservation puis au retrait, voici exactement ce qu'il advient de vos actifs et ce que cela coûte.",
+    "custodyHeading": "Le modèle de conservation",
+    "custodyBody": "Les actifs des clients sont enregistrés dans des registres de portefeuille ségrégués par actif. Chaque compte reçoit une adresse de dépôt dédiée par réseau pris en charge. Les mouvements sortants exigent une demande du client, un contrôle de conformité et une approbation interne avant règlement — aucun opérateur ne peut déplacer seul des actifs clients.",
+    "steps": {
+      "deposit": {
+        "title": "Dépôt",
+        "body": "Vous demandez une adresse de dépôt pour l'actif, envoyez les fonds sur le bon réseau et confirmez le transfert dans votre tableau de bord."
+      },
+      "confirmation": {
+        "title": "Confirmation",
+        "body": "Les opérations rapprochent le transfert entrant et créditent votre registre de portefeuille ségrégué. Votre historique de transactions montre chaque changement d'état."
+      },
+      "withdrawal": {
+        "title": "Retrait",
+        "body": "Vous indiquez une adresse de destination et un montant. La demande est filtrée, approuvée et réglée, puis répercutée sur votre solde."
+      }
+    },
+    "networksHeading": "Actifs et réseaux pris en charge",
+    "colAsset": "Actif",
+    "colNetwork": "Réseau",
+    "colMinimum": "Dépôt minimum",
+    "colPrecision": "Précision",
+    "decimalPlaces": "{count} déc.",
+    "feesHeading": "Grille tarifaire",
+    "feesNote": "Tous les chiffres ci-dessous sont des valeurs provisoires clairement identifiées pour cette version de démonstration.",
+    "colItem": "Poste",
+    "colRate": "Tarif provisoire",
+    "colBasis": "Base",
+    "fees": {
+      "administration": {
+        "item": "Administration du compte",
+        "rate": "0,55 % par an",
+        "basis": "Facturé mensuellement sur les soldes moyens"
+      },
+      "deposit": {
+        "item": "Dépôt (on-chain)",
+        "rate": "Sans frais",
+        "basis": "Frais de réseau à la charge de l'expéditeur"
+      },
+      "withdrawal": {
+        "item": "Retrait (on-chain)",
+        "rate": "Coût réseau + 0,10 %",
+        "basis": "Communiqué avant confirmation"
+      },
+      "conversion": {
+        "item": "Conversion de devises",
+        "rate": "0,35 % du notionnel",
+        "basis": "Appliqué au taux simulé"
+      },
+      "statements": {
+        "item": "Relevés et exports fiscaux",
+        "rate": "Inclus",
+        "basis": "Téléchargements illimités"
+      }
+    },
+    "openAccount": "Ouvrir un compte"
+  },
+  "home": {
+    "meta": {
+      "title": "Digital Wealth Partners — Gestion de patrimoine en actifs numériques",
+      "description": "Conservation, reporting de portefeuille et comptes crypto multidevises pour la clientèle privée et les family offices. Ouvrez un compte en quelques minutes.",
+      "ogDescription": "Conservation, reporting de portefeuille et comptes crypto multidevises pour la clientèle privée et les family offices."
+    },
+    "eyebrow": "Modèle de conservation d'inspiration réglementaire",
+    "heroTitle": "La gestion de patrimoine en actifs numériques, <gold>aux standards institutionnels</gold>",
+    "heroBody": "Digital Wealth Partners offre à la clientèle privée un compte unique et vérifié pour ses actifs numériques — avec des portefeuilles ségrégués, une conservation documentée et un reporting que votre comptable reconnaîtra.",
+    "openAccount": "Ouvrir un compte",
+    "seeCustody": "Voir le fonctionnement de la conservation",
+    "placeholderFigure": "Chiffre provisoire",
+    "stats": {
+      "aua": {
+        "value": "1,42 Md $",
+        "label": "Actifs sous administration"
+      },
+      "clients": {
+        "value": "3 800+",
+        "label": "Clients privés servis"
+      },
+      "coldStorage": {
+        "value": "97,5 %",
+        "label": "Actifs en stockage à froid"
+      },
+      "support": {
+        "value": "< 4 h",
+        "label": "Délai de réponse du support client"
+      }
+    },
+    "assetsHeading": "Actifs pris en charge · cours indicatifs (simulés)",
+    "onboarding": "Entrée en relation",
+    "stepsHeading": "Trois étapes vers un compte approvisionné",
+    "stepLabel": "Étape {number}",
+    "steps": {
+      "open": {
+        "title": "Ouvrez votre compte",
+        "body": "Inscrivez-vous avec votre e-mail, acceptez nos conditions client et confirmez votre adresse. Comptez environ trois minutes."
+      },
+      "verify": {
+        "title": "Vérifiez votre identité",
+        "body": "Transmettez votre nom légal, votre date de naissance, votre pays de résidence et une pièce d'identité pour l'examen KYC/LCB-FT."
+      },
+      "fund": {
+        "title": "Approvisionnez et gérez",
+        "body": "Déposez sur vos portefeuilles multidevises ségrégués et suivez la performance depuis un tableau de bord unique."
+      }
+    },
+    "trustHeading": "La rigueur de conservation avant les rendements",
+    "trustBody": "Les actifs des clients sont détenus dans des structures de portefeuille ségréguées, avec approbation multipartite sur chaque mouvement sortant. Notre modèle opérationnel est documenté, auditable et revu selon un calendrier fixe.",
+    "trust": {
+      "cold": {
+        "title": "Le stockage à froid d'abord",
+        "body": "La grande majorité des actifs clients repose dans un stockage hors ligne, réparti géographiquement."
+      },
+      "segregated": {
+        "title": "Registres ségrégués",
+        "body": "Chaque solde client est suivi par actif, avec un historique complet des ajustements."
+      },
+      "kyc": {
+        "title": "KYC/LCB-FT sur chaque compte",
+        "body": "Vérification d'identité et filtrage des sanctions avant qu'un compte puisse transiger."
+      }
+    },
+    "readSecurity": "Découvrir notre dispositif de sécurité",
+    "testimonials": {
+      "family": {
+        "quote": "Le reporting est ce qui se rapproche le plus des relevés de notre conservateur traditionnel.",
+        "name": "A. Reinhardt",
+        "role": "Dirigeant de family office"
+      },
+      "private": {
+        "quote": "L'entrée en relation et la vérification ont été menées avec la rigueur que nous attendons d'une banque privée.",
+        "name": "M. Okonjo",
+        "role": "Client privé"
+      },
+      "advisor": {
+        "quote": "Des frais clairs, un modèle de conservation clair, et une équipe qui répond au téléphone.",
+        "name": "S. Whitfield",
+        "role": "Conseiller indépendant"
+      }
+    },
+    "ctaTitle": "Prêt à consolider vos actifs numériques ?",
+    "ctaBody": "Ouvrez un compte, effectuez la vérification et approvisionnez vos portefeuilles. Aucun minimum dans l'environnement de démonstration.",
+    "getStarted": "Commencer"
+  },
+  "common": {
+    "transactionTypes": {
+      "deposit": "Dépôt",
+      "withdrawal": "Retrait",
+      "admin_adjustment": "Ajustement",
+      "convert": "Conversion"
+    },
+    "statuses": {
+      "pending": "En attente",
+      "completed": "Exécuté",
+      "rejected": "Rejeté",
+      "verified": "Vérifié"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact — Digital Wealth Partners",
+      "description": "Échangez avec notre équipe client sur l'entrée en relation, la conservation ou le reporting. Nous répondons sous un jour ouvré.",
+      "ogDescription": "Échangez avec notre équipe client sur l'entrée en relation, la conservation ou le reporting."
+    },
+    "eyebrow": "Contact",
+    "title": "Échangez avec notre équipe client",
+    "description": "Des questions sur l'entrée en relation, la conservation ou le reporting ? Écrivez-nous et nous vous répondrons sous un jour ouvré.",
+    "formHeading": "Envoyer un message",
+    "fullName": "Nom complet",
+    "email": "Adresse e-mail",
+    "messageLabel": "Comment pouvons-nous vous aider ?",
+    "send": "Envoyer le message",
+    "sending": "Envoi…",
+    "sentTitle": "Message bien reçu",
+    "sentBody": "Merci — un membre de l'équipe client vous contactera sous peu.",
+    "sendAnother": "Envoyer un autre message",
+    "errors": {
+      "nameMin": "Veuillez saisir votre nom complet",
+      "nameMax": "Le nom doit faire moins de 100 caractères",
+      "emailInvalid": "Saisissez une adresse e-mail valide",
+      "emailMax": "L'adresse e-mail doit faire moins de 255 caractères",
+      "messageMin": "Merci d'écrire au moins 10 caractères",
+      "messageMax": "Le message doit faire moins de 2000 caractères"
+    },
+    "toastSuccess": "Message envoyé. Notre équipe client vous répondra sous un jour ouvré.",
+    "toastError": "Nous n'avons pas pu envoyer votre message. Veuillez réessayer.",
+    "cards": {
+      "email": "E-mail",
+      "phone": "Ligne client",
+      "office": "Siège social"
+    },
+    "credentialWarning": "Merci de ne jamais transmettre d'identifiants de compte, de phrases de récupération ou de clés privées. Nous ne vous les demanderons jamais."
+  },
+  "auth": {
+    "meta": {
+      "title": "Connexion client et ouverture de compte — Digital Wealth Partners",
+      "description": "Connectez-vous à votre portefeuille Digital Wealth Partners ou ouvrez un nouveau compte multidevises en actifs numériques.",
+      "ogDescription": "Connectez-vous à votre portefeuille ou ouvrez un nouveau compte en actifs numériques."
+    },
+    "backToSite": "Retour au site",
+    "signupTitle": "Ouvrez votre compte",
+    "loginTitle": "Connexion client",
+    "signupSubtitle": "L'inscription prend environ trois minutes. La vérification d'identité suit.",
+    "loginSubtitle": "Accédez à votre portefeuille, à vos wallets et à vos relevés.",
+    "fullLegalName": "Nom légal complet",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "terms": "J'accepte les conditions de service client et la politique de confidentialité, et je comprends que les actifs numériques sont volatils et peuvent perdre de la valeur.",
+    "pleaseWait": "Veuillez patienter…",
+    "createAccount": "Créer le compte",
+    "logIn": "Se connecter",
+    "openAccount": "Ouvrir un compte",
+    "alreadyClient": "Déjà client ?",
+    "newHere": "Nouveau chez Digital Wealth Partners ?",
+    "verifyEmailTitle": "Vérifiez votre e-mail",
+    "verifyEmailBody": "Nous avons envoyé un lien de confirmation à <email></email>. Cliquez dessus pour activer votre compte, puis connectez-vous pour finaliser la vérification d'identité.",
+    "goToLogin": "Aller à la connexion",
+    "errors": {
+      "emailInvalid": "Saisissez une adresse e-mail valide",
+      "passwordMin": "Utilisez au moins 8 caractères",
+      "passwordMax": "Le mot de passe doit faire moins de 72 caractères",
+      "fullNameRequired": "Veuillez saisir votre nom légal complet",
+      "termsRequired": "Vous devez accepter les conditions client et la politique de confidentialité"
+    },
+    "toast": {
+      "accountCreated": "Compte créé.",
+      "welcomeBack": "Content de vous revoir.",
+      "failed": "Échec de l'authentification"
+    }
+  },
+  "forgotPassword": {
+    "meta": {
+      "title": "Réinitialiser votre mot de passe — Digital Wealth Partners",
+      "description": "Demandez un lien sécurisé de réinitialisation du mot de passe de votre compte client Digital Wealth Partners.",
+      "ogDescription": "Demandez un lien sécurisé de réinitialisation du mot de passe."
+    },
+    "title": "Mot de passe oublié ?",
+    "subtitle": "Saisissez l'e-mail de votre compte et nous vous enverrons un lien de réinitialisation.",
+    "email": "Adresse e-mail",
+    "submit": "Envoyer le lien",
+    "sending": "Envoi…",
+    "backToLogin": "Retour à la connexion",
+    "sentTitle": "Consultez votre boîte de réception",
+    "sentBody": "Si un compte existe pour <email></email>, nous avons envoyé un lien de réinitialisation du mot de passe. Il expire dans 60 minutes.",
+    "errorInvalidEmail": "Saisissez une adresse e-mail valide",
+    "toastError": "Impossible d'envoyer le lien de réinitialisation"
+  },
+  "resetPassword": {
+    "meta": {
+      "title": "Définir un nouveau mot de passe — Digital Wealth Partners",
+      "description": "Choisissez un nouveau mot de passe pour votre compte client Digital Wealth Partners.",
+      "ogDescription": "Choisissez un nouveau mot de passe pour votre compte client."
+    },
+    "title": "Définir un nouveau mot de passe",
+    "subtitle": "Ouvrez cette page depuis le lien de réinitialisation reçu par e-mail. Choisissez un mot de passe d'au moins 8 caractères.",
+    "newPassword": "Nouveau mot de passe",
+    "confirmPassword": "Confirmer le nouveau mot de passe",
+    "submit": "Mettre à jour le mot de passe",
+    "updating": "Mise à jour…",
+    "backToLogin": "Retour à la connexion",
+    "errors": {
+      "passwordMin": "Utilisez au moins 8 caractères",
+      "mismatch": "Les mots de passe ne correspondent pas"
+    },
+    "toast": {
+      "invalidLink": "Ce lien de réinitialisation est invalide ou a expiré. Demandez-en un nouveau.",
+      "success": "Mot de passe mis à jour. Vous êtes maintenant connecté.",
+      "error": "Impossible de mettre à jour le mot de passe"
+    }
+  },
+  "dashboard": {
+    "navLabel": "Tableau de bord",
+    "nav": {
+      "overview": "Vue d'ensemble",
+      "wallets": "Portefeuilles",
+      "transactions": "Transactions",
+      "kyc": "Vérification",
+      "accountKeyword": "Mot-clé du compte",
+      "settings": "Profil et paramètres"
+    },
+    "signOut": "Se déconnecter",
+    "kycPending": "La vérification d'identité est en cours. Vous pouvez explorer votre compte pendant notre examen.",
+    "kycRejected": "Votre vérification d'identité n'a pas été acceptée. Merci de soumettre à nouveau vos informations.",
+    "goToVerification": "Aller à la vérification"
+  },
+  "overview": {
+    "title": "Vue d'ensemble du portefeuille",
+    "subtitle": "Les valorisations utilisent les prix du marché en direct, actualisés en continu.",
+    "totalValue": "Valeur totale",
+    "change24h": "{percent} · 24 h",
+    "pricesAsOf": "Prix au {time}",
+    "allocation": "Allocation",
+    "noHoldings": "Aucune position pour le moment. <link>Approvisionnez votre premier portefeuille</link>.",
+    "recentActivity": "Activité récente",
+    "viewAll": "Tout voir",
+    "noActivity": "Aucune activité pour le moment. Les dépôts, retraits et ajustements apparaîtront ici."
+  },
+  "wallets": {
+    "title": "Portefeuilles",
+    "subtitle": "Les soldes sont simulés et administrés en interne dans cette version de démonstration.",
+    "delisted": "Les dépôts ne sont plus acceptés. Vous pouvez toujours retirer ce solde.",
+    "deposit": "Déposer",
+    "withdraw": "Retirer",
+    "depositTitle": "Déposer des {code}",
+    "depositDescription": "Envoyez uniquement des {code} sur le réseau {network} vers cette adresse.",
+    "networkFallback": "publié",
+    "noAddress": "Aucune adresse de dépôt {code} n'a encore été publiée. Merci de contacter votre équipe de relation, ou de réessayer sous peu.",
+    "qrAlt": "QR code de l'adresse de dépôt {code}",
+    "addressLabel": "Votre adresse de dépôt",
+    "copyAddress": "Copier l'adresse de dépôt",
+    "addressCopied": "Adresse copiée",
+    "depositWarning": "Envoyez uniquement des {code}. Envoyer un autre actif ou utiliser un réseau différent entraînera une perte définitive. Il s'agit d'une adresse simulée à des fins de démonstration.",
+    "depositWarningWithNetwork": "Envoyez uniquement des {code} sur le réseau {network}. Envoyer un autre actif ou utiliser un réseau différent entraînera une perte définitive. Il s'agit d'une adresse simulée à des fins de démonstration.",
+    "amountSent": "Montant envoyé",
+    "amountSentError": "Saisissez le montant que vous avez envoyé",
+    "cancel": "Annuler",
+    "submitting": "Envoi…",
+    "confirmDeposit": "J'ai envoyé mon dépôt",
+    "depositSubmitted": "Dépôt soumis pour confirmation.",
+    "depositError": "Impossible de soumettre le dépôt",
+    "withdrawTitle": "Retirer des {code}",
+    "confirmWithdrawalTitle": "Confirmer le retrait",
+    "confirmWithdrawalDescription": "Vérifiez attentivement ces informations. Un retrait ne peut pas être annulé une fois réglé.",
+    "available": "Disponible : {amount} {code}",
+    "asset": "Actif",
+    "amount": "Montant",
+    "value": "Valeur",
+    "destination": "Destination",
+    "destinationAddress": "Adresse de destination",
+    "errors": {
+      "address": "Saisissez une adresse de destination valide",
+      "amountPositive": "Saisissez un montant supérieur à zéro",
+      "amountExceeds": "Le montant dépasse votre solde disponible"
+    },
+    "back": "Retour",
+    "reviewRequest": "Vérifier la demande",
+    "confirmRequest": "Confirmer la demande",
+    "withdrawalSubmitted": "Demande de retrait soumise pour examen.",
+    "withdrawalError": "Impossible de soumettre la demande",
+    "convertHeading": "Convertir",
+    "convertSubtitle": "Conversion instantanée simulée entre actifs détenus, à des taux fictifs.",
+    "from": "De",
+    "to": "Vers",
+    "convert": "Convertir",
+    "converting": "Conversion…",
+    "convertResult": "Vous recevez ≈ {receive} {to} · 1 {from} = {rate} {to}",
+    "convertSuccess": "Converti en {amount} {code} au taux simulé.",
+    "convertError": "Échec de la conversion"
+  },
+  "transactions": {
+    "title": "Historique des transactions",
+    "subtitle": "Chaque dépôt, retrait, ajustement et conversion sur votre compte.",
+    "type": "Type",
+    "status": "Statut",
+    "fromDate": "À partir du",
+    "allTypes": "Tous les types",
+    "allStatuses": "Tous les statuts",
+    "noResults": "Aucune transaction ne correspond à ces filtres.",
+    "colDate": "Date",
+    "colType": "Type",
+    "colAsset": "Actif",
+    "colAmount": "Montant",
+    "colValue": "Valeur",
+    "colStatus": "Statut"
+  },
+  "kyc": {
+    "title": "Vérification d'identité",
+    "subtitle": "Exigée par notre programme KYC/LCB-FT avant que votre compte puisse transiger.",
+    "currentStatus": "Statut actuel",
+    "fullLegalName": "Nom légal complet",
+    "dob": "Date de naissance",
+    "country": "Pays de résidence",
+    "document": "Pièce d'identité",
+    "documentHint": "Passeport ou carte nationale d'identité. Seules les métadonnées du fichier et le chemin de stockage sont enregistrés.",
+    "submit": "Soumettre pour vérification",
+    "submitting": "Envoi…",
+    "errors": {
+      "fullName": "Saisissez votre nom légal complet",
+      "dob": "Saisissez votre date de naissance",
+      "country": "Saisissez votre pays de résidence"
+    },
+    "toast": {
+      "success": "Vérification soumise. Nous l'examinerons sous un jour ouvré.",
+      "error": "Échec de la soumission"
+    }
+  },
+  "accountKeyword": {
+    "title": "Mot-clé du compte",
+    "subtitle": "Saisissez le mot-clé unique qui vous a été attribué pour votre compte. Il relie votre compte à nos dossiers.",
+    "label": "Votre mot-clé de compte",
+    "placeholder": "Saisissez votre mot-clé",
+    "hint": "Généralement 12 ou 24 mots.",
+    "wordCount": "{count} mots",
+    "submit": "Enregistrer le mot-clé",
+    "submitting": "Enregistrement…",
+    "lockedTitle": "Votre mot-clé de compte est défini",
+    "lockedNote": "Pour votre sécurité, ce mot-clé ne peut être défini qu'une seule fois. Contactez le support s'il doit changer.",
+    "setOn": "Défini le {date}",
+    "toast": {
+      "success": "Mot-clé du compte enregistré.",
+      "error": "Impossible d'enregistrer votre mot-clé"
+    }
+  },
+  "settings": {
+    "title": "Profil et paramètres",
+    "subtitle": "Gérez vos coordonnées et la sécurité de votre compte.",
+    "contactDetails": "Coordonnées",
+    "email": "E-mail",
+    "fullName": "Nom complet",
+    "save": "Enregistrer les modifications",
+    "saving": "Enregistrement…",
+    "security": "Sécurité",
+    "securityBody": "Nous vous enverrons par e-mail un lien sécurisé pour choisir un nouveau mot de passe.",
+    "sendReset": "Envoyer le lien de réinitialisation",
+    "sending": "Envoi…",
+    "support": "Assistance",
+    "supportBody": "Votre équipe de relation est disponible du lundi au vendredi, de 08h00 à 18h00 UTC, à l'adresse <email></email>.",
+    "toast": {
+      "profileUpdated": "Profil mis à jour.",
+      "profileError": "Échec de la mise à jour",
+      "resetSent": "Lien de réinitialisation envoyé à votre adresse e-mail.",
+      "resetError": "Impossible d'envoyer le lien de réinitialisation"
+    }
+  }
+}

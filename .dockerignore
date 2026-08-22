@@ -1,0 +1,22 @@
+# Build context for both backend/Dockerfile and frontend/Dockerfile is the
+# repo root (they need the shared pnpm-workspace.yaml/lockfile), so this is
+# the only .dockerignore Docker will actually read for either build.
+
+**/node_modules
+backend/dist
+backend/prisma/generated
+frontend/.next
+frontend/out
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+**/__tests__
+.git
+.next
+*.log
+.vscode
+.idea
+docs

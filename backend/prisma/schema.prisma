@@ -1,0 +1,220 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum KycStatus {
+  pending
+  verified
+  rejected
+}
+
+enum AppRole {
+  user
+  admin
+}
+
+enum TxType {
+  deposit
+  withdrawal
+  admin_adjustment
+  convert
+}
+
+enum TxStatus {
+  pending
+  completed
+  rejected
+}
+
+/// Where a currency's USD price comes from. `live` rows are overwritten by the
+/// price feed on every refresh; `manual` rows keep whatever an admin typed, so
+/// a demo asset with no real market can still be listed.
+enum PriceSource {
+  manual
+  live
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  fullName     String    @default("")
+  country      String?
+  dob          DateTime? @db.Date
+  kycStatus    KycStatus @default(pending)
+  /// false = suspended by an administrator (authenticates, but refused a session).
+  isActive     Boolean   @default(true)
+  /// Opaque account identifier the customer is issued out-of-band (12 or 24
+  /// words) and enters once. Not a credential — auth is still email + password.
+  accountKeyword      String?
+  accountKeywordSetAt DateTime?
+  createdAt    DateTime  @default(now())
+
+  roles              UserRole[]
+  wallets            Wallet[]
+  transactions       Transaction[]
+  kycDocuments       KycDocument[]
+  refreshTokens      RefreshToken[]
+  passwordResetTokens PasswordResetToken[]
+
+  @@index([kycStatus])
+  @@index([isActive])
+  @@map("users")
+}
+
+model UserRole {
+  id        String   @id @default(uuid())
+  userId    String
+  role      AppRole
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, role])
+  @@map("user_roles")
+}
+
+model Wallet {
+  id        String   @id @default(uuid())
+  userId    String
+  currency  String
+  balance   Decimal  @default(0) @db.Decimal(28, 8)
+  createdAt DateTime @default(now())
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+
+  @@unique([userId, currency])
+  @@map("wallets")
+}
+
+/// Admin-managed asset catalogue. This is the source of truth for which
+/// currencies exist and are tradeable — wallet provisioning reads from here,
+/// not from a hardcoded list.
+model Currency {
+  id           String   @id @default(uuid())
+  symbol       String   @unique
+  name         String
+  decimals     Int      @default(8)
+  /// Short text/emoji glyph shown next to the symbol in the UI. Used as the
+  /// fallback whenever `iconUrl` is null.
+  icon         String?
+  /// Provider-hosted logo, populated when a currency is linked to the feed.
+  iconUrl      String?
+  /// USD price. `live` currencies have this overwritten by the price feed;
+  /// `manual` currencies keep whatever an admin typed.
+  mockPriceUsd Decimal  @db.Decimal(24, 12)
+  /// Soft-delete flag: currencies are deactivated, never removed, so existing
+  /// balances and transaction history stay readable.
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+
+  priceSource PriceSource @default(manual)
+  /// Provider-specific asset id, e.g. Coinpaprika "btc-bitcoin". Ids are not
+  /// portable between providers — swapping providers means re-picking these.
+  externalPriceId String?
+  /// Percent change over the last 24h, straight from the provider.
+  priceChange24h  Decimal?  @db.Decimal(10, 4)
+  priceUpdatedAt  DateTime?
+
+  walletAddresses WalletAddress[]
+
+  @@map("currencies")
+}
+
+/// Deposit addresses the desk publishes to customers — one shared address per
+/// currency/network, not one per user. Customers cannot deposit an asset until
+/// an active address exists for it.
+model WalletAddress {
+  id         String   @id @default(uuid())
+  currencyId String
+  address    String
+  network    String
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+
+  currency Currency @relation(fields: [currencyId], references: [id], onDelete: Cascade)
+
+  @@index([currencyId, isActive])
+  @@map("wallet_addresses")
+}
+
+model Transaction {
+  id                 String   @id @default(uuid())
+  userId             String
+  walletId           String?
+  type               TxType
+  currency           String
+  amount             Decimal  @db.Decimal(28, 8)
+  status             TxStatus @default(pending)
+  notes              String?
+  destinationAddress String?
+  createdByAdmin     Boolean  @default(false)
+  createdAt          DateTime @default(now())
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  wallet Wallet? @relation(fields: [walletId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([type, status])
+  @@map("transactions")
+}
+
+model KycDocument {
+  id          String    @id @default(uuid())
+  userId      String
+  docType     String
+  storagePath String?
+  status      KycStatus @default(pending)
+  submittedAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("kyc_documents")
+}
+
+model ContactSubmission {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+
+  @@map("contact_submissions")
+}
+
+/// Opaque refresh tokens are never stored raw — only a SHA-256 hash, so a DB
+/// leak alone can't be replayed as a valid session.
+model RefreshToken {
+  id         String    @id @default(uuid())
+  userId     String
+  tokenHash  String    @unique
+  expiresAt  DateTime
+  revokedAt  DateTime?
+  createdAt  DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+/// SIMULATED email delivery: in this demo build there is no email provider,
+/// so "sending" a reset link means logging it server-side. The token model
+/// itself (hashed, single-use, expiring) is real.
+model PasswordResetToken {
+  id        String    @id @default(uuid())
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("password_reset_tokens")
+}
