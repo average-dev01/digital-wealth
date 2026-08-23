@@ -37,6 +37,8 @@ CLI/API token available to script it from here.
    | `PRICE_FEED_ENABLED` | `true` |
    | `PRICE_PROVIDER` | `coinpaprika` |
    | `PRICE_REFRESH_INTERVAL_MS` | `300000` |
+   | `ADMIN_EMAIL` | the real email you'll use to log into the admin panel — see step 4 |
+   | `ADMIN_PASSWORD` | a real password (not `admin1234`) — see step 4 |
 6. Settings → Networking → **Generate Domain** to get a public URL.
 7. Deploy. `prisma migrate deploy` runs automatically as part of the
    container's start command (`backend/Dockerfile`'s `CMD`) — it applies
@@ -68,19 +70,28 @@ CLI/API token available to script it from here.
 
 ## 4. First-deploy only: seed the admin account
 
-`prisma/seed.ts` creates the one admin account
-(`admin@digitalwealth.example` / `admin1234`) and nothing else — it's
+`prisma/seed.ts` creates one admin account and nothing else — it's
 deliberately **not** wired into the Dockerfile's `CMD`, so it doesn't re-run
-on every deploy. Run it once via Railway's one-off command runner (dashboard
-→ backend service → the "⋮" menu / Shell) against the running service:
+on every deploy. It reads the email/password from the `ADMIN_EMAIL` /
+`ADMIN_PASSWORD` variables you set in step 2 (falling back to the demo
+`admin@digitalwealth.example` / `admin1234` if you left them unset — don't
+leave them unset in production). Run it once via Railway's one-off command
+runner (dashboard → backend service → the "⋮" menu / Shell) against the
+running service:
 
 ```
 pnpm --filter backend prisma:seed
 ```
 
-Change that account's password immediately after logging in once — everything
-else (currencies, deposit addresses, customers) is created for real through
-the admin panel from there, per `docs/ADMIN_GUIDE.md`.
+**To rotate the password later**, change `ADMIN_PASSWORD` in the backend
+service's Variables tab and re-run the same command — the script is
+idempotent and updates the existing account's password hash instead of
+erroring. Changing `ADMIN_EMAIL` instead creates a *new* admin account rather
+than renaming the old one (accounts are keyed by email); delete the old row
+via `pnpm --filter backend prisma:studio` if you don't want both around.
+
+Everything else (currencies, deposit addresses, customers) is created for
+real through the admin panel from there, per `docs/ADMIN_GUIDE.md`.
 
 ## Cookie / CORS note
 

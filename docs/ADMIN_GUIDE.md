@@ -4,8 +4,10 @@ How to set up the assets your customers can hold, and the addresses they send
 funds to. These two screens are where the whole system starts: until you use
 them, customers have nothing to deposit into.
 
-Sign in at `/auth?mode=login` with the administrator account
-(`admin@digitalwealth.example` / `admin1234`) and you'll land on `/admin`.
+Sign in at `/auth?mode=login` with the administrator account (email/password
+from the `ADMIN_EMAIL`/`ADMIN_PASSWORD` env vars used when seeding — see
+`docs/RAILWAY_DEPLOY.md`; defaults to `admin@digitalwealth.example` /
+`admin1234` in local dev) and you'll land on `/admin`.
 
 ---
 

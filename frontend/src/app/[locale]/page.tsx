@@ -15,6 +15,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
 import { MARKETING_ASSETS, formatUsd, formatPercent } from "@/lib/market";
+import { fetchLiveMarketingPrices } from "@/lib/marketingPrices";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
 
@@ -48,6 +49,7 @@ export default async function Home({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("home");
+  const livePrices = await fetchLiveMarketingPrices(MARKETING_ASSETS);
 
   return (
     <SiteLayout>
@@ -122,7 +124,9 @@ export default async function Home({ params }: Props) {
           </h2>
           <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
             {MARKETING_ASSETS.map((currency) => {
-              const change = currency.displayChange24h;
+              const live = livePrices.get(currency.code);
+              const price = live?.priceUsd ?? currency.displayPriceUsd;
+              const change = live?.change24h ?? currency.displayChange24h;
               return (
                 <li
                   key={currency.code}
@@ -134,7 +138,7 @@ export default async function Home({ params }: Props) {
                       {currency.symbol}
                     </span>
                   </div>
-                  <p className="num mt-2 text-sm">{formatUsd(currency.displayPriceUsd)}</p>
+                  <p className="num mt-2 text-sm">{formatUsd(price)}</p>
                   <p
                     className={cn(
                       "num mt-1 text-xs",

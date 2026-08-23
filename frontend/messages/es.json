@@ -37,7 +37,7 @@
     "openAccount": "Abrir una cuenta",
     "contactUs": "Contáctenos",
     "riskDisclaimer": "<strong>Advertencia de riesgo.</strong> Los precios de los activos digitales son muy volátiles y pueden ocasionar la pérdida total del capital. Nada de lo contenido en este sitio constituye asesoramiento financiero, de inversión, legal o fiscal, ni una oferta o invitación para comprar o vender activo alguno. Los resultados pasados no garantizan resultados futuros. Debe obtener asesoramiento profesional independiente antes de operar.",
-    "copyright": "© {year} Digital Wealth Partners. Entorno de demostración."
+    "copyright": "© {year} Digital Wealth Partners. Entorno de vista previa."
   },
   "about": {
     "meta": {
@@ -67,7 +67,7 @@
       }
     },
     "leadership": "Dirección",
-    "leadershipNote": "Los datos del equipo que figuran abajo son provisionales, propios de la versión de demostración.",
+    "leadershipNote": "Los perfiles del equipo directivo que figuran abajo son orientativos, pendientes de confirmación oficial.",
     "team": {
       "ceo": {
         "name": "[Placeholder] Elena Marsh",
@@ -135,8 +135,8 @@
     "statusVerified": "verificado",
     "statusRejected": "rechazado",
     "disclaimerHeading": "Aviso regulatorio",
-    "disclaimer1": "Digital Wealth Partners es una entidad de demostración y no está actualmente autorizada, registrada ni habilitada por ningún supervisor financiero. Nada de lo contenido en este sitio constituye una oferta, invitación o recomendación de comprar, vender o mantener ningún activo digital.",
-    "disclaimer2": "Los activos digitales son volátiles, por lo general no están cubiertos por sistemas de garantía de depósitos ni de indemnización de inversores, y pueden perder todo su valor. Los saldos, precios, tipos de conversión y cifras de rentabilidad de este entorno son simulados y no deben tomarse como referencia."
+    "disclaimer1": "Digital Wealth Partners se presenta aquí como una vista previa anterior al lanzamiento y no está actualmente autorizada, registrada ni habilitada por ningún supervisor financiero. Nada de lo contenido en este sitio constituye una oferta, invitación o recomendación de comprar, vender o mantener ningún activo digital.",
+    "disclaimer2": "Los activos digitales son volátiles, por lo general no están cubiertos por sistemas de garantía de depósitos ni de indemnización de inversores, y pueden perder todo su valor. Los saldos, precios, tipos de conversión y cifras de rentabilidad de este entorno son orientativos y no deben tomarse como referencia."
   },
   "faq": {
     "meta": {
@@ -170,11 +170,11 @@
       },
       "fees": {
         "q": "¿Cuánto cobran?",
-        "a": "Una comisión de administración anual provisional del 0,55 %, el coste de red más un 0,10 % en las retiradas y un 0,35 % en las conversiones. Consulte la tarifa completa en el listado de comisiones."
+        "a": "Una comisión de administración anual orientativa del 0,55 %, el coste de red más un 0,10 % en las retiradas y un 0,35 % en las conversiones. Consulte la tarifa completa en el listado de comisiones."
       },
       "live": {
         "q": "¿Este entorno es real?",
-        "a": "No. Es una versión de demostración. Los saldos, precios, direcciones de depósito y tipos de conversión son simulados, y no intervienen fondos reales ni transacciones en cadena."
+        "a": "Todavía no. Se trata de una vista previa anterior al lanzamiento: los saldos, precios, direcciones de depósito y tipos de conversión son orientativos, y no intervienen fondos reales ni transacciones en cadena."
       },
       "twoFactor": {
         "q": "¿Puedo activar la autenticación de dos factores?",
@@ -187,7 +187,7 @@
   "services": {
     "meta": {
       "title": "Cómo funciona y comisiones — Digital Wealth Partners",
-      "description": "Nuestro modelo de custodia, el circuito de depósito y retirada, las redes admitidas y un listado de comisiones provisional y claro.",
+      "description": "Nuestro modelo de custodia, el circuito de depósito y retirada, las redes admitidas y un listado de comisiones orientativo y claro.",
       "ogDescription": "Modelo de custodia, circuito de depósito, redes admitidas y listado de comisiones."
     },
     "eyebrow": "Servicios",
@@ -216,9 +216,9 @@
     "colPrecision": "Precisión",
     "decimalPlaces": "{count} dec.",
     "feesHeading": "Listado de comisiones",
-    "feesNote": "Todas las cifras que figuran abajo son valores provisionales claramente identificados para esta versión de demostración.",
+    "feesNote": "Todas las cifras que figuran abajo son orientativas y están claramente identificadas en espera de nuestra tarifa definitiva.",
     "colItem": "Concepto",
-    "colRate": "Tarifa provisional",
+    "colRate": "Tarifa orientativa",
     "colBasis": "Base",
     "fees": {
       "administration": {
@@ -239,7 +239,7 @@
       "conversion": {
         "item": "Conversión de divisas",
         "rate": "0,35 % del nocional",
-        "basis": "Se aplica al tipo simulado"
+        "basis": "Se aplica al tipo orientativo"
       },
       "statements": {
         "item": "Extractos y exportaciones fiscales",
@@ -260,7 +260,7 @@
     "heroBody": "Digital Wealth Partners ofrece a los clientes privados una única cuenta verificada para sus activos digitales, con carteras segregadas, custodia documentada e información que su contable reconocerá.",
     "openAccount": "Abrir una cuenta",
     "seeCustody": "Ver cómo funciona la custodia",
-    "placeholderFigure": "Cifra provisional",
+    "placeholderFigure": "Cifra orientativa",
     "stats": {
       "aua": {
         "value": "1420 M$",
@@ -279,7 +279,7 @@
         "label": "Tiempo de respuesta de atención al cliente"
       }
     },
-    "assetsHeading": "Activos admitidos · precios indicativos (simulados)",
+    "assetsHeading": "Activos admitidos · precios indicativos",
     "onboarding": "Alta de cliente",
     "stepsHeading": "Tres pasos hasta una cuenta con fondos",
     "stepLabel": "Paso {number}",
@@ -332,7 +332,7 @@
       }
     },
     "ctaTitle": "¿Listo para consolidar sus activos digitales?",
-    "ctaBody": "Abra una cuenta, complete la verificación e ingrese fondos en sus carteras. Sin mínimo en el entorno de demostración.",
+    "ctaBody": "Abra una cuenta, complete la verificación e ingrese fondos en sus carteras. Sin importe mínimo durante nuestro periodo de vista previa.",
     "getStarted": "Empezar"
   },
   "common": {
@@ -491,7 +491,7 @@
   },
   "wallets": {
     "title": "Monederos",
-    "subtitle": "Los saldos son simulados y se administran internamente en esta versión de demostración.",
+    "subtitle": "Tus saldos en todos los activos disponibles.",
     "delisted": "Ya no se aceptan depósitos. Todavía puede retirar este saldo.",
     "deposit": "Depositar",
     "withdraw": "Retirar",
@@ -503,8 +503,8 @@
     "addressLabel": "Su dirección de depósito",
     "copyAddress": "Copiar la dirección de depósito",
     "addressCopied": "Dirección copiada",
-    "depositWarning": "Envíe únicamente {code}. Enviar otro activo o usar una red distinta provocará una pérdida permanente. Esta es una dirección simulada con fines de demostración.",
-    "depositWarningWithNetwork": "Envíe únicamente {code} por la red {network}. Enviar otro activo o usar una red distinta provocará una pérdida permanente. Esta es una dirección simulada con fines de demostración.",
+    "depositWarning": "Envíe únicamente {code}. Enviar otro activo o usar una red distinta provocará una pérdida permanente. Esta dirección se ofrece únicamente con fines de vista previa y no admite transferencias en vivo.",
+    "depositWarningWithNetwork": "Envíe únicamente {code} por la red {network}. Enviar otro activo o usar una red distinta provocará una pérdida permanente. Esta dirección se ofrece únicamente con fines de vista previa y no admite transferencias en vivo.",
     "amountSent": "Importe enviado",
     "amountSentError": "Introduzca el importe que ha enviado",
     "cancel": "Cancelar",
@@ -532,13 +532,13 @@
     "withdrawalSubmitted": "Solicitud de retirada enviada para su revisión.",
     "withdrawalError": "No se pudo enviar la solicitud",
     "convertHeading": "Convertir",
-    "convertSubtitle": "Conversión instantánea simulada entre activos en cartera a tipos ficticios.",
+    "convertSubtitle": "Conversión instantánea entre activos en cartera a tipos orientativos.",
     "from": "De",
     "to": "A",
     "convert": "Convertir",
     "converting": "Convirtiendo…",
     "convertResult": "Recibirá ≈ {receive} {to} · 1 {from} = {rate} {to}",
-    "convertSuccess": "Convertido a {amount} {code} al tipo simulado.",
+    "convertSuccess": "Convertido a {amount} {code} al tipo orientativo.",
     "convertError": "Error en la conversión"
   },
   "transactions": {

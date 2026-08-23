@@ -37,7 +37,7 @@
     "openAccount": "Ouvrir un compte",
     "contactUs": "Nous contacter",
     "riskDisclaimer": "<strong>Avertissement sur les risques.</strong> Le cours des actifs numériques est très volatil et peut entraîner la perte totale du capital. Aucun élément de ce site ne constitue un conseil financier, d'investissement, juridique ou fiscal, ni une offre ou une sollicitation d'achat ou de vente d'un quelconque actif. Les performances passées ne préjugent pas des résultats futurs. Il vous appartient d'obtenir un avis professionnel indépendant avant toute transaction.",
-    "copyright": "© {year} Digital Wealth Partners. Environnement de démonstration."
+    "copyright": "© {year} Digital Wealth Partners. Environnement de prévisualisation."
   },
   "about": {
     "meta": {
@@ -67,7 +67,7 @@
       }
     },
     "leadership": "Direction",
-    "leadershipNote": "Les informations sur l'équipe ci-dessous sont provisoires et propres à la version de démonstration.",
+    "leadershipNote": "Les profils de l'équipe dirigeante ci-dessous sont indicatifs, en attente de confirmation officielle.",
     "team": {
       "ceo": {
         "name": "[Placeholder] Elena Marsh",
@@ -135,8 +135,8 @@
     "statusVerified": "vérifié",
     "statusRejected": "rejeté",
     "disclaimerHeading": "Avertissement réglementaire",
-    "disclaimer1": "Digital Wealth Partners est une entité de démonstration et n'est actuellement ni agréée, ni enregistrée, ni autorisée par une quelconque autorité de régulation financière. Aucun élément de ce site ne constitue une offre, une sollicitation ou une recommandation d'acheter, de vendre ou de détenir un actif numérique.",
-    "disclaimer2": "Les actifs numériques sont volatils, ne sont généralement pas couverts par les dispositifs de garantie des dépôts ou d'indemnisation des investisseurs, et peuvent perdre toute valeur. Les soldes, cours, taux de conversion et chiffres de performance de cet environnement sont simulés et ne doivent pas servir de référence."
+    "disclaimer1": "Digital Wealth Partners est présentée ici comme un aperçu avant lancement et n'est actuellement ni agréée, ni enregistrée, ni autorisée par une quelconque autorité de régulation financière. Aucun élément de ce site ne constitue une offre, une sollicitation ou une recommandation d'acheter, de vendre ou de détenir un actif numérique.",
+    "disclaimer2": "Les actifs numériques sont volatils, ne sont généralement pas couverts par les dispositifs de garantie des dépôts ou d'indemnisation des investisseurs, et peuvent perdre toute valeur. Les soldes, cours, taux de conversion et chiffres de performance de cet environnement sont indicatifs et ne doivent pas servir de référence."
   },
   "faq": {
     "meta": {
@@ -170,11 +170,11 @@
       },
       "fees": {
         "q": "Quels sont vos tarifs ?",
-        "a": "Des frais d'administration annuels provisoires de 0,55 %, le coût réseau majoré de 0,10 % sur les retraits, et 0,35 % sur les conversions. Consultez la grille tarifaire pour la liste complète."
+        "a": "Des frais d'administration annuels indicatifs de 0,55 %, le coût réseau majoré de 0,10 % sur les retraits, et 0,35 % sur les conversions. Consultez la grille tarifaire pour la liste complète."
       },
       "live": {
         "q": "Cet environnement est-il réel ?",
-        "a": "Non. Il s'agit d'une version de démonstration. Les soldes, cours, adresses de dépôt et taux de conversion sont simulés, et aucun fonds réel ni transaction blockchain n'est en jeu."
+        "a": "Pas encore. Il s'agit d'un aperçu avant lancement : les soldes, cours, adresses de dépôt et taux de conversion sont indicatifs, et aucun fonds réel ni transaction blockchain n'est en jeu."
       },
       "twoFactor": {
         "q": "Puis-je activer l'authentification à deux facteurs ?",
@@ -187,7 +187,7 @@
   "services": {
     "meta": {
       "title": "Fonctionnement et frais — Digital Wealth Partners",
-      "description": "Notre modèle de conservation, le parcours de dépôt et de retrait, les réseaux pris en charge et une grille tarifaire provisoire et claire.",
+      "description": "Notre modèle de conservation, le parcours de dépôt et de retrait, les réseaux pris en charge et une grille tarifaire indicative et claire.",
       "ogDescription": "Modèle de conservation, parcours de dépôt, réseaux pris en charge et grille tarifaire."
     },
     "eyebrow": "Services",
@@ -216,9 +216,9 @@
     "colPrecision": "Précision",
     "decimalPlaces": "{count} déc.",
     "feesHeading": "Grille tarifaire",
-    "feesNote": "Tous les chiffres ci-dessous sont des valeurs provisoires clairement identifiées pour cette version de démonstration.",
+    "feesNote": "Tous les chiffres ci-dessous sont indicatifs et clairement identifiés dans l'attente de notre grille tarifaire définitive.",
     "colItem": "Poste",
-    "colRate": "Tarif provisoire",
+    "colRate": "Tarif indicatif",
     "colBasis": "Base",
     "fees": {
       "administration": {
@@ -239,7 +239,7 @@
       "conversion": {
         "item": "Conversion de devises",
         "rate": "0,35 % du notionnel",
-        "basis": "Appliqué au taux simulé"
+        "basis": "Appliqué au taux indicatif"
       },
       "statements": {
         "item": "Relevés et exports fiscaux",
@@ -260,7 +260,7 @@
     "heroBody": "Digital Wealth Partners offre à la clientèle privée un compte unique et vérifié pour ses actifs numériques — avec des portefeuilles ségrégués, une conservation documentée et un reporting que votre comptable reconnaîtra.",
     "openAccount": "Ouvrir un compte",
     "seeCustody": "Voir le fonctionnement de la conservation",
-    "placeholderFigure": "Chiffre provisoire",
+    "placeholderFigure": "Chiffre indicatif",
     "stats": {
       "aua": {
         "value": "1,42 Md $",
@@ -279,7 +279,7 @@
         "label": "Délai de réponse du support client"
       }
     },
-    "assetsHeading": "Actifs pris en charge · cours indicatifs (simulés)",
+    "assetsHeading": "Actifs pris en charge · cours indicatifs",
     "onboarding": "Entrée en relation",
     "stepsHeading": "Trois étapes vers un compte approvisionné",
     "stepLabel": "Étape {number}",
@@ -332,7 +332,7 @@
       }
     },
     "ctaTitle": "Prêt à consolider vos actifs numériques ?",
-    "ctaBody": "Ouvrez un compte, effectuez la vérification et approvisionnez vos portefeuilles. Aucun minimum dans l'environnement de démonstration.",
+    "ctaBody": "Ouvrez un compte, effectuez la vérification et approvisionnez vos portefeuilles. Aucun minimum pendant notre période de prévisualisation.",
     "getStarted": "Commencer"
   },
   "common": {
@@ -491,7 +491,7 @@
   },
   "wallets": {
     "title": "Portefeuilles",
-    "subtitle": "Les soldes sont simulés et administrés en interne dans cette version de démonstration.",
+    "subtitle": "Vos soldes pour tous les actifs disponibles.",
     "delisted": "Les dépôts ne sont plus acceptés. Vous pouvez toujours retirer ce solde.",
     "deposit": "Déposer",
     "withdraw": "Retirer",
@@ -503,8 +503,8 @@
     "addressLabel": "Votre adresse de dépôt",
     "copyAddress": "Copier l'adresse de dépôt",
     "addressCopied": "Adresse copiée",
-    "depositWarning": "Envoyez uniquement des {code}. Envoyer un autre actif ou utiliser un réseau différent entraînera une perte définitive. Il s'agit d'une adresse simulée à des fins de démonstration.",
-    "depositWarningWithNetwork": "Envoyez uniquement des {code} sur le réseau {network}. Envoyer un autre actif ou utiliser un réseau différent entraînera une perte définitive. Il s'agit d'une adresse simulée à des fins de démonstration.",
+    "depositWarning": "Envoyez uniquement des {code}. Envoyer un autre actif ou utiliser un réseau différent entraînera une perte définitive. Cette adresse est fournie à des fins de prévisualisation uniquement et n'accepte pas les transferts réels.",
+    "depositWarningWithNetwork": "Envoyez uniquement des {code} sur le réseau {network}. Envoyer un autre actif ou utiliser un réseau différent entraînera une perte définitive. Cette adresse est fournie à des fins de prévisualisation uniquement et n'accepte pas les transferts réels.",
     "amountSent": "Montant envoyé",
     "amountSentError": "Saisissez le montant que vous avez envoyé",
     "cancel": "Annuler",
@@ -532,13 +532,13 @@
     "withdrawalSubmitted": "Demande de retrait soumise pour examen.",
     "withdrawalError": "Impossible de soumettre la demande",
     "convertHeading": "Convertir",
-    "convertSubtitle": "Conversion instantanée simulée entre actifs détenus, à des taux fictifs.",
+    "convertSubtitle": "Conversion instantanée entre actifs détenus, à des taux indicatifs.",
     "from": "De",
     "to": "Vers",
     "convert": "Convertir",
     "converting": "Conversion…",
     "convertResult": "Vous recevez ≈ {receive} {to} · 1 {from} = {rate} {to}",
-    "convertSuccess": "Converti en {amount} {code} au taux simulé.",
+    "convertSuccess": "Converti en {amount} {code} au taux indicatif.",
     "convertError": "Échec de la conversion"
   },
   "transactions": {

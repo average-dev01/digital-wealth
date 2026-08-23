@@ -18,8 +18,16 @@ export type MarketingAsset = {
   decimals: number;
   network: string;
   minDeposit: number;
+  /**
+   * Coinpaprika ticker id — same provider/id format as
+   * `backend/src/lib/priceProviders/coinpaprika.ts` — used by
+   * `fetchLiveMarketingPrices` (`lib/marketingPrices.ts`) to look up a live
+   * price for this asset on the homepage.
+   */
+  externalPriceId: string;
+  /** Fallback if the live Coinpaprika fetch fails or hasn't resolved yet. */
   displayPriceUsd: number;
-  /** Static illustrative 24h figure — marketing pages are prerendered. */
+  /** Fallback 24h figure, same caveat as displayPriceUsd. */
   displayChange24h: number;
   chart: number;
 };
@@ -32,6 +40,7 @@ export const MARKETING_ASSETS: MarketingAsset[] = [
     decimals: 8,
     network: "Bitcoin",
     minDeposit: 0.0005,
+    externalPriceId: "btc-bitcoin",
     displayPriceUsd: 96420.35,
     displayChange24h: 0.22,
     chart: 1,
@@ -43,6 +52,7 @@ export const MARKETING_ASSETS: MarketingAsset[] = [
     decimals: 8,
     network: "Ethereum (ERC-20)",
     minDeposit: 0.01,
+    externalPriceId: "eth-ethereum",
     displayPriceUsd: 3412.88,
     displayChange24h: 0.8,
     chart: 2,
@@ -54,6 +64,7 @@ export const MARKETING_ASSETS: MarketingAsset[] = [
     decimals: 2,
     network: "Ethereum (ERC-20)",
     minDeposit: 20,
+    externalPriceId: "usdt-tether",
     displayPriceUsd: 1.0,
     displayChange24h: 0.01,
     chart: 3,
@@ -65,6 +76,7 @@ export const MARKETING_ASSETS: MarketingAsset[] = [
     decimals: 2,
     network: "Ethereum (ERC-20)",
     minDeposit: 20,
+    externalPriceId: "usdc-usd-coin",
     displayPriceUsd: 1.0,
     displayChange24h: 0.0,
     chart: 4,
@@ -76,6 +88,7 @@ export const MARKETING_ASSETS: MarketingAsset[] = [
     decimals: 6,
     network: "Solana",
     minDeposit: 0.1,
+    externalPriceId: "sol-solana",
     displayPriceUsd: 184.21,
     displayChange24h: 1.45,
     chart: 5,
@@ -87,6 +100,7 @@ export const MARKETING_ASSETS: MarketingAsset[] = [
     decimals: 6,
     network: "BNB Smart Chain (BEP-20)",
     minDeposit: 0.02,
+    externalPriceId: "bnb-binance-coin",
     displayPriceUsd: 642.7,
     displayChange24h: -0.62,
     chart: 6,
@@ -98,6 +112,7 @@ export const MARKETING_ASSETS: MarketingAsset[] = [
     decimals: 6,
     network: "XRP Ledger",
     minDeposit: 10,
+    externalPriceId: "xrp-xrp",
     displayPriceUsd: 2.34,
     displayChange24h: 2.1,
     chart: 7,

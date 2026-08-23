@@ -37,7 +37,7 @@
     "openAccount": "Open an account",
     "contactUs": "Contact us",
     "riskDisclaimer": "<strong>Risk disclaimer.</strong> Digital asset prices are highly volatile and may result in the total loss of capital. Nothing on this site constitutes financial, investment, legal or tax advice, or an offer or solicitation to buy or sell any asset. Past performance is not indicative of future results. You should obtain independent professional advice before transacting.",
-    "copyright": "© {year} Digital Wealth Partners. Demonstration environment."
+    "copyright": "© {year} Digital Wealth Partners. Preview environment."
   },
   "about": {
     "meta": {
@@ -67,7 +67,7 @@
       }
     },
     "leadership": "Leadership",
-    "leadershipNote": "Team details below are placeholders for the demonstration build.",
+    "leadershipNote": "Leadership profiles below are illustrative pending official confirmation.",
     "team": {
       "ceo": {
         "name": "[Placeholder] Elena Marsh",
@@ -135,8 +135,8 @@
     "statusVerified": "verified",
     "statusRejected": "rejected",
     "disclaimerHeading": "Regulatory disclaimer",
-    "disclaimer1": "Digital Wealth Partners is a demonstration entity and is not currently licensed, registered or authorised by any financial regulator. Nothing on this site is an offer, solicitation or recommendation to buy, sell or hold any digital asset.",
-    "disclaimer2": "Digital assets are volatile, are generally not covered by deposit-insurance or investor-compensation schemes, and may lose all value. Balances, prices, conversion rates and performance figures in this environment are simulated and must not be relied upon."
+    "disclaimer1": "Digital Wealth Partners is presented here as a pre-launch preview and is not currently licensed, registered or authorised by any financial regulator. Nothing on this site is an offer, solicitation or recommendation to buy, sell or hold any digital asset.",
+    "disclaimer2": "Digital assets are volatile, are generally not covered by deposit-insurance or investor-compensation schemes, and may lose all value. Balances, prices, conversion rates and performance figures in this environment are illustrative and must not be relied upon."
   },
   "faq": {
     "meta": {
@@ -170,11 +170,11 @@
       },
       "fees": {
         "q": "What do you charge?",
-        "a": "A placeholder 0.55% annual administration fee, network cost plus 0.10% on withdrawals, and 0.35% on conversions. See the fee schedule for the full list."
+        "a": "An indicative 0.55% annual administration fee, network cost plus 0.10% on withdrawals, and 0.35% on conversions. See the fee schedule for the full list."
       },
       "live": {
         "q": "Is this environment live?",
-        "a": "No. This is a demonstration build. Balances, prices, deposit addresses and conversion rates are simulated, and no real funds or blockchain transactions are involved."
+        "a": "Not yet. This is a pre-launch preview — balances, prices, deposit addresses and conversion rates are illustrative, and no real funds or blockchain transactions are involved."
       },
       "twoFactor": {
         "q": "Can I enable two-factor authentication?",
@@ -187,7 +187,7 @@
   "services": {
     "meta": {
       "title": "How It Works & Fees — Digital Wealth Partners",
-      "description": "Our custody model, deposit and withdrawal flow, supported networks and a clear placeholder fee schedule.",
+      "description": "Our custody model, deposit and withdrawal flow, supported networks and a clear indicative fee schedule.",
       "ogDescription": "Custody model, deposit flow, supported networks and fee schedule."
     },
     "eyebrow": "Services",
@@ -216,9 +216,9 @@
     "colPrecision": "Precision",
     "decimalPlaces": "{count} dp",
     "feesHeading": "Fee schedule",
-    "feesNote": "All figures below are clearly-labelled placeholders for this demonstration build.",
+    "feesNote": "All figures below are clearly labelled as indicative ahead of our final published rate card.",
     "colItem": "Item",
-    "colRate": "Placeholder rate",
+    "colRate": "Indicative rate",
     "colBasis": "Basis",
     "fees": {
       "administration": {
@@ -239,7 +239,7 @@
       "conversion": {
         "item": "Currency conversion",
         "rate": "0.35% of notional",
-        "basis": "Applied to the simulated rate"
+        "basis": "Applied to the indicative rate"
       },
       "statements": {
         "item": "Statements & tax exports",
@@ -260,7 +260,7 @@
     "heroBody": "Digital Wealth Partners gives private clients a single, verified account for their digital assets — with segregated wallets, documented custody, and reporting your accountant will recognise.",
     "openAccount": "Open an account",
     "seeCustody": "See how custody works",
-    "placeholderFigure": "Placeholder figure",
+    "placeholderFigure": "Illustrative figure",
     "stats": {
       "aua": {
         "value": "$1.42B",
@@ -279,7 +279,7 @@
         "label": "Client support response"
       }
     },
-    "assetsHeading": "Supported assets · indicative pricing (simulated)",
+    "assetsHeading": "Supported assets · indicative pricing",
     "onboarding": "Onboarding",
     "stepsHeading": "Three steps to a funded account",
     "stepLabel": "Step {number}",
@@ -332,7 +332,7 @@
       }
     },
     "ctaTitle": "Ready to consolidate your digital assets?",
-    "ctaBody": "Open an account, complete verification, and fund your wallets. No minimum for the demonstration environment.",
+    "ctaBody": "Open an account, complete verification, and fund your wallets. No minimum during our preview period.",
     "getStarted": "Get started"
   },
   "common": {
@@ -491,7 +491,7 @@
   },
   "wallets": {
     "title": "Wallets",
-    "subtitle": "Balances are simulated and administered internally in this demonstration build.",
+    "subtitle": "Your balances across all supported assets.",
     "delisted": "No longer accepting deposits. You can still withdraw this balance.",
     "deposit": "Deposit",
     "withdraw": "Withdraw",
@@ -503,8 +503,8 @@
     "addressLabel": "Your deposit address",
     "copyAddress": "Copy deposit address",
     "addressCopied": "Address copied",
-    "depositWarning": "Send only {code}. Sending another asset or using a different network will result in permanent loss. This is a simulated address for demonstration purposes.",
-    "depositWarningWithNetwork": "Send only {code} on the {network} network. Sending another asset or using a different network will result in permanent loss. This is a simulated address for demonstration purposes.",
+    "depositWarning": "Send only {code}. Sending another asset or using a different network will result in permanent loss. This address is provided for preview purposes only and does not accept live transfers.",
+    "depositWarningWithNetwork": "Send only {code} on the {network} network. Sending another asset or using a different network will result in permanent loss. This address is provided for preview purposes only and does not accept live transfers.",
     "amountSent": "Amount sent",
     "amountSentError": "Enter the amount you sent",
     "cancel": "Cancel",
@@ -532,13 +532,13 @@
     "withdrawalSubmitted": "Withdrawal request submitted for review.",
     "withdrawalError": "Could not submit request",
     "convertHeading": "Convert",
-    "convertSubtitle": "Simulated instant conversion between held assets at mock rates.",
+    "convertSubtitle": "Instant conversion between held assets at indicative rates.",
     "from": "From",
     "to": "To",
     "convert": "Convert",
     "converting": "Converting…",
     "convertResult": "You receive ≈ {receive} {to} · 1 {from} = {rate} {to}",
-    "convertSuccess": "Converted to {amount} {code} at the simulated rate.",
+    "convertSuccess": "Converted to {amount} {code} at the indicative rate.",
     "convertError": "Conversion failed"
   },
   "transactions": {
