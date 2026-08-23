@@ -540,8 +540,10 @@
     "submit": "Guardar palabra clave",
     "submitting": "Guardando…",
     "lockedTitle": "Tu palabra clave de la cuenta está establecida",
-    "lockedNote": "Por tu seguridad, esta palabra clave solo puede establecerse una vez. Contacta con soporte si debe cambiar.",
+    "lockedNote": "Puedes actualizar esta palabra clave en cualquier momento si cambia o se introdujo incorrectamente.",
     "setOn": "Establecida el {date}",
+    "editButton": "Actualizar palabra clave",
+    "cancelButton": "Cancelar",
     "toast": {
       "success": "Palabra clave de la cuenta guardada.",
       "error": "No se pudo guardar tu palabra clave"

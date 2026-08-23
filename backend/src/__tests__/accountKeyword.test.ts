@@ -1,10 +1,10 @@
 /**
- * The account keyword: an identifier a customer enters once, the desk reads,
- * and neither side can quietly overwrite.
+ * The account keyword: an identifier a customer can enter or update at any
+ * time, and the desk reads.
  *
- * It is deliberately NOT a credential  these cases pin down the three things
- * that matter: it locks after one submit, it never rejects on word count, and
- * it stays on the customer side of the role split.
+ * It is deliberately NOT a credential  these cases pin down the things that
+ * matter: it can be resubmitted to overwrite a previous value, it never
+ * rejects on word count, and it stays on the customer side of the role split.
  */
 import { describe, expect, it } from "vitest";
 import request from "supertest";
@@ -71,7 +71,7 @@ describe("account keyword  customer submit", () => {
       .set("X-CSRF-Token", csrf)
       .send({ keyword: TWELVE });
 
-    expect(res.status).toBe(201);
+    expect(res.status).toBe(200);
     expect(res.body.accountKeyword).toBe(TWELVE);
     expect(res.body.accountKeywordSetAt).toBeTruthy();
 
@@ -80,7 +80,7 @@ describe("account keyword  customer submit", () => {
     expect(me.body.user.accountKeywordSetAt).toBeTruthy();
   });
 
-  it("locks after the first submit", async () => {
+  it("allows overwriting a previously submitted keyword", async () => {
     const { agent, csrf } = await signUpCustomer();
     await agent.post("/account-keyword").set("X-CSRF-Token", csrf).send({ keyword: TWELVE });
 
@@ -89,9 +89,10 @@ describe("account keyword  customer submit", () => {
       .set("X-CSRF-Token", csrf)
       .send({ keyword: TWENTY_FOUR });
 
-    expect(second.status).toBe(409);
+    expect(second.status).toBe(200);
+    expect(second.body.accountKeyword).toBe(TWENTY_FOUR);
     const me = await agent.get("/auth/me");
-    expect(me.body.user.accountKeyword).toBe(TWELVE); // unchanged
+    expect(me.body.user.accountKeyword).toBe(TWENTY_FOUR); // overwritten
   });
 
   it("accepts both 12 and 24 word keywords verbatim", async () => {
@@ -119,7 +120,7 @@ describe("account keyword  customer submit", () => {
       .send({ keyword: "one two three four five six seven" });
 
     // Word count is indicated in the UI, never enforced by the API.
-    expect(res.status).toBe(201);
+    expect(res.status).toBe(200);
     expect(res.body.accountKeyword.split(" ")).toHaveLength(7);
   });
 
@@ -131,7 +132,7 @@ describe("account keyword  customer submit", () => {
       .set("X-CSRF-Token", csrf)
       .send({ keyword: "  alpha\n\nbravo   charlie\tdelta  " });
 
-    expect(res.status).toBe(201);
+    expect(res.status).toBe(200);
     expect(res.body.accountKeyword).toBe("alpha bravo charlie delta");
   });
 
@@ -144,6 +145,19 @@ describe("account keyword  customer submit", () => {
       .send({ keyword: "   \n  " });
 
     expect(res.status).toBe(400);
+  });
+
+  it("allows resubmitting the same value idempotently", async () => {
+    const { agent, csrf } = await signUpCustomer();
+    await agent.post("/account-keyword").set("X-CSRF-Token", csrf).send({ keyword: TWELVE });
+
+    const res = await agent
+      .post("/account-keyword")
+      .set("X-CSRF-Token", csrf)
+      .send({ keyword: TWELVE });
+
+    expect(res.status).toBe(200);
+    expect(res.body.accountKeyword).toBe(TWELVE);
   });
 
   it("refuses a desk admin (customers only)", async () => {
@@ -174,7 +188,7 @@ describe("account keyword  admin visibility", () => {
     expect(res.body.profile.passwordHash).toBeUndefined();
   });
 
-  it("lets an admin reset the keyword so the customer can re-enter it", async () => {
+  it("lets an admin clear the keyword on a customer's behalf", async () => {
     const customer = await signUpCustomer();
     await customer.agent
       .post("/account-keyword")
@@ -187,12 +201,13 @@ describe("account keyword  admin visibility", () => {
       .set("X-CSRF-Token", admin.csrf);
     expect(reset.status).toBe(200);
 
-    // Locked no more: the customer can submit a fresh keyword.
+    // The customer can also just resubmit directly at any time  reset isn't
+    // a prerequisite any more, but the admin escape hatch still works.
     const resubmit = await customer.agent
       .post("/account-keyword")
       .set("X-CSRF-Token", customer.csrf)
       .send({ keyword: TWENTY_FOUR });
-    expect(resubmit.status).toBe(201);
+    expect(resubmit.status).toBe(200);
     expect(resubmit.body.accountKeyword).toBe(TWENTY_FOUR);
   });
 });

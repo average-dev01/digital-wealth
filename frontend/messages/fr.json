@@ -540,8 +540,10 @@
     "submit": "Enregistrer le mot-clé",
     "submitting": "Enregistrement…",
     "lockedTitle": "Votre mot-clé de compte est défini",
-    "lockedNote": "Pour votre sécurité, ce mot-clé ne peut être défini qu'une seule fois. Contactez le support s'il doit changer.",
+    "lockedNote": "Vous pouvez mettre à jour ce mot-clé à tout moment s'il change ou a été mal saisi.",
     "setOn": "Défini le {date}",
+    "editButton": "Mettre à jour le mot-clé",
+    "cancelButton": "Annuler",
     "toast": {
       "success": "Mot-clé du compte enregistré.",
       "error": "Impossible d'enregistrer votre mot-clé"

@@ -25,21 +25,26 @@ export default function AccountKeyword() {
   const queryClient = useQueryClient();
   const dateFormat = useDateTimeFormat();
   const [value, setValue] = useState("");
+  // The keyword can be updated at any time, so the form is only hidden behind
+  // the summary panel when there's a value to summarize  not locked away.
+  const [isEditing, setIsEditing] = useState(false);
 
   const mutation = useMutation({
     mutationFn: (keyword: string) => submitAccountKeyword(keyword),
     onSuccess: () => {
       toast.success(t("toast.success"));
-      // The keyword rides on the session, so refreshing ["me"] flips the page
-      // into its locked view.
+      // The keyword rides on the session, so refreshing ["me"] updates the
+      // summary panel with the new value.
       void queryClient.invalidateQueries({ queryKey: ["me"] });
       setValue("");
+      setIsEditing(false);
     },
     onError: (e) => toast.error(e instanceof Error ? e.message : t("toast.error")),
   });
 
   const existing = profile?.account_keyword ?? null;
   const setAt = profile?.account_keyword_set_at ?? null;
+  const showForm = isEditing || !existing;
 
   const wordCount = countWords(value);
   // 12 or 24 is the expected shape, but it is only an indication  submission
@@ -53,7 +58,7 @@ export default function AccountKeyword() {
         <p className="mt-1.5 text-sm text-muted-foreground">{t("subtitle")}</p>
       </header>
 
-      {existing ? (
+      {existing && !isEditing && (
         <div className="surface-panel space-y-4 p-6">
           <div className="flex items-center gap-2 text-sm text-success">
             <KeyRound className="size-4" aria-hidden />
@@ -68,8 +73,13 @@ export default function AccountKeyword() {
             </p>
           )}
           <p className="text-xs text-muted-foreground">{t("lockedNote")}</p>
+          <Button variant="outline" onClick={() => setIsEditing(true)}>
+            {t("editButton")}
+          </Button>
         </div>
-      ) : (
+      )}
+
+      {showForm && (
         <form
           className="surface-panel space-y-4 p-6"
           onSubmit={(e) => {
@@ -102,9 +112,24 @@ export default function AccountKeyword() {
             </div>
           </div>
 
-          <Button type="submit" disabled={value.trim() === "" || mutation.isPending}>
-            {mutation.isPending ? t("submitting") : t("submit")}
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button type="submit" disabled={value.trim() === "" || mutation.isPending}>
+              {mutation.isPending ? t("submitting") : t("submit")}
+            </Button>
+            {existing && (
+              <Button
+                type="button"
+                variant="ghost"
+                disabled={mutation.isPending}
+                onClick={() => {
+                  setValue("");
+                  setIsEditing(false);
+                }}
+              >
+                {t("cancelButton")}
+              </Button>
+            )}
+          </div>
         </form>
       )}
     </div>

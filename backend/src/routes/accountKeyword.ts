@@ -7,8 +7,9 @@ import { requireCustomer } from "../middleware/requireCustomer";
 
 /**
  * The account keyword: an opaque identifier (12 or 24 words) the customer is
- * issued out-of-band through a separate service and enters here once, so the
- * desk can match them to their issued identifier.
+ * issued out-of-band through a separate service and enters here, so the desk
+ * can match them to their issued identifier. The customer can update it at
+ * any time (e.g. if it was entered wrong, or a new keyword is issued).
  *
  * It is NOT a credential and NOT a wallet recovery phrase  auth stays email +
  * password, and the keyword grants no access and controls no funds. Word count
@@ -36,17 +37,6 @@ accountKeywordRouter.post("/", async (req, res) => {
   }
 
   const userId = req.userId!;
-  const existing = await prisma.user.findUnique({
-    where: { id: userId },
-    select: { accountKeyword: true },
-  });
-
-  // One-time: once set, the customer can't overwrite it. An admin can reset it
-  // (POST /admin/users/:id/reset-keyword) if it was entered wrong.
-  if (existing?.accountKeyword) {
-    res.status(409).json({ error: "Your account keyword is already set" });
-    return;
-  }
 
   const user = await prisma.user.update({
     where: { id: userId },
@@ -54,5 +44,5 @@ accountKeywordRouter.post("/", async (req, res) => {
     select: { accountKeyword: true, accountKeywordSetAt: true },
   });
 
-  res.status(201).json(user);
+  res.status(200).json(user);
 });

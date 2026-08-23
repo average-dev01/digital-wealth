@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth, useProfile } from "@/hooks/useAuth";
 
-const SUPPORT_EMAIL = "support@digitalwealthpartners.example";
+const SUPPORT_EMAIL = "support@digitalwealthpartners.com";
 
 export default function Settings() {
   const t = useTranslations("settings");
