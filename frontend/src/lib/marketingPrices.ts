@@ -1,26 +1,30 @@
 /**
  * Live USD prices for the "Supported assets" strip on the public homepage.
  *
- * Two-tier fallback, cheapest/most-authoritative first:
+ * Two sources, merged per-asset rather than all-or-nothing:
  *
- *  1. Our own backend's public `GET /currencies`  it already runs the same
+ *  1. Our own backend's public `GET /currencies` — it already runs the same
  *     Coinpaprika-backed price feed for real customer balances
  *     (`backend/src/lib/priceFeed.ts`) and caches the result for 30s
  *     (`backend/src/lib/currencies.ts`), so reading it here costs nothing
- *     extra against Coinpaprika's quota. This is the normal path.
- *  2. If the backend is unreachable, fetch Coinpaprika directly (same
- *     provider, no API key) so the homepage still shows real prices during
- *     a backend outage, not just a frozen fallback. This path is cached far
- *     longer (20 min vs. the backend path's 1 min)  it only runs at all
- *     while the backend is down, and an extended outage should not turn
- *     into the frontend hammering Coinpaprika on every request either.
- *  3. If both are unreachable, the caller (`app/[locale]/page.tsx`) falls
- *     back to `MARKETING_ASSETS`' static display values.
+ *     extra against Coinpaprika's quota. This is the normal path, but it
+ *     only knows about currencies an admin has actually created — it can
+ *     respond successfully while still having no entry for one of the 7
+ *     marketing assets.
+ *  2. Coinpaprika directly (same provider, no API key) fills in whatever
+ *     the backend didn't cover — either because it's unreachable, or
+ *     because a specific asset just isn't in the catalogue yet. This path
+ *     is cached far longer (20 min vs. the backend path's 1 min): it only
+ *     runs when there's a gap to fill, and an extended gap (backend down,
+ *     or an asset that's simply never been listed) should not turn into
+ *     the frontend hammering Coinpaprika on every request either.
+ *  3. Whatever neither source covers, the caller (`app/[locale]/page.tsx`)
+ *     falls back to `MARKETING_ASSETS`' static display values.
  *
  * Talking to Coinpaprika directly only as a fallback keeps the marketing
  * page's normal-case behaviour aligned with `lib/market.ts`'s "no dependency
- * on a running backend" note in spirit  the backend being down degrades
- * pricing freshness, it doesn't take the page down.
+ * on a running backend" note in spirit — the backend being down or missing
+ * an asset degrades pricing freshness, it doesn't take the page down.
  */
 import type { MarketingAsset } from "./market";
 
@@ -28,9 +32,9 @@ const BACKEND_URL = process.env["NEXT_PUBLIC_API_URL"] ?? "http://localhost:4000
 const COINPAPRIKA_TICKERS_URL = "https://api.coinpaprika.com/v1/tickers?quotes=USD";
 
 const BACKEND_CACHE_TTL_MS = 60 * 1000;
-// Matches the backend's default PRICE_REFRESH_INTERVAL_MS (5 min)  see
-// backend/.env.example  but wider still, since this path is a fallback of
-// a fallback and should stay light on Coinpaprika's quota during an outage.
+// Matches the backend's default PRICE_REFRESH_INTERVAL_MS (5 min) — see
+// backend/.env.example — but wider still, since this path only runs to fill
+// a gap and should stay light on Coinpaprika's quota while that gap persists.
 const COINPAPRIKA_CACHE_TTL_MS = 20 * 60 * 1000;
 const BACKEND_TIMEOUT_MS = 3_000;
 
@@ -53,7 +57,7 @@ let backendInFlight: Promise<Map<string, LiveMarketPrice> | null> | null = null;
 let paprikaCache: { expiresAt: number; prices: Map<string, LiveMarketPrice> } | null = null;
 let paprikaInFlight: Promise<Map<string, LiveMarketPrice>> | null = null;
 
-/** Null means "unreachable / bad response"  distinct from an empty match set. */
+/** Null means "unreachable / bad response" — distinct from an empty match set. */
 async function fetchFromBackend(
   assets: readonly MarketingAsset[],
 ): Promise<Map<string, LiveMarketPrice> | null> {
@@ -110,16 +114,15 @@ async function fetchFromCoinpaprika(
       prices.set(code, { priceUsd: price, change24h: Number.isFinite(change) ? change : 0 });
     }
   } catch {
-    // Falls through to the empty map  caller falls back to static values.
+    // Falls through to the empty map — caller falls back to static values.
   }
 
   return prices;
 }
 
-/** Never throws. Keys are MarketingAsset `code`s (e.g. "BTC"). */
-export async function fetchLiveMarketingPrices(
+async function getBackendPrices(
   assets: readonly MarketingAsset[],
-): Promise<Map<string, LiveMarketPrice>> {
+): Promise<Map<string, LiveMarketPrice> | null> {
   if (backendCache && backendCache.expiresAt > Date.now()) return backendCache.prices;
 
   backendInFlight ??= fetchFromBackend(assets).finally(() => {
@@ -129,10 +132,13 @@ export async function fetchLiveMarketingPrices(
 
   if (fromBackend) {
     backendCache = { expiresAt: Date.now() + BACKEND_CACHE_TTL_MS, prices: fromBackend };
-    return fromBackend;
   }
+  return fromBackend;
+}
 
-  // Backend unreachable  fall back to Coinpaprika directly, cached longer.
+async function getPaprikaPrices(
+  assets: readonly MarketingAsset[],
+): Promise<Map<string, LiveMarketPrice>> {
   if (paprikaCache && paprikaCache.expiresAt > Date.now()) return paprikaCache.prices;
 
   paprikaInFlight ??= fetchFromCoinpaprika(assets).finally(() => {
@@ -144,4 +150,33 @@ export async function fetchLiveMarketingPrices(
     paprikaCache = { expiresAt: Date.now() + COINPAPRIKA_CACHE_TTL_MS, prices: fromPaprika };
   }
   return fromPaprika;
+}
+
+/**
+ * Never throws. Keys are MarketingAsset `code`s (e.g. "BTC").
+ *
+ * Per-asset merge, not all-or-nothing: the backend can respond successfully
+ * while still having no entry for one of the 7 marketing assets (e.g. an
+ * asset that hasn't been created in the admin catalogue yet). Coinpaprika is
+ * consulted to fill exactly those gaps — not only when the backend is
+ * completely unreachable — otherwise a missing catalogue entry would
+ * silently and permanently fall back to the static `displayPriceUsd` in
+ * `market.ts` with no way to recover.
+ */
+export async function fetchLiveMarketingPrices(
+  assets: readonly MarketingAsset[],
+): Promise<Map<string, LiveMarketPrice>> {
+  const fromBackend = await getBackendPrices(assets);
+  const merged = new Map(fromBackend ?? []);
+
+  const missing = assets.filter((a) => !merged.has(a.code));
+  if (missing.length === 0) return merged;
+
+  const fromPaprika = await getPaprikaPrices(assets);
+  for (const asset of missing) {
+    const quote = fromPaprika.get(asset.code);
+    if (quote) merged.set(asset.code, quote);
+  }
+
+  return merged;
 }
