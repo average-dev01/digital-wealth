@@ -70,22 +70,22 @@
     "leadershipNote": "Los perfiles del equipo directivo que figuran abajo son orientativos, pendientes de confirmación oficial.",
     "team": {
       "ceo": {
-        "name": "[Placeholder] Elena Marsh",
+        "name": "Elena Marsh",
         "role": "Directora ejecutiva",
         "bio": "Dos décadas en banca privada y gestión discrecional de carteras."
       },
       "cco": {
-        "name": "[Placeholder] Daniel Osei",
+        "name": "Daniel Osei",
         "role": "Director de cumplimiento",
         "bio": "Exresponsable de prevención de blanqueo en un custodio de primer nivel; supervisa el KYC y el filtrado de sanciones."
       },
       "custody": {
-        "name": "[Placeholder] Priya Raghunath",
+        "name": "Priya Raghunath",
         "role": "Directora de operaciones de custodia",
         "bio": "Diseña la gestión de claves, el almacenamiento en frío y los controles de retirada con aprobación múltiple."
       },
       "reporting": {
-        "name": "[Placeholder] Tomas Berg",
+        "name": "Tomas Berg",
         "role": "Director de información al cliente",
         "bio": "Elabora los extractos, las valoraciones y las exportaciones fiscales en las que confían los clientes."
       }

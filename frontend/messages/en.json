@@ -49,7 +49,7 @@
     "title": "Built for clients who expect custody to be boring",
     "description": "Digital Wealth Partners was founded on a simple premise: digital assets deserve the same operational discipline as any other part of a serious portfolio.",
     "storyHeading": "Our story",
-    "story1": "[PLACEHOLDER COPY] We started in 2019 after watching clients hold significant digital asset positions across a patchwork of exchange accounts, hardware wallets and spreadsheets — with no consolidated view and no credible custody story.",
+    "story1": "We started in 2019 after watching clients hold significant digital asset positions across a patchwork of exchange accounts, hardware wallets and spreadsheets — with no consolidated view and no credible custody story.",
     "story2": "Today we administer multi-currency accounts for private clients, family offices and independent advisors, combining institutional custody practice with reporting that fits into existing wealth structures.",
     "story3": "We are deliberately conservative. We support a small set of liquid assets, we document every balance movement, and we would rather decline a mandate than stretch our controls.",
     "pillars": {
@@ -70,22 +70,22 @@
     "leadershipNote": "Leadership profiles below are illustrative pending official confirmation.",
     "team": {
       "ceo": {
-        "name": "[Placeholder] Elena Marsh",
+        "name": "Elena Marsh",
         "role": "Chief Executive Officer",
         "bio": "Two decades in private banking and discretionary portfolio management."
       },
       "cco": {
-        "name": "[Placeholder] Daniel Osei",
+        "name": "Daniel Osei",
         "role": "Chief Compliance Officer",
         "bio": "Former AML lead at a tier-one custodian; oversees KYC and sanctions screening."
       },
       "custody": {
-        "name": "[Placeholder] Priya Raghunath",
+        "name": "Priya Raghunath",
         "role": "Head of Custody Operations",
         "bio": "Designs key management, cold storage and multi-approval withdrawal controls."
       },
       "reporting": {
-        "name": "[Placeholder] Tomas Berg",
+        "name": "Tomas Berg",
         "role": "Head of Client Reporting",
         "bio": "Builds the statements, valuations and tax-ready exports clients rely on."
       }

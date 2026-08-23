@@ -18,9 +18,9 @@ type FieldErrors = Partial<Record<keyof ContactValues, string>>;
 
 /** Contact details are data, not copy — they read the same in every language. */
 const DETAILS = [
-  { key: "email", icon: Mail, value: "clients@digitalwealthpartners.example" },
-  { key: "phone", icon: Phone, value: "+1 (555) 010-4400 · placeholder" },
-  { key: "office", icon: MapPin, value: "1 Placeholder Square, London EC2 · placeholder" },
+  { key: "email", icon: Mail, value: "clients@digitalwealthpartners.com" },
+  { key: "phone", icon: Phone, value: "+1 (555) 010-4400" },
+  { key: "office", icon: MapPin, value: "1 Placeholder Square, London EC2" },
 ] as const;
 
 export function ContactPage() {
