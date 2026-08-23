@@ -39,6 +39,13 @@ COPY backend/prisma ./backend/prisma
 RUN pnpm install --frozen-lockfile --prod --filter backend
 
 COPY --from=build /app/backend/dist ./backend/dist
+# `prisma/seed.ts` and `scripts/{refresh-prices,remap-price-ids}.ts` are run
+# with `tsx` directly (not `node dist/...`) as one-off ops commands against
+# the deployed container — see docs/RAILWAY_DEPLOY.md step 4. They import
+# from `../src/lib/...`, so the raw TypeScript source has to be present here
+# too, not just the compiled `dist` the server itself runs from.
+COPY backend/src ./backend/src
+COPY backend/scripts ./backend/scripts
 
 WORKDIR /app/backend
 EXPOSE 4000
