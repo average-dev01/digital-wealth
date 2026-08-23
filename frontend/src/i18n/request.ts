@@ -6,7 +6,7 @@ import { routing } from "./routing";
 /**
  * Loads the message catalogue for the active request.
  *
- * Messages are plain JSON generated ahead of time (see scripts/translate.ts) 
+ * Messages are plain JSON generated ahead of time (see scripts/translate.ts) —
  * nothing calls a translation service at runtime. A key missing from a locale
  * falls back to English rather than rendering blank, so a partially translated
  * file is always safe to ship.

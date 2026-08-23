@@ -1,5 +1,5 @@
 /**
- * Currency catalogue. The `currencies` table is the sole source of truth 
+ * Currency catalogue. The `currencies` table is the sole source of truth —
  * admins create, edit and deactivate assets through the admin panel, and
  * wallet provisioning follows. There is no hardcoded asset list here: an
  * empty catalogue means customers have no wallets until an admin adds one.

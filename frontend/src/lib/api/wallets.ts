@@ -2,7 +2,7 @@
  * Customer-facing wallet operations.
  *
  * This is the single seam between the app and "custody". Balances, deposit
- * addresses and conversions are SIMULATED and administered by the desk 
+ * addresses and conversions are SIMULATED and administered by the desk —
  * there is no chain integration behind them.
  */
 

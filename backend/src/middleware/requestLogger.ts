@@ -3,7 +3,7 @@ import type { NextFunction, Request, Response } from "express";
 /**
  * Logs every request as it finishes: `METHOD path status Nms`, with the
  * response's `{error}` message appended for any 4xx/5xx so a failure is
- * identifiable from the terminal alone. Never logs the request body 
+ * identifiable from the terminal alone. Never logs the request body —
  * auth routes carry passwords in it.
  */
 export function requestLogger(req: Request, res: Response, next: NextFunction): void {

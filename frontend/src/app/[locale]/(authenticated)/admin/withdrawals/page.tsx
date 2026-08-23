@@ -178,7 +178,7 @@ export default function AdminWithdrawals() {
               {completing ? (
                 <div className="space-y-3">
                   <p>
-                    Only complete this once you have already sent the funds  the app records the
+                    Only complete this once you have already sent the funds — the app records the
                     payout, it does not send anything itself.
                   </p>
                   <span className="block rounded-lg border border-border p-3 text-sm">

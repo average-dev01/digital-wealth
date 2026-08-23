@@ -1,6 +1,6 @@
 /**
  * Test-only currency catalogue. The app itself ships no hardcoded asset list
- *  a real catalogue is created by an administrator through the admin panel 
+ * — a real catalogue is created by an administrator through the admin panel —
  * but the suite needs assets to exist before it can provision wallets or move
  * balances, so setup.ts writes these rows into the test database.
  */

@@ -208,7 +208,7 @@ function WalletAddressFormDialog({
               <SelectContent>
                 {currencies.map((currency) => (
                   <SelectItem key={currency.id} value={currency.id}>
-                    {currency.symbol}  {currency.name}
+                    {currency.symbol} — {currency.name}
                     {currency.is_active ? "" : " (inactive)"}
                   </SelectItem>
                 ))}
