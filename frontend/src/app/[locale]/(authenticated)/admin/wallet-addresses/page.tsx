@@ -59,7 +59,7 @@ export default function AdminWalletAddresses() {
   const currencies = currenciesQuery.data ?? [];
   const rows = addressesQuery.data ?? [];
   const symbolFor = (currencyId: string) =>
-    currencies.find((c) => c.id === currencyId)?.symbol ?? "—";
+    currencies.find((c) => c.id === currencyId)?.symbol ?? "";
 
   return (
     <div className="space-y-6">
@@ -208,7 +208,7 @@ function WalletAddressFormDialog({
               <SelectContent>
                 {currencies.map((currency) => (
                   <SelectItem key={currency.id} value={currency.id}>
-                    {currency.symbol} — {currency.name}
+                    {currency.symbol}  {currency.name}
                     {currency.is_active ? "" : " (inactive)"}
                   </SelectItem>
                 ))}

@@ -4,13 +4,13 @@
  *
  * This file deliberately holds NO data the signed-in app reads. Wallet
  * balances, prices, decimals and asset names all come from the database via
- * `useCurrencies()` — an administrator can add an asset and it renders
+ * `useCurrencies()`  an administrator can add an asset and it renders
  * correctly with no change here. What remains below is either pure
  * formatting, or build-time marketing copy for the public pages, which are
  * statically prerendered and so cannot depend on a running backend.
  */
 
-/** Marketing copy only — the assets the public site advertises. NOT the live catalogue. */
+/** Marketing copy only  the assets the public site advertises. NOT the live catalogue. */
 export type MarketingAsset = {
   code: string;
   name: string;
@@ -19,8 +19,8 @@ export type MarketingAsset = {
   network: string;
   minDeposit: number;
   /**
-   * Coinpaprika ticker id — same provider/id format as
-   * `backend/src/lib/priceProviders/coinpaprika.ts` — used by
+   * Coinpaprika ticker id  same provider/id format as
+   * `backend/src/lib/priceProviders/coinpaprika.ts`  used by
    * `fetchLiveMarketingPrices` (`lib/marketingPrices.ts`) to look up a live
    * price for this asset on the homepage.
    */
@@ -134,7 +134,7 @@ export function formatUsd(value: number, opts?: { compact?: boolean }): string {
   }).format(Number.isFinite(value) ? value : 0);
 }
 
-/** Takes decimals directly — the caller resolves them from the live catalogue. */
+/** Takes decimals directly  the caller resolves them from the live catalogue. */
 export function formatCryptoAmount(amount: number, decimals: number): string {
   return new Intl.NumberFormat("en-US", {
     minimumFractionDigits: Math.min(decimals, 2),

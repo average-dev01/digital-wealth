@@ -156,10 +156,10 @@ export default function AdminUserDetail() {
 
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Stat label="Portfolio value" value={formatUsd(portfolioUsd)} />
-        <Stat label="Country" value={profile.country ?? "—"} />
+        <Stat label="Country" value={profile.country ?? ""} />
         <Stat
           label="Date of birth"
-          value={profile.dob ? format(new Date(profile.dob), "d MMM yyyy") : "—"}
+          value={profile.dob ? format(new Date(profile.dob), "d MMM yyyy") : ""}
         />
         <Stat label="Joined" value={format(new Date(profile.created_at), "d MMM yyyy")} />
       </section>
@@ -523,7 +523,7 @@ function AdjustBalanceDialog({
                 <SelectContent>
                   {currencies.map((currency) => (
                     <SelectItem key={currency.id} value={currency.id}>
-                      {currency.symbol} — {currency.name}
+                      {currency.symbol}  {currency.name}
                     </SelectItem>
                   ))}
                 </SelectContent>

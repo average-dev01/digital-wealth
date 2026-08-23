@@ -63,7 +63,7 @@ function publicUser(user: {
     country: user.country,
     dob: user.dob,
     kycStatus: user.kycStatus,
-    // The customer's own out-of-band identifier — carried on the session so
+    // The customer's own out-of-band identifier  carried on the session so
     // the account-keyword page can render its locked state without a second
     // request. Never returned for anyone but the account holder here.
     accountKeyword: user.accountKeyword,
@@ -234,7 +234,7 @@ authRouter.post("/forgot-password", authRateLimit, async (req, res) => {
         expiresAt: new Date(Date.now() + 60 * 60 * 1000),
       },
     });
-    // SIMULATED email delivery — no email provider is configured in this demo
+    // SIMULATED email delivery  no email provider is configured in this demo
     // build, so the reset link is logged server-side instead of emailed.
     console.log(`[auth] Password reset link for ${user.email}: /reset-password?token=${token}`);
   }

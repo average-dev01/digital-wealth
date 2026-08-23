@@ -2,7 +2,7 @@ import { defineRouting } from "next-intl/routing";
 
 /**
  * The locales the customer-facing app ships in. The admin panel is English
- * only — it still lives under a locale segment for routing consistency, but
+ * only  it still lives under a locale segment for routing consistency, but
  * its copy is deliberately not translated (see docs/LANGUAGE_PLAN.md).
  */
 export const locales = ["en", "ar", "fr", "es"] as const;

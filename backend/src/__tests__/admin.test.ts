@@ -54,8 +54,8 @@ async function signInAdmin() {
 }
 
 /**
- * Gives a wallet a starting balance. Signups begin at zero now — the app
- * fabricates no opening balance — so any test that moves money *out* of a
+ * Gives a wallet a starting balance. Signups begin at zero now  the app
+ * fabricates no opening balance  so any test that moves money *out* of a
  * wallet has to put it there first, explicitly.
  */
 async function fundWallet(userId: string, currency: string, amount: number): Promise<void> {
@@ -379,7 +379,7 @@ describe("kyc and contact", () => {
     expect(user.kycStatus).toBe("pending");
 
     const doc = await prisma.kycDocument.findFirstOrThrow({ where: { userId: customer.userId } });
-    // Filename only — no bytes are stored in this build.
+    // Filename only  no bytes are stored in this build.
     expect(doc.storagePath).toContain("passport_scan.jpg");
   });
 

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 type CurrencyIconProps = {
   code: string;
   iconUrl?: string | null | undefined;
-  /** Short text/emoji glyph — the fallback when there is no logo. */
+  /** Short text/emoji glyph  the fallback when there is no logo. */
   icon?: string | null | undefined;
   size?: number | undefined;
   className?: string | undefined;
@@ -18,7 +18,7 @@ type CurrencyIconProps = {
  * An asset's visual identity, degrading in three steps: the provider's logo,
  * then the admin's text glyph, then the first letter of the symbol.
  *
- * The last two matter more than they look — a currency can be created before
+ * The last two matter more than they look  a currency can be created before
  * it is linked to the feed, a manual/demo asset never gets a logo at all, and
  * a provider CDN can fail at request time. None of those should leave a hole
  * in the layout.

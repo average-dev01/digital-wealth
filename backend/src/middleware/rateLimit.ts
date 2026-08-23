@@ -21,7 +21,7 @@ export const authRateLimit = rateLimit({
 /**
  * Guards the two admin endpoints that call out to the market data provider.
  * The free tier has a monthly call budget, and the asset-search box fires on
- * every keystroke — a stuck key must not be able to exhaust it.
+ * every keystroke  a stuck key must not be able to exhaust it.
  */
 export const priceFeedRateLimit = rateLimit({
   windowMs: 60 * 1000,
@@ -32,7 +32,7 @@ export const priceFeedRateLimit = rateLimit({
   message: { error: "Too many market data requests. Please slow down." },
 });
 
-/** Looser, but the contact form is a public unauthenticated write — i.e. a spam target. */
+/** Looser, but the contact form is a public unauthenticated write  i.e. a spam target. */
 export const contactRateLimit = rateLimit({
   windowMs: 60 * 60 * 1000,
   limit: 20,

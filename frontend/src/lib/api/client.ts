@@ -1,10 +1,10 @@
 // Backend client. Every `lib/api/*.ts` domain file calls through `fetchApi()`
-// below — there is no mock data layer any more.
+// below  there is no mock data layer any more.
 
 // Always relative: requests go through the `/api/:path*` rewrite in
 // next.config.mjs, which proxies to the real backend server-side. Every
 // caller here runs client-side ("use client"), so the browser resolves this
-// against its own origin — see next.config.mjs for why this has to stay
+// against its own origin  see next.config.mjs for why this has to stay
 // same-origin rather than pointing at the backend's URL directly.
 const API_BASE_URL = "/api";
 
@@ -38,7 +38,7 @@ async function parseErrorMessage(res: Response, fallback: string): Promise<strin
 
 // A concurrent burst of 401s (e.g. every dashboard query firing at once after
 // an access token expires) should trigger exactly one /auth/refresh, not one
-// per caller — so every in-flight retry waits on the same promise.
+// per caller  so every in-flight retry waits on the same promise.
 let refreshInFlight: Promise<boolean> | null = null;
 
 function refreshSession(): Promise<boolean> {
@@ -51,7 +51,7 @@ function refreshSession(): Promise<boolean> {
 }
 
 // 401s from these two paths mean "your credentials/refresh token are actually
-// invalid," not "your access token expired" — retrying would just loop or
+// invalid," not "your access token expired"  retrying would just loop or
 // mask a real login failure as a generic error.
 const NO_REFRESH_RETRY = new Set(["/auth/refresh", "/auth/login"]);
 

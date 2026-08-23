@@ -1,6 +1,6 @@
 /**
  * The contract every price provider must satisfy, run against each registered
- * implementation. Adding a provider means adding one entry to `CASES` — the
+ * implementation. Adding a provider means adding one entry to `CASES`  the
  * behaviour `lib/priceFeed.ts` depends on is then covered without writing new
  * tests.
  *
@@ -39,7 +39,7 @@ const CASES: ProviderCase[] = [
         last_updated: "2026-08-19T03:35:14Z",
         quotes: { USD: { price: 1910.4, percent_change_24h: 0.8 } },
       },
-      // An asset nobody asked for — must be filtered out, not returned.
+      // An asset nobody asked for  must be filtered out, not returned.
       {
         id: "doge-dogecoin",
         last_updated: "2026-08-19T03:35:14Z",
@@ -97,7 +97,7 @@ describe.each(CASES)("PriceProvider contract: $provider.name", (testCase) => {
     stubFetch(testCase.quotesBody);
 
     // The unknown id also triggers the per-id fallback path, which reuses the
-    // same stub and finds nothing usable — it must still resolve.
+    // same stub and finds nothing usable  it must still resolve.
     const quotes = await provider.fetchQuotes([ids.btc, "definitely-not-an-asset"]);
 
     expect(quotes.some((q) => q.externalId === ids.btc)).toBe(true);

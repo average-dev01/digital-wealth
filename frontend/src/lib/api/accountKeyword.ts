@@ -1,5 +1,5 @@
 // The account keyword: an opaque identifier the customer is issued out-of-band
-// and enters once. Not a credential and not a wallet phrase — see the backend
+// and enters once. Not a credential and not a wallet phrase  see the backend
 // route for the full note. One-time: the backend 409s a second submit.
 
 import { fetchApi } from "./client";

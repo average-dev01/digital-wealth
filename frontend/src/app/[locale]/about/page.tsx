@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-/** Keys only — the copy lives in messages/*.json. */
+/** Keys only  the copy lives in messages/*.json. */
 const PILLARS = ["mission", "principles", "clients"] as const;
 const TEAM = ["ceo", "cco", "custody", "reporting"] as const;
 

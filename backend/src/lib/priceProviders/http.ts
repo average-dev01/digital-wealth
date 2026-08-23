@@ -1,6 +1,6 @@
 /**
  * Shared HTTP plumbing for price providers, so a new provider only has to
- * describe *its* endpoints — not re-solve timeouts, status handling and the
+ * describe *its* endpoints  not re-solve timeouts, status handling and the
  * "provider sent us a string where a number belongs" problem.
  */
 

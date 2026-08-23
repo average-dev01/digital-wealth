@@ -2,8 +2,8 @@
  * Re-resolves every live currency's `externalPriceId` against the currently
  * selected provider.
  *
- * Provider asset ids are not portable — Bitcoin is "btc-bitcoin" on Coinpaprika
- * and "bitcoin" on CoinGecko — so switching `PRICE_PROVIDER` leaves the whole
+ * Provider asset ids are not portable  Bitcoin is "btc-bitcoin" on Coinpaprika
+ * and "bitcoin" on CoinGecko  so switching `PRICE_PROVIDER` leaves the whole
  * catalogue unpriced until the ids are remapped. This does that by symbol.
  *
  *   pnpm --filter backend price-ids:remap           # dry run, prints the plan
@@ -43,7 +43,7 @@ async function main(): Promise<void> {
     try {
       hits = await provider.searchAssets(currency.symbol);
     } catch (error) {
-      console.log(`  ${currency.symbol.padEnd(6)} SEARCH FAILED — ${String(error)}`);
+      console.log(`  ${currency.symbol.padEnd(6)} SEARCH FAILED  ${String(error)}`);
       ambiguous += 1;
       continue;
     }
@@ -51,7 +51,7 @@ async function main(): Promise<void> {
     const exact = hits.filter((hit) => hit.symbol.toUpperCase() === currency.symbol.toUpperCase());
 
     if (exact.length === 0) {
-      console.log(`  ${currency.symbol.padEnd(6)} NO MATCH — link it by hand in /admin/currencies`);
+      console.log(`  ${currency.symbol.padEnd(6)} NO MATCH  link it by hand in /admin/currencies`);
       ambiguous += 1;
       continue;
     }
@@ -66,7 +66,7 @@ async function main(): Promise<void> {
         .map((hit) => hit.externalId)
         .join(", ");
       console.log(
-        `  ${currency.symbol.padEnd(6)} AMBIGUOUS — picking ${best.externalId} (#${best.rank}); also matched: ${others}`,
+        `  ${currency.symbol.padEnd(6)} AMBIGUOUS  picking ${best.externalId} (#${best.rank}); also matched: ${others}`,
       );
     }
 

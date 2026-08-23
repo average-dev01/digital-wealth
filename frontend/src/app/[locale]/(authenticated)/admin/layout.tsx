@@ -66,7 +66,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   async function handleSignOut() {
     await queryClient.cancelQueries();
     await logout();
-    // Full page load, not router.replace() — see dashboard/layout.tsx's
+    // Full page load, not router.replace()  see dashboard/layout.tsx's
     // handleSignOut for why a client-side navigation bounces back in.
     window.location.replace("/auth?mode=login");
   }
@@ -84,7 +84,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
   return (
     // The admin panel is deliberately English-only (see docs/LANGUAGE_PLAN.md),
-    // so it's pinned to LTR — otherwise an admin browsing the site in Arabic
+    // so it's pinned to LTR  otherwise an admin browsing the site in Arabic
     // would get an English panel laid out right-to-left.
     <div dir="ltr" className="flex min-h-screen flex-col lg:flex-row">
       <aside className="border-b border-sidebar-border bg-sidebar lg:w-64 lg:shrink-0 lg:border-b-0 lg:border-e">

@@ -16,7 +16,7 @@ const kycSchema = z.object({
   /**
    * SIMULATED upload: only the file's name is recorded. There is no file
    * storage in this build, so no bytes are persisted and nothing is served
-   * back — see docs/PLAN.md, this was scoped out deliberately.
+   * back  see docs/PLAN.md, this was scoped out deliberately.
    */
   fileName: z.string().trim().max(200).nullable().optional(),
 });

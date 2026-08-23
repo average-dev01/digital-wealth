@@ -11,7 +11,7 @@ import { requireAuth } from "../middleware/requireAuth";
  * currency, an on-demand refresh, and the last run's outcome.
  *
  * The two endpoints that reach the provider are rate limited on their own
- * bucket — an admin holding down a key in the search box must not be able to
+ * bucket  an admin holding down a key in the search box must not be able to
  * chew through the free tier's monthly call budget.
  */
 export const adminPriceFeedRouter = Router();

@@ -5,7 +5,7 @@ export function generateOpaqueToken(): string {
   return randomBytes(32).toString("hex");
 }
 
-/** Only the hash of a token is ever persisted — the raw value is never stored. */
+/** Only the hash of a token is ever persisted  the raw value is never stored. */
 export function hashToken(token: string): string {
   return createHash("sha256").update(token).digest("hex");
 }

@@ -130,7 +130,7 @@ export default function AdminWithdrawals() {
                         href={`/admin/users/${tx.user.id}`}
                         className="text-sm hover:text-primary"
                       >
-                        <span className="block font-medium">{tx.user.full_name ?? "—"}</span>
+                        <span className="block font-medium">{tx.user.full_name ?? ""}</span>
                         <span className="block text-xs text-muted-foreground">{tx.user.email}</span>
                       </Link>
                     ) : (
@@ -148,7 +148,7 @@ export default function AdminWithdrawals() {
                     className="num max-w-[14rem] truncate text-xs"
                     title={tx.destination_address ?? ""}
                   >
-                    {tx.destination_address ?? "—"}
+                    {tx.destination_address ?? ""}
                   </TableCell>
                   <TableCell className="num whitespace-nowrap text-xs text-muted-foreground">
                     {format(new Date(tx.created_at), "d MMM yyyy, HH:mm")}
@@ -178,7 +178,7 @@ export default function AdminWithdrawals() {
               {completing ? (
                 <div className="space-y-3">
                   <p>
-                    Only complete this once you have already sent the funds — the app records the
+                    Only complete this once you have already sent the funds  the app records the
                     payout, it does not send anything itself.
                   </p>
                   <span className="block rounded-lg border border-border p-3 text-sm">
@@ -190,7 +190,7 @@ export default function AdminWithdrawals() {
                       to {completing.user?.full_name ?? "this customer"}
                     </span>
                     <span className="num mt-2 block break-all text-xs">
-                      {completing.destination_address ?? "—"}
+                      {completing.destination_address ?? ""}
                     </span>
                   </span>
                   <p>Their wallet will be debited by this amount.</p>

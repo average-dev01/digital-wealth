@@ -46,7 +46,7 @@ export default function Overview() {
 
   // Value-weighted 24h change from real per-asset figures. Assets with no
   // change data (manual/demo ones, or any never refreshed) are excluded from
-  // BOTH sides of the average — counting them as 0% would drag the portfolio
+  // BOTH sides of the average  counting them as 0% would drag the portfolio
   // figure toward zero and understate a real move.
   const rated = holdings
     .map((h) => ({ usd: h.usd, change: changeFor(h.code) }))
@@ -149,7 +149,7 @@ export default function Overview() {
                     </span>
                     <span className="num">{formatUsd(h.usd)}</span>
                     <span className="num w-14 text-end text-xs text-muted-foreground">
-                      {total > 0 ? `${((h.usd / total) * 100).toFixed(1)}%` : "—"}
+                      {total > 0 ? `${((h.usd / total) * 100).toFixed(1)}%` : ""}
                     </span>
                   </li>
                 ))}

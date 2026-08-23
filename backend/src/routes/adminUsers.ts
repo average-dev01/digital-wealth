@@ -20,14 +20,14 @@ const listQuerySchema = z.object({
   pageSize: z.coerce.number().int().min(1).max(100).default(10),
 });
 
-/** Desk staff are excluded — this list is customers only. */
+/** Desk staff are excluded  this list is customers only. */
 const CUSTOMERS_ONLY: Prisma.UserWhereInput = {
   NOT: { roles: { some: { role: "admin" } } },
 };
 
 /**
  * Every /:id route below addresses a *customer*, so a desk account id is
- * treated as simply absent from that namespace — the same view the list takes.
+ * treated as simply absent from that namespace  the same view the list takes.
  *
  * This guards the mutations more than the read: without it one administrator
  * could suspend another, rewrite their KYC decision, or post a balance
@@ -113,7 +113,7 @@ adminUsersRouter.get("/:id", customersOnly, async (req, res) => {
 
   const { wallets, transactions, kycDocuments, roles, ...profile } = user;
   res.json({
-    // Strip the bcrypt hash — the previous `...profile` spread put it on the
+    // Strip the bcrypt hash  the previous `...profile` spread put it on the
     // wire on every admin detail view.
     profile: withoutPasswordHash(profile),
     isAdmin: roles.some((r) => r.role === "admin"),

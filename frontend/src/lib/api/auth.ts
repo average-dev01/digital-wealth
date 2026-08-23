@@ -5,8 +5,8 @@ export type UserRole = "ADMIN" | "CUSTOMER";
 export type AuthUser = { id: string; email: string; role: UserRole };
 
 /**
- * One `GET /auth/me` answers three questions the UI asks separately — who am
- * I, what's my profile, am I an admin — so it's cached as a single object and
+ * One `GET /auth/me` answers three questions the UI asks separately  who am
+ * I, what's my profile, am I an admin  so it's cached as a single object and
  * the hooks in useAuth.tsx each read the slice they need. Fetching it once per
  * consumer was three identical requests per page load.
  */
@@ -53,7 +53,7 @@ export async function getSession(): Promise<Session | null> {
   }
 }
 
-/** Always resolves silently regardless of whether the account exists — matches the backend's no-enumeration behavior. */
+/** Always resolves silently regardless of whether the account exists  matches the backend's no-enumeration behavior. */
 export async function resetPasswordForEmail(email: string): Promise<void> {
   await fetchApi<void>("/auth/forgot-password", {
     method: "POST",

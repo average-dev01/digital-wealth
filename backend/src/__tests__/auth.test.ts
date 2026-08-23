@@ -50,7 +50,7 @@ describe("auth", () => {
     expect(walletsRes.status).toBe(200);
     expect(walletsRes.body.wallets.length).toBeGreaterThan(0);
 
-    // A new account starts empty — the app fabricates no opening balance.
+    // A new account starts empty  the app fabricates no opening balance.
     expect(walletsRes.body.wallets.every((w: { balance: string }) => Number(w.balance) === 0)).toBe(
       true,
     );
@@ -159,7 +159,7 @@ describe("auth", () => {
   });
 
   // The login response is what the client routes on, so an admin has to be
-  // identifiable from it directly — otherwise they land on the customer
+  // identifiable from it directly  otherwise they land on the customer
   // dashboard and only bounce to /admin after a follow-up /me call.
   it("reports admin status on the login response, not just /me", async () => {
     const email = uniqueEmail("adminflag");

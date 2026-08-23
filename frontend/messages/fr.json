@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Digital Wealth Partners — Gestion de patrimoine en actifs numériques",
+    "title": "Digital Wealth Partners  Gestion de patrimoine en actifs numériques",
     "description": "Conservation de qualité institutionnelle et gestion de portefeuilles crypto multidevises pour une clientèle privée.",
     "ogTitle": "Digital Wealth Partners",
     "ogDescription": "Conservation et gestion de portefeuille d'actifs numériques de qualité institutionnelle."
@@ -10,7 +10,6 @@
     "about": "À propos",
     "services": "Fonctionnement",
     "security": "Sécurité",
-    "faq": "FAQ",
     "contact": "Contact",
     "mainLabel": "Navigation principale",
     "openMenu": "Ouvrir le menu",
@@ -31,7 +30,6 @@
     "about": "À propos",
     "howItWorks": "Fonctionnement",
     "securityCompliance": "Sécurité et conformité",
-    "faq": "FAQ",
     "clientAccess": "Accès client",
     "logIn": "Se connecter",
     "openAccount": "Ouvrir un compte",
@@ -41,7 +39,7 @@
   },
   "about": {
     "meta": {
-      "title": "À propos — Digital Wealth Partners",
+      "title": "À propos  Digital Wealth Partners",
       "description": "Qui nous sommes : un gestionnaire de patrimoine en actifs numériques fondé par des professionnels de la banque privée, de la conservation et de la conformité.",
       "ogDescription": "Un gestionnaire de patrimoine en actifs numériques fondé par des professionnels de la banque privée et de la conservation."
     },
@@ -49,7 +47,7 @@
     "title": "Conçu pour des clients qui attendent d'une conservation qu'elle soit sans surprise",
     "description": "Digital Wealth Partners est né d'un constat simple : les actifs numériques méritent la même rigueur opérationnelle que toute autre composante d'un portefeuille sérieux.",
     "storyHeading": "Notre histoire",
-    "story1": "[PLACEHOLDER COPY] Nous avons démarré en 2019, après avoir vu des clients détenir des positions importantes en actifs numériques réparties entre comptes de plateformes, portefeuilles matériels et tableurs — sans vue consolidée ni dispositif de conservation crédible.",
+    "story1": "[PLACEHOLDER COPY] Nous avons démarré en 2019, après avoir vu des clients détenir des positions importantes en actifs numériques réparties entre comptes de plateformes, portefeuilles matériels et tableurs  sans vue consolidée ni dispositif de conservation crédible.",
     "story2": "Nous administrons aujourd'hui des comptes multidevises pour des clients privés, des family offices et des conseillers indépendants, en associant les pratiques de conservation institutionnelles à un reporting qui s'intègre aux structures patrimoniales existantes.",
     "story3": "Nous sommes délibérément prudents. Nous prenons en charge un petit nombre d'actifs liquides, nous documentons chaque mouvement de solde, et nous préférons décliner un mandat plutôt que de forcer nos contrôles.",
     "pillars": {
@@ -93,7 +91,7 @@
   },
   "security": {
     "meta": {
-      "title": "Sécurité et conformité — Digital Wealth Partners",
+      "title": "Sécurité et conformité  Digital Wealth Partners",
       "description": "Stockage à froid, authentification à deux facteurs, retraits à approbations multiples, programme KYC/LCB-FT et informations réglementaires.",
       "ogDescription": "Stockage à froid, 2FA, retraits à approbations multiples et notre programme KYC/LCB-FT."
     },
@@ -104,7 +102,7 @@
     "controls": {
       "coldStorage": {
         "title": "Stockage à froid par défaut",
-        "body": "La majorité des actifs clients sont conservés hors ligne dans des sites répartis géographiquement, avec des cérémonies de clés inviolables. [Placeholder ratio: 97.5% cold / 2.5% operational.]"
+        "body": "La majorité des actifs clients sont conservés hors ligne dans des sites répartis géographiquement, avec des cérémonies de clés inviolables. "
       },
       "keyManagement": {
         "title": "Gestion des clés multipartite",
@@ -138,55 +136,9 @@
     "disclaimer1": "Digital Wealth Partners est présentée ici comme un aperçu avant lancement et n'est actuellement ni agréée, ni enregistrée, ni autorisée par une quelconque autorité de régulation financière. Aucun élément de ce site ne constitue une offre, une sollicitation ou une recommandation d'acheter, de vendre ou de détenir un actif numérique.",
     "disclaimer2": "Les actifs numériques sont volatils, ne sont généralement pas couverts par les dispositifs de garantie des dépôts ou d'indemnisation des investisseurs, et peuvent perdre toute valeur. Les soldes, cours, taux de conversion et chiffres de performance de cet environnement sont indicatifs et ne doivent pas servir de référence."
   },
-  "faq": {
-    "meta": {
-      "title": "Questions fréquentes — Digital Wealth Partners",
-      "description": "Réponses sur la conservation, la vérification, les dépôts, les retraits, les frais, les actifs pris en charge et la sécurité du compte.",
-      "ogDescription": "Conservation, vérification, dépôts, retraits, frais et sécurité du compte expliqués."
-    },
-    "eyebrow": "FAQ",
-    "title": "Les questions que les clients posent avant d'approvisionner",
-    "description": "Si votre question ne trouve pas de réponse ici, notre équipe client vous répondra sous un jour ouvré.",
-    "questions": {
-      "custody": {
-        "q": "Qui détient mes actifs ?",
-        "a": "Les actifs sont détenus dans des structures de portefeuille ségréguées administrées par Digital Wealth Partners. Le registre de votre compte enregistre vos droits par actif, et chaque mouvement est consigné avec un horodatage et un motif."
-      },
-      "verification": {
-        "q": "Combien de temps prend la vérification ?",
-        "a": "La plupart des contrôles d'identité sont examinés sous un jour ouvré. Vous pouvez explorer votre tableau de bord pendant l'examen ; une bannière indique votre statut actuel."
-      },
-      "deposit": {
-        "q": "Comment effectuer un dépôt ?",
-        "a": "Choisissez l'actif dans votre tableau de bord, copiez l'adresse de dépôt affichée pour ce réseau, envoyez vos fonds, puis confirmez le transfert. Les opérations rapprochent le dépôt et créditent votre portefeuille."
-      },
-      "withdrawal": {
-        "q": "Comment fonctionnent les retraits ?",
-        "a": "Indiquez une adresse de destination et un montant. La demande est filtrée et approuvée avant règlement. Elle apparaît en attente dans votre historique de transactions jusqu'à son exécution."
-      },
-      "assets": {
-        "q": "Quels actifs prenez-vous en charge ?",
-        "a": "Ceux qui figurent dans votre tableau de bord. Nous prenons délibérément en charge un petit nombre d'actifs liquides plutôt qu'une longue liste, et celle-ci est tenue à jour par notre desk."
-      },
-      "fees": {
-        "q": "Quels sont vos tarifs ?",
-        "a": "Des frais d'administration annuels indicatifs de 0,55 %, le coût réseau majoré de 0,10 % sur les retraits, et 0,35 % sur les conversions. Consultez la grille tarifaire pour la liste complète."
-      },
-      "live": {
-        "q": "Cet environnement est-il réel ?",
-        "a": "Pas encore. Il s'agit d'un aperçu avant lancement : les soldes, cours, adresses de dépôt et taux de conversion sont indicatifs, et aucun fonds réel ni transaction blockchain n'est en jeu."
-      },
-      "twoFactor": {
-        "q": "Puis-je activer l'authentification à deux facteurs ?",
-        "a": "Oui — l'authentification à deux facteurs est proposée dans vos paramètres de sécurité et peut être exigée pour les retraits."
-      }
-    },
-    "askTeam": "Interroger notre équipe client",
-    "openAccount": "Ouvrir un compte"
-  },
   "services": {
     "meta": {
-      "title": "Fonctionnement et frais — Digital Wealth Partners",
+      "title": "Fonctionnement et frais  Digital Wealth Partners",
       "description": "Notre modèle de conservation, le parcours de dépôt et de retrait, les réseaux pris en charge et une grille tarifaire indicative et claire.",
       "ogDescription": "Modèle de conservation, parcours de dépôt, réseaux pris en charge et grille tarifaire."
     },
@@ -194,7 +146,7 @@
     "title": "Le fonctionnement de votre compte, de bout en bout",
     "description": "De la vérification à la conservation puis au retrait, voici exactement ce qu'il advient de vos actifs et ce que cela coûte.",
     "custodyHeading": "Le modèle de conservation",
-    "custodyBody": "Les actifs des clients sont enregistrés dans des registres de portefeuille ségrégués par actif. Chaque compte reçoit une adresse de dépôt dédiée par réseau pris en charge. Les mouvements sortants exigent une demande du client, un contrôle de conformité et une approbation interne avant règlement — aucun opérateur ne peut déplacer seul des actifs clients.",
+    "custodyBody": "Les actifs des clients sont enregistrés dans des registres de portefeuille ségrégués par actif. Chaque compte reçoit une adresse de dépôt dédiée par réseau pris en charge. Les mouvements sortants exigent une demande du client, un contrôle de conformité et une approbation interne avant règlement  aucun opérateur ne peut déplacer seul des actifs clients.",
     "steps": {
       "deposit": {
         "title": "Dépôt",
@@ -251,13 +203,13 @@
   },
   "home": {
     "meta": {
-      "title": "Digital Wealth Partners — Gestion de patrimoine en actifs numériques",
+      "title": "Digital Wealth Partners  Gestion de patrimoine en actifs numériques",
       "description": "Conservation, reporting de portefeuille et comptes crypto multidevises pour la clientèle privée et les family offices. Ouvrez un compte en quelques minutes.",
       "ogDescription": "Conservation, reporting de portefeuille et comptes crypto multidevises pour la clientèle privée et les family offices."
     },
     "eyebrow": "Modèle de conservation d'inspiration réglementaire",
     "heroTitle": "La gestion de patrimoine en actifs numériques, <gold>aux standards institutionnels</gold>",
-    "heroBody": "Digital Wealth Partners offre à la clientèle privée un compte unique et vérifié pour ses actifs numériques — avec des portefeuilles ségrégués, une conservation documentée et un reporting que votre comptable reconnaîtra.",
+    "heroBody": "Digital Wealth Partners offre à la clientèle privée un compte unique et vérifié pour ses actifs numériques  avec des portefeuilles ségrégués, une conservation documentée et un reporting que votre comptable reconnaîtra.",
     "openAccount": "Ouvrir un compte",
     "seeCustody": "Voir le fonctionnement de la conservation",
     "placeholderFigure": "Chiffre indicatif",
@@ -351,7 +303,7 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact — Digital Wealth Partners",
+      "title": "Contact  Digital Wealth Partners",
       "description": "Échangez avec notre équipe client sur l'entrée en relation, la conservation ou le reporting. Nous répondons sous un jour ouvré.",
       "ogDescription": "Échangez avec notre équipe client sur l'entrée en relation, la conservation ou le reporting."
     },
@@ -365,7 +317,7 @@
     "send": "Envoyer le message",
     "sending": "Envoi…",
     "sentTitle": "Message bien reçu",
-    "sentBody": "Merci — un membre de l'équipe client vous contactera sous peu.",
+    "sentBody": "Merci  un membre de l'équipe client vous contactera sous peu.",
     "sendAnother": "Envoyer un autre message",
     "errors": {
       "nameMin": "Veuillez saisir votre nom complet",
@@ -386,7 +338,7 @@
   },
   "auth": {
     "meta": {
-      "title": "Connexion client et ouverture de compte — Digital Wealth Partners",
+      "title": "Connexion client et ouverture de compte  Digital Wealth Partners",
       "description": "Connectez-vous à votre portefeuille Digital Wealth Partners ou ouvrez un nouveau compte multidevises en actifs numériques.",
       "ogDescription": "Connectez-vous à votre portefeuille ou ouvrez un nouveau compte en actifs numériques."
     },
@@ -424,7 +376,7 @@
   },
   "forgotPassword": {
     "meta": {
-      "title": "Réinitialiser votre mot de passe — Digital Wealth Partners",
+      "title": "Réinitialiser votre mot de passe  Digital Wealth Partners",
       "description": "Demandez un lien sécurisé de réinitialisation du mot de passe de votre compte client Digital Wealth Partners.",
       "ogDescription": "Demandez un lien sécurisé de réinitialisation du mot de passe."
     },
@@ -441,7 +393,7 @@
   },
   "resetPassword": {
     "meta": {
-      "title": "Définir un nouveau mot de passe — Digital Wealth Partners",
+      "title": "Définir un nouveau mot de passe  Digital Wealth Partners",
       "description": "Choisissez un nouveau mot de passe pour votre compte client Digital Wealth Partners.",
       "ogDescription": "Choisissez un nouveau mot de passe pour votre compte client."
     },

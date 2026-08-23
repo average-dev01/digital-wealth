@@ -16,7 +16,7 @@ import { submitContact } from "@/lib/api/contact";
 type ContactValues = { name: string; email: string; message: string };
 type FieldErrors = Partial<Record<keyof ContactValues, string>>;
 
-/** Contact details are data, not copy — they read the same in every language. */
+/** Contact details are data, not copy  they read the same in every language. */
 const DETAILS = [
   { key: "email", icon: Mail, value: "clients@digitalwealthpartners.com" },
   { key: "phone", icon: Phone, value: "+1 (555) 010-4400" },

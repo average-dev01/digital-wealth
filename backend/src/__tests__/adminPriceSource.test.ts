@@ -127,7 +127,7 @@ describe("live vs manual pricing", () => {
       mockPriceUsd: 5,
     });
 
-    // A provider outage must not block catalogue administration — the next
+    // A provider outage must not block catalogue administration  the next
     // scheduled refresh corrects the price.
     expect(res.status).toBe(201);
     expect(Number(res.body.currency.mockPriceUsd)).toBeCloseTo(5, 4);

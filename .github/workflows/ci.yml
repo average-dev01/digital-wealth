@@ -1,6 +1,6 @@
 name: CI
 
-# CI gate only — lint, dependency audit, backend tests, frontend build/
+# CI gate only  lint, dependency audit, backend tests, frontend build/
 # typecheck. Does not deploy: each Railway service is connected directly to
 # this GitHub repo and deploys on push to main independently of this
 # workflow's result (see docs/RAILWAY_DEPLOY.md).
@@ -30,7 +30,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       # Fails the build on any moderate-or-higher advisory in the resolved
-      # dependency tree (transitive included) — this is workspace-wide, not
+      # dependency tree (transitive included)  this is workspace-wide, not
       # per-package, since a single lockfile covers both.
       - run: pnpm audit --audit-level=moderate
 

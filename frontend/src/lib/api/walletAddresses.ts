@@ -1,5 +1,5 @@
 // The deposit addresses the desk publishes to customers, one or more per
-// currency/network. One shared address per asset, not per user — a customer
+// currency/network. One shared address per asset, not per user  a customer
 // cannot be given somewhere to send funds until an active address exists here.
 // Real custody would source these from an HSM or exchange sub-account API;
 // here they are plain rows.

@@ -18,7 +18,7 @@ adminTransactionsRouter.get("/pending", async (req, res) => {
     return;
   }
 
-  // Joined in one query — the customer column would otherwise be a lookup per row.
+  // Joined in one query  the customer column would otherwise be a lookup per row.
   const transactions = await prisma.transaction.findMany({
     where: { type: parsed.data.type, status: "pending" },
     orderBy: { createdAt: "desc" },

@@ -9,7 +9,7 @@ import { routing } from "./i18n/routing";
 export default createMiddleware(routing);
 
 export const config = {
-  // Everything except Next internals, the API proxy and static files — the
+  // Everything except Next internals, the API proxy and static files  the
   // extension check keeps favicon.png, robots.txt and friends out of the way.
   matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };

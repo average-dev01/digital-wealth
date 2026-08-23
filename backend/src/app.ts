@@ -67,7 +67,7 @@ export function createApp(): Express {
   });
 
   // Catches anything a route forgot to try/catch. Express 4 doesn't forward
-  // rejected promises from async handlers on its own — without the
+  // rejected promises from async handlers on its own  without the
   // express-async-errors import above, a thrown error here would just hang
   // the connection instead of reaching this middleware.
   app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {

@@ -10,13 +10,12 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
 
-/** Paths are locale-agnostic — the Link from i18n/navigation adds the prefix. */
+/** Paths are locale-agnostic  the Link from i18n/navigation adds the prefix. */
 const NAV = [
   { to: "/", key: "home" },
   { to: "/about", key: "about" },
   { to: "/services", key: "services" },
   { to: "/security", key: "security" },
-  { to: "/faq", key: "faq" },
   { to: "/contact", key: "contact" },
 ] as const;
 
@@ -25,7 +24,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const { user } = useAuth();
 
-  // Desk staff have no portfolio — sending them to /dashboard would just bounce
+  // Desk staff have no portfolio  sending them to /dashboard would just bounce
   // off that route's guard. Same role check the auth page uses after login.
   const isAdmin = user?.role === "ADMIN";
   const homeHref = isAdmin ? "/admin" : "/dashboard";

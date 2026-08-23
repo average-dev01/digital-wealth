@@ -2,7 +2,7 @@
  * Customer-facing wallet operations.
  *
  * This is the single seam between the app and "custody". Balances, deposit
- * addresses and conversions are SIMULATED and administered by the desk —
+ * addresses and conversions are SIMULATED and administered by the desk 
  * there is no chain integration behind them.
  */
 
@@ -92,7 +92,7 @@ export async function listWallets(_userId: string): Promise<Wallet[]> {
 }
 
 /**
- * The desk's published deposit address for an asset — shared by all customers,
+ * The desk's published deposit address for an asset  shared by all customers,
  * not per-user. Null when an administrator hasn't published one yet, which the
  * deposit dialog shows as an empty state.
  */

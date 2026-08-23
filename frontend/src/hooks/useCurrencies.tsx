@@ -9,8 +9,8 @@ import { formatCryptoAmount } from "@/lib/market";
 /**
  * Live currency catalogue for the signed-in app.
  *
- * Everything a wallet card needs — name, glyph, decimals, price, whether the
- * asset is still accepting deposits — comes from the database, so an asset an
+ * Everything a wallet card needs  name, glyph, decimals, price, whether the
+ * asset is still accepting deposits  comes from the database, so an asset an
  * administrator creates renders correctly straight away. The helpers returned
  * here replace the old compile-time lookups in `lib/market.ts`, which
  * silently fell back to the first hardcoded entry (Bitcoin) for any symbol it
@@ -35,7 +35,7 @@ export function useCurrencies() {
     const bySymbol = new Map(currencies.map((c) => [c.symbol, c]));
 
     return {
-      /** Undefined for an asset that isn't in the catalogue — callers show a fallback. */
+      /** Undefined for an asset that isn't in the catalogue  callers show a fallback. */
       getCurrency: (code: string): Currency | undefined => bySymbol.get(code),
       /** 0 for an unknown asset, rather than silently valuing it as something else. */
       usdValue: (code: string, amount: number): number =>

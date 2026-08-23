@@ -42,7 +42,7 @@ export default function AccountKeyword() {
   const setAt = profile?.account_keyword_set_at ?? null;
 
   const wordCount = countWords(value);
-  // 12 or 24 is the expected shape, but it is only an indication — submission
+  // 12 or 24 is the expected shape, but it is only an indication  submission
   // is never blocked on it (any non-empty value is accepted).
   const expectedLength = wordCount === 12 || wordCount === 24;
 

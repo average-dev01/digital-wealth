@@ -157,7 +157,7 @@ function DepositDialog({
   const [qr, setQr] = useState<string | null>(null);
 
   // What the customer is actually sending, in dollars, at the live rate. The
-  // deposit dialog had no USD figure at all before — an accurate price is no
+  // deposit dialog had no USD figure at all before  an accurate price is no
   // use if the amount is never valued in front of the person typing it.
   const parsedAmount = Number(amount);
   const showValue = amount.trim() !== "" && Number.isFinite(parsedAmount) && parsedAmount > 0;
@@ -483,7 +483,7 @@ function ConvertPanel({ onDone }: { onDone: () => void }) {
   });
 
   // Nothing to convert between until at least two assets are listed. Checked
-  // after every hook has run — bailing earlier would change hook order.
+  // after every hook has run  bailing earlier would change hook order.
   if (activeCurrencies.length < 2) return null;
 
   return (

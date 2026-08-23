@@ -1,11 +1,11 @@
 /**
- * Currency catalogue. The `currencies` table is the sole source of truth —
+ * Currency catalogue. The `currencies` table is the sole source of truth 
  * admins create, edit and deactivate assets through the admin panel, and
  * wallet provisioning follows. There is no hardcoded asset list here: an
  * empty catalogue means customers have no wallets until an admin adds one.
  *
  * PRICES: `mockPriceUsd` is real for currencies whose `priceSource` is `live`
- * — `lib/priceFeed.ts` overwrites it from the market data provider and calls
+ *  `lib/priceFeed.ts` overwrites it from the market data provider and calls
  * `invalidateCurrencyCache()` so the new figure is visible at once. `manual`
  * currencies keep whatever an admin typed. The column name is historical.
  */

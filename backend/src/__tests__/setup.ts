@@ -5,7 +5,7 @@ import { CURRENCY_FIXTURES } from "./currencyFixtures";
 import { testDatabaseUrl } from "./testDbUrl";
 
 // Must happen before anything imports lib/prisma.ts (which constructs the
-// PrismaClient at module-load time) — the dynamic imports inside beforeEach
+// PrismaClient at module-load time)  the dynamic imports inside beforeEach
 // below, rather than top-level ones, are what make that ordering hold
 // without forcing this file into ESM (this project targets CommonJS).
 process.env.DATABASE_URL = testDatabaseUrl();
@@ -23,7 +23,7 @@ beforeEach(async () => {
   `);
 
   // The catalogue is admin-created data now, so wallet provisioning depends on
-  // it — without these fixtures, signup would create a user with no wallets.
+  // it  without these fixtures, signup would create a user with no wallets.
   const base = Date.now() - CURRENCY_FIXTURES.length * 1000;
   for (const [index, meta] of CURRENCY_FIXTURES.entries()) {
     const currency = await prisma.currency.create({

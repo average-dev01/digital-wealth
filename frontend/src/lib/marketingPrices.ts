@@ -3,7 +3,7 @@
  *
  * Two-tier fallback, cheapest/most-authoritative first:
  *
- *  1. Our own backend's public `GET /currencies` — it already runs the same
+ *  1. Our own backend's public `GET /currencies`  it already runs the same
  *     Coinpaprika-backed price feed for real customer balances
  *     (`backend/src/lib/priceFeed.ts`) and caches the result for 30s
  *     (`backend/src/lib/currencies.ts`), so reading it here costs nothing
@@ -11,7 +11,7 @@
  *  2. If the backend is unreachable, fetch Coinpaprika directly (same
  *     provider, no API key) so the homepage still shows real prices during
  *     a backend outage, not just a frozen fallback. This path is cached far
- *     longer (20 min vs. the backend path's 1 min) — it only runs at all
+ *     longer (20 min vs. the backend path's 1 min)  it only runs at all
  *     while the backend is down, and an extended outage should not turn
  *     into the frontend hammering Coinpaprika on every request either.
  *  3. If both are unreachable, the caller (`app/[locale]/page.tsx`) falls
@@ -19,7 +19,7 @@
  *
  * Talking to Coinpaprika directly only as a fallback keeps the marketing
  * page's normal-case behaviour aligned with `lib/market.ts`'s "no dependency
- * on a running backend" note in spirit — the backend being down degrades
+ * on a running backend" note in spirit  the backend being down degrades
  * pricing freshness, it doesn't take the page down.
  */
 import type { MarketingAsset } from "./market";
@@ -28,8 +28,8 @@ const BACKEND_URL = process.env["NEXT_PUBLIC_API_URL"] ?? "http://localhost:4000
 const COINPAPRIKA_TICKERS_URL = "https://api.coinpaprika.com/v1/tickers?quotes=USD";
 
 const BACKEND_CACHE_TTL_MS = 60 * 1000;
-// Matches the backend's default PRICE_REFRESH_INTERVAL_MS (5 min) — see
-// backend/.env.example — but wider still, since this path is a fallback of
+// Matches the backend's default PRICE_REFRESH_INTERVAL_MS (5 min)  see
+// backend/.env.example  but wider still, since this path is a fallback of
 // a fallback and should stay light on Coinpaprika's quota during an outage.
 const COINPAPRIKA_CACHE_TTL_MS = 20 * 60 * 1000;
 const BACKEND_TIMEOUT_MS = 3_000;
@@ -53,7 +53,7 @@ let backendInFlight: Promise<Map<string, LiveMarketPrice> | null> | null = null;
 let paprikaCache: { expiresAt: number; prices: Map<string, LiveMarketPrice> } | null = null;
 let paprikaInFlight: Promise<Map<string, LiveMarketPrice>> | null = null;
 
-/** Null means "unreachable / bad response" — distinct from an empty match set. */
+/** Null means "unreachable / bad response"  distinct from an empty match set. */
 async function fetchFromBackend(
   assets: readonly MarketingAsset[],
 ): Promise<Map<string, LiveMarketPrice> | null> {
@@ -110,7 +110,7 @@ async function fetchFromCoinpaprika(
       prices.set(code, { priceUsd: price, change24h: Number.isFinite(change) ? change : 0 });
     }
   } catch {
-    // Falls through to the empty map — caller falls back to static values.
+    // Falls through to the empty map  caller falls back to static values.
   }
 
   return prices;
@@ -132,7 +132,7 @@ export async function fetchLiveMarketingPrices(
     return fromBackend;
   }
 
-  // Backend unreachable — fall back to Coinpaprika directly, cached longer.
+  // Backend unreachable  fall back to Coinpaprika directly, cached longer.
   if (paprikaCache && paprikaCache.expiresAt > Date.now()) return paprikaCache.prices;
 
   paprikaInFlight ??= fetchFromCoinpaprika(assets).finally(() => {

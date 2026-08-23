@@ -36,7 +36,7 @@ export function AuthPage() {
   const [checkInbox, setCheckInbox] = useState(false);
   // Set right before this page navigates itself post-signup/login, so the
   // "already signed in" effect below doesn't also fire on the same state
-  // update and send the user to /dashboard instead of e.g. /dashboard/kyc —
+  // update and send the user to /dashboard instead of e.g. /dashboard/kyc 
   // that effect is for someone landing here already authenticated, not for
   // the action that just authenticated them.
   const navigatingSelfRef = useRef(false);
@@ -89,7 +89,7 @@ export function AuthPage() {
         queryClient.setQueryData(["me"], session);
         toast.success(t("toast.welcomeBack"));
         // Admins go straight to the desk, rather than bouncing through the
-        // customer dashboard first — login now tells us the role up front.
+        // customer dashboard first  login now tells us the role up front.
         router.push(session.user.role === "ADMIN" ? "/admin" : "/dashboard");
       }
     } catch (error) {

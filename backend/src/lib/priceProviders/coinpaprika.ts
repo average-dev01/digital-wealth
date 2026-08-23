@@ -1,5 +1,5 @@
 /**
- * Coinpaprika — the free tier: 20,000 calls/month, no API key, no signup,
+ * Coinpaprika  the free tier: 20,000 calls/month, no API key, no signup,
  * 10 req/sec, covering roughly the top 2,000 assets.
  *
  * The call budget is why `fetchQuotes` pulls the whole ticker list in ONE
@@ -39,7 +39,7 @@ type PaprikaSearchResult = {
 type PaprikaCoin = { name?: unknown; symbol?: unknown; logo?: unknown };
 
 /**
- * A ticker is only usable with a positive price — a zero or missing price would
+ * A ticker is only usable with a positive price  a zero or missing price would
  * silently value a customer's holdings at nothing, which is worse than keeping
  * the previous figure.
  */

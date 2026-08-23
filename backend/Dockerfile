@@ -17,7 +17,7 @@ FROM base AS build
 COPY pnpm-workspace.yaml pnpm-lock.yaml package.json ./
 COPY backend/package.json ./backend/package.json
 COPY frontend/package.json ./frontend/package.json
-# The schema has to exist before `pnpm install` below — the root postinstall
+# The schema has to exist before `pnpm install` below  the root postinstall
 # hook it triggers (`prisma generate`) fails otherwise.
 COPY backend/prisma ./backend/prisma
 RUN pnpm install --frozen-lockfile --filter backend
@@ -35,13 +35,13 @@ COPY frontend/package.json ./frontend/package.json
 COPY backend/prisma ./backend/prisma
 # `prisma` and `@prisma/client` are real (non-dev) dependencies, so the
 # postinstall hook's `prisma generate` runs against this prod-only
-# node_modules directly — no fragile cross-stage artifact copying needed.
+# node_modules directly  no fragile cross-stage artifact copying needed.
 RUN pnpm install --frozen-lockfile --prod --filter backend
 
 COPY --from=build /app/backend/dist ./backend/dist
 # `prisma/seed.ts` and `scripts/{refresh-prices,remap-price-ids}.ts` are run
 # with `tsx` directly (not `node dist/...`) as one-off ops commands against
-# the deployed container — see docs/RAILWAY_DEPLOY.md step 4. They import
+# the deployed container  see docs/RAILWAY_DEPLOY.md step 4. They import
 # from `../src/lib/...`, so the raw TypeScript source has to be present here
 # too, not just the compiled `dist` the server itself runs from.
 COPY backend/src ./backend/src
@@ -50,7 +50,7 @@ COPY backend/scripts ./backend/scripts
 WORKDIR /app/backend
 EXPOSE 4000
 # `pnpm start` (backend/package.json) runs `prisma migrate deploy` before
-# `node dist/index.js` — deliberately kept in the npm script rather than only
+# `node dist/index.js`  deliberately kept in the npm script rather than only
 # here, because some platforms invoke `pnpm start` directly and ignore this
 # CMD. Either way it applies pending migrations non-interactively before the
 # app starts; safe on every deploy, no-ops if none are pending.

@@ -6,7 +6,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "@/i18n/navigation";
 
 /**
- * Auth gate for everything under this route group — the port of the original
+ * Auth gate for everything under this route group  the port of the original
  * `_authenticated` pathless layout route's `beforeLoad` redirect. Session
  * state comes from an httpOnly cookie (via GET /auth/me), so this stays a
  * client component that redirects once the session query resolves.

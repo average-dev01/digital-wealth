@@ -1,5 +1,5 @@
 /**
- * Runs one price refresh and exits — handy for checking the feed without
+ * Runs one price refresh and exits  handy for checking the feed without
  * starting the server, and for a cron-driven deployment that would rather not
  * rely on the in-process timer.
  *

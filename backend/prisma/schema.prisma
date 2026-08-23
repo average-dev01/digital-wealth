@@ -50,7 +50,7 @@ model User {
   /// false = suspended by an administrator (authenticates, but refused a session).
   isActive     Boolean   @default(true)
   /// Opaque account identifier the customer is issued out-of-band (12 or 24
-  /// words) and enters once. Not a credential — auth is still email + password.
+  /// words) and enters once. Not a credential  auth is still email + password.
   accountKeyword      String?
   accountKeywordSetAt DateTime?
   createdAt    DateTime  @default(now())
@@ -94,7 +94,7 @@ model Wallet {
 }
 
 /// Admin-managed asset catalogue. This is the source of truth for which
-/// currencies exist and are tradeable — wallet provisioning reads from here,
+/// currencies exist and are tradeable  wallet provisioning reads from here,
 /// not from a hardcoded list.
 model Currency {
   id           String   @id @default(uuid())
@@ -116,7 +116,7 @@ model Currency {
 
   priceSource PriceSource @default(manual)
   /// Provider-specific asset id, e.g. Coinpaprika "btc-bitcoin". Ids are not
-  /// portable between providers — swapping providers means re-picking these.
+  /// portable between providers  swapping providers means re-picking these.
   externalPriceId String?
   /// Percent change over the last 24h, straight from the provider.
   priceChange24h  Decimal?  @db.Decimal(10, 4)
@@ -127,7 +127,7 @@ model Currency {
   @@map("currencies")
 }
 
-/// Deposit addresses the desk publishes to customers — one shared address per
+/// Deposit addresses the desk publishes to customers  one shared address per
 /// currency/network, not one per user. Customers cannot deposit an asset until
 /// an active address exists for it.
 model WalletAddress {
@@ -188,7 +188,7 @@ model ContactSubmission {
   @@map("contact_submissions")
 }
 
-/// Opaque refresh tokens are never stored raw — only a SHA-256 hash, so a DB
+/// Opaque refresh tokens are never stored raw  only a SHA-256 hash, so a DB
 /// leak alone can't be replayed as a valid session.
 model RefreshToken {
   id         String    @id @default(uuid())

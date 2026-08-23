@@ -72,7 +72,7 @@ type SeededFields = {
 /**
  * Seeds price and logo the moment a currency is linked, so it never sits at $0
  * with a blank icon waiting for the next poll. Every failure here is
- * non-fatal — the scheduled refresh and the logo backfill catch up.
+ * non-fatal  the scheduled refresh and the logo backfill catch up.
  */
 async function seedFromProvider(externalId: string): Promise<SeededFields> {
   const provider = getPriceProvider();
@@ -100,7 +100,7 @@ async function seedFromProvider(externalId: string): Promise<SeededFields> {
 }
 
 adminCurrenciesRouter.get("/", async (_req, res) => {
-  // Inactive rows included on purpose — the admin table shows both.
+  // Inactive rows included on purpose  the admin table shows both.
   const currencies = await prisma.currency.findMany({ orderBy: { symbol: "asc" } });
   res.json({ currencies });
 });

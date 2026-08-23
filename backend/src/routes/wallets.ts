@@ -32,7 +32,7 @@ walletsRouter.get("/:code/address", async (req, res) => {
     res.status(400).json({ error: "Unsupported currency" });
     return;
   }
-  // null when the desk hasn't published an address for this asset yet — a
+  // null when the desk hasn't published an address for this asset yet  a
   // valid state the deposit dialog renders as an empty state, not an error.
   res.json({ deposit: await getDepositAddress(code) });
 });

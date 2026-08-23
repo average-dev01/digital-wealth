@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// STATS ARE PLACEHOLDERS — replace with verified figures before production use.
+// STATS ARE PLACEHOLDERS  replace with verified figures before production use.
 const STATS = ["aua", "clients", "coldStorage", "support"] as const;
 const STEPS = [
   { key: "open", icon: FileCheck2 },

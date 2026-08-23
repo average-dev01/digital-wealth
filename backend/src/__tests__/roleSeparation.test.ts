@@ -2,8 +2,8 @@
  * The two account types are mutually exclusive: a customer never reaches the
  * desk, and the desk never holds a customer account.
  *
- * They were already exclusive by construction — `seedNewUser` grants only
- * `user`, `prisma/seed.ts` only `admin` — but nothing enforced it at the
+ * They were already exclusive by construction  `seedNewUser` grants only
+ * `user`, `prisma/seed.ts` only `admin`  but nothing enforced it at the
  * request boundary, so an administrator calling `/wallets` was silently
  * provisioned a wallet. These cases pin the boundary down from both sides.
  */

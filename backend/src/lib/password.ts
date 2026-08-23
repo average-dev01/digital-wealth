@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 /**
  * 10 is the OWASP-recommended minimum work factor, and the right ceiling for
  * this build: `bcryptjs` is a pure-JS implementation (no native binding), so
- * it is far slower than native bcrypt at the same cost — measured on the dev
+ * it is far slower than native bcrypt at the same cost  measured on the dev
  * machine, cost 12 spends ~990ms per login versus ~160ms at cost 10, which
  * dominated every other source of request latency in the app.
  *

@@ -1,11 +1,11 @@
 /**
- * walletService — the single seam between this app and "custody".
+ * walletService  the single seam between this app and "custody".
  *
  * IMPORTANT: balances, deposit addresses and conversions in this build are
  * SIMULATED and admin-managed. No blockchain node, exchange API or payment
  * processor is involved. Deposit addresses are the desk's published
  * per-currency addresses (see the `wallet_addresses` table), shared by every
- * customer — not per-user derived addresses.
+ * customer  not per-user derived addresses.
  */
 import type { Prisma, Transaction, Wallet } from "@prisma/client";
 
@@ -23,7 +23,7 @@ function sortByCatalogue(wallets: Wallet[], currencies: CurrencyMeta[]): Wallet[
 }
 
 /**
- * Hides wallets for delisted assets — but only when they are empty.
+ * Hides wallets for delisted assets  but only when they are empty.
  *
  * A deactivated currency should disappear from the customer's dashboard; an
  * empty card for an asset the desk no longer offers is just clutter. A balance
@@ -61,7 +61,7 @@ export function listTransactions(userId: string): Promise<Transaction[]> {
 
 /**
  * The desk's published deposit address for an asset. Null when no active
- * address exists — customers can't be given somewhere to send funds until an
+ * address exists  customers can't be given somewhere to send funds until an
  * administrator publishes one, which the deposit dialog surfaces as an
  * empty state rather than an error.
  */
@@ -266,7 +266,7 @@ export async function settleTransaction(
  * currency. Runs inside the same transaction as user creation so a partial
  * signup can't leave a user without them.
  *
- * Balances start at zero and no transactions are written — every row in a
+ * Balances start at zero and no transactions are written  every row in a
  * customer's history is the result of a real deposit, withdrawal, conversion
  * or admin adjustment.
  */

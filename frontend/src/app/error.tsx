@@ -7,7 +7,7 @@ import { reportLovableError } from "@/lib/lovable-error-reporting";
 /**
  * Route-segment error boundary for everything under `app/`. Because it sits
  * above `app/[locale]/`, an error in the locale layout (or in any page below
- * it) replaces that whole subtree — including the only component that renders
+ * it) replaces that whole subtree  including the only component that renders
  * `<html>`. `app/layout.tsx` is a pass-through, so this boundary owns the
  * document, the same way global-error.tsx does.
  */

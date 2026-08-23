@@ -1,4 +1,4 @@
-// Public contact form. Stored server-side for the desk to read — no email is
+// Public contact form. Stored server-side for the desk to read  no email is
 // sent, since there's no mail provider in this build.
 
 import { fetchApi } from "./client";

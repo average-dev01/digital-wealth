@@ -3,7 +3,7 @@ import { Router } from "express";
 import { prisma } from "../lib/prisma";
 
 /**
- * Public, read-only view of the currency catalogue — the display metadata the
+ * Public, read-only view of the currency catalogue  the display metadata the
  * customer app needs to render a wallet (name, glyph, decimals, price)
  * without admin permissions. `/admin/currencies` remains the write surface.
  *

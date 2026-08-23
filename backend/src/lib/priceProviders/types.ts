@@ -3,7 +3,7 @@
  *
  * Only Coinpaprika is implemented today. A second provider (CoinGecko is the
  * likely candidate) is a new file implementing this interface plus one line in
- * `./index.ts` — with one caveat: `externalId` values are provider-specific
+ * `./index.ts`  with one caveat: `externalId` values are provider-specific
  * ("btc-bitcoin" vs "bitcoin"), so they are NOT portable. Switching providers
  * means re-picking the id on every live currency.
  */
@@ -26,7 +26,7 @@ export type AssetSearchHit = {
   rank: number;
 };
 
-/** Static metadata, fetched once when a currency is linked — not on the poll path. */
+/** Static metadata, fetched once when a currency is linked  not on the poll path. */
 export type AssetProfile = {
   externalId: string;
   name: string;

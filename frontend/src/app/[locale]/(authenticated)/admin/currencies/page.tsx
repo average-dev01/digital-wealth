@@ -51,11 +51,11 @@ import { CurrencyIcon } from "@/components/CurrencyIcon";
 import { formatPercent, formatUsd } from "@/lib/market";
 import { cn } from "@/lib/utils";
 
-/** Compact "3m ago" style stamp — the exact second is never the question here. */
+/** Compact "3m ago" style stamp  the exact second is never the question here. */
 function relativeTime(iso: string | null): string {
-  if (!iso) return "—";
+  if (!iso) return "";
   const ms = Date.now() - new Date(iso).getTime();
-  if (!Number.isFinite(ms)) return "—";
+  if (!Number.isFinite(ms)) return "";
   const minutes = Math.floor(ms / 60_000);
   if (minutes < 1) return "just now";
   if (minutes < 60) return `${minutes}m ago`;
@@ -200,7 +200,7 @@ export default function AdminCurrencies() {
                     )}
                   >
                     {currency.price_change_24h === null
-                      ? "—"
+                      ? ""
                       : formatPercent(currency.price_change_24h)}
                   </TableCell>
                   <TableCell className="num text-end text-xs text-muted-foreground">
@@ -318,7 +318,7 @@ function CurrencyFormDialog({
     if (!Number.isInteger(decimalsValue) || decimalsValue < 0 || decimalsValue > 18)
       next["decimals"] = "Enter a whole number between 0 and 18";
 
-    // These mirror the backend's rules exactly — see validateAgainstExisting in
+    // These mirror the backend's rules exactly  see validateAgainstExisting in
     // backend/src/routes/adminCurrencies.ts.
     const priceValue = Number(price);
     if (isLive) {

@@ -7,7 +7,7 @@
 /*
  * Digital Wealth Partners design system.
  * Dark institutional base (deep navy) + a single gold accent.
- * All colors are oklch semantic tokens — never hardcode colors in components.
+ * All colors are oklch semantic tokens  never hardcode colors in components.
  */
 
 @theme inline {
@@ -138,7 +138,7 @@
   }
 
   /* Balances and amounts stay in the mono face with Western digits in every
-     locale — `num` is used for figures the customer needs to compare. */
+     locale  `num` is used for figures the customer needs to compare. */
   html[dir="rtl"] .num {
     font-family: var(--font-mono);
   }

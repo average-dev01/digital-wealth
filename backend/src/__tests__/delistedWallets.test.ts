@@ -3,7 +3,7 @@
  *
  * The rule has two halves, and the second is the one that matters: an empty
  * wallet for a delisted asset is clutter and disappears, but a wallet with a
- * balance stays visible. That balance is the customer's money — hiding the card
+ * balance stays visible. That balance is the customer's money  hiding the card
  * would strand it with no route to a withdrawal.
  */
 import { describe, expect, it } from "vitest";
@@ -69,7 +69,7 @@ describe("deactivated currencies on the customer dashboard", () => {
 
     await deactivate("ETH");
 
-    // Still listed — this is the customer's money, and the UI marks the card
+    // Still listed  this is the customer's money, and the UI marks the card
     // delisted with deposits disabled rather than making it vanish.
     expect(await walletCodes(agent)).toContain("ETH");
   });

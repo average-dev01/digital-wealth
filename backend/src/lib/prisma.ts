@@ -6,7 +6,7 @@ const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 
 // PRISMA_LOG_QUERIES=true prints every SQL statement, for spotting N+1s and
 // counting round trips per request against the requestLogger's timings.
-// Off by default — it's very noisy and logs query text.
+// Off by default  it's very noisy and logs query text.
 const options: ConstructorParameters<typeof PrismaClient>[0] =
   process.env.PRISMA_LOG_QUERIES === "true" ? { log: ["query"] } : {};
 

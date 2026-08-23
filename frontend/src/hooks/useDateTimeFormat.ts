@@ -5,7 +5,7 @@ import { useLocale } from "next-intl";
 
 /**
  * Locale-aware timestamp formatting for transaction rows, replacing the
- * hardcoded `date-fns` "d MMM yyyy, HH:mm" pattern — month names were the one
+ * hardcoded `date-fns` "d MMM yyyy, HH:mm" pattern  month names were the one
  * piece of visible English left on a translated dashboard.
  *
  * The `-u-nu-latn` extension pins Western digits in every locale, Arabic

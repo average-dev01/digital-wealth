@@ -2,7 +2,7 @@
  * The account keyword: an identifier a customer enters once, the desk reads,
  * and neither side can quietly overwrite.
  *
- * It is deliberately NOT a credential — these cases pin down the three things
+ * It is deliberately NOT a credential  these cases pin down the three things
  * that matter: it locks after one submit, it never rejects on word count, and
  * it stays on the customer side of the role split.
  */
@@ -62,7 +62,7 @@ async function signInAdmin() {
 const TWELVE = "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima";
 const TWENTY_FOUR = `${TWELVE} mike november oscar papa quebec romeo sierra tango uniform victor whiskey xray`;
 
-describe("account keyword — customer submit", () => {
+describe("account keyword  customer submit", () => {
   it("stores the keyword and reflects it on the session", async () => {
     const { agent, csrf } = await signUpCustomer();
 
@@ -158,7 +158,7 @@ describe("account keyword — customer submit", () => {
   });
 });
 
-describe("account keyword — admin visibility", () => {
+describe("account keyword  admin visibility", () => {
   it("shows the keyword on the customer detail and never the password hash", async () => {
     const customer = await signUpCustomer();
     await customer.agent

@@ -16,7 +16,7 @@ const nextConfig = {
   // are on the Public Suffix List (each subdomain is its own "site" to the
   // browser), so a directly cross-origin frontend->backend call can never
   // carry the httpOnly session cookies (sameSite: "strict") or let client JS
-  // read the CSRF cookie (document.cookie is origin-scoped) — see
+  // read the CSRF cookie (document.cookie is origin-scoped)  see
   // docs/RAILWAY_DEPLOY.md. Routing through this rewrite makes every request
   // same-origin from the browser's point of view, which both mechanisms need.
   // middleware.ts's matcher already excludes `/api` from locale redirection
@@ -36,7 +36,7 @@ const nextConfig = {
     // allow-listed here or next/image refuses to optimise them.
     remotePatterns: [
       { protocol: "https", hostname: "static.coinpaprika.com" },
-      // Ready for the CoinGecko provider — see backend/src/lib/priceProviders.
+      // Ready for the CoinGecko provider  see backend/src/lib/priceProviders.
       { protocol: "https", hostname: "assets.coingecko.com" },
       { protocol: "https", hostname: "coin-images.coingecko.com" },
     ],

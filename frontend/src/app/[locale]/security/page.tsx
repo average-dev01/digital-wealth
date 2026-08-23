@@ -32,7 +32,7 @@ export default async function Security({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations("security");
 
-  // Verification statuses render in the mono face and stay untranslated —
+  // Verification statuses render in the mono face and stay untranslated 
   // they're the literal values the platform stores.
   const status = (value: string) => <span className="num">{value}</span>;
 

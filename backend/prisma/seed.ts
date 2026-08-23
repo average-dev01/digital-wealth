@@ -6,15 +6,15 @@
  *
  * Email/password come from ADMIN_EMAIL / ADMIN_PASSWORD so they can be set
  * per-environment (e.g. Railway service variables) and rotated by changing
- * the variable and re-running this script — falls back to the demo values
+ * the variable and re-running this script  falls back to the demo values
  * below when unset, which is what local dev and the test DB use.
  *
- * Nothing else is seeded — no demo customers, no currencies, no deposit
+ * Nothing else is seeded  no demo customers, no currencies, no deposit
  * addresses, no balances. The catalogue is built by signing in as this admin
  * and creating currencies and addresses for real, and every customer,
  * balance and transaction comes from actual use of the app.
  *
- * Idempotent — safe to re-run. Re-running with a changed ADMIN_PASSWORD
+ * Idempotent  safe to re-run. Re-running with a changed ADMIN_PASSWORD
  * rotates the existing account's password; a changed ADMIN_EMAIL creates a
  * *new* admin account rather than renaming the old one (Prisma User rows are
  * keyed by email), so clean up the old row yourself if that's not wanted.
@@ -64,7 +64,7 @@ async function main(): Promise<void> {
   await prisma.userRole.create({ data: { userId: admin.id, role: "admin" } });
 
   console.log(`[seed] administrator created: ${ADMIN_EMAIL}`);
-  console.log("[seed] no currencies seeded — add them in the admin panel to get started.");
+  console.log("[seed] no currencies seeded  add them in the admin panel to get started.");
 }
 
 main()

@@ -131,7 +131,7 @@ export function AdminUsersPage() {
             <TableBody>
               {rows.map((profile) => (
                 <TableRow key={profile.id}>
-                  <TableCell className="font-medium">{profile.full_name ?? "—"}</TableCell>
+                  <TableCell className="font-medium">{profile.full_name ?? ""}</TableCell>
                   <TableCell className="text-sm text-muted-foreground">{profile.email}</TableCell>
                   <TableCell className="num whitespace-nowrap text-xs text-muted-foreground">
                     {format(new Date(profile.created_at), "d MMM yyyy")}

@@ -25,8 +25,8 @@ const AuthContext = createContext<AuthContextValue>({
  * consumers there are.
  *
  * The short `staleTime` is deliberately much lower than the app-wide default
- * — the session must re-validate on window focus so a logout or suspension
- * from another tab is picked up on return — but not 0, or a second consumer
+ *  the session must re-validate on window focus so a logout or suspension
+ * from another tab is picked up on return  but not 0, or a second consumer
  * mounting a moment after the first (the dashboard layout right after the
  * provider) counts the just-fetched data as stale and refetches it.
  */
@@ -56,7 +56,7 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
-/** Profile slice of the shared session — no request of its own. */
+/** Profile slice of the shared session  no request of its own. */
 export function useProfile() {
   return useQuery({
     ...SESSION_QUERY,
@@ -67,7 +67,7 @@ export function useProfile() {
 /**
  * Backs the /admin route guard. Reads `isAdmin` as returned by GET /auth/me
  * rather than any client-held flag, and because it shares the session query it
- * re-validates on window focus — so a role change or suspension takes effect
+ * re-validates on window focus  so a role change or suspension takes effect
  * without signing out and back in.
  */
 export function useIsAdmin() {

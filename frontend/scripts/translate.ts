@@ -4,7 +4,7 @@
  *   pnpm --filter frontend translate          # every locale
  *   pnpm --filter frontend translate ar       # just one
  *
- * This runs on demand, never at request time — the app only ever reads the
+ * This runs on demand, never at request time  the app only ever reads the
  * JSON this produces, so live traffic costs nothing and doesn't depend on
  * DeepL being reachable.
  *
@@ -110,7 +110,7 @@ async function translateBatch(texts: string[], target: string, key: string): Pro
 
   if (!res.ok) {
     const detail = await res.text().catch(() => "");
-    throw new Error(`DeepL ${res.status} ${res.statusText}${detail ? ` — ${detail}` : ""}`);
+    throw new Error(`DeepL ${res.status} ${res.statusText}${detail ? `  ${detail}` : ""}`);
   }
 
   const data = (await res.json()) as { translations: { text: string }[] };
@@ -122,7 +122,7 @@ async function run(): Promise<void> {
   if (!key) {
     console.error(
       "DEEPL_API_KEY is not set.\n" +
-        "Add it to frontend/.env — see frontend/.env.example. Free keys end in ':fx'.",
+        "Add it to frontend/.env  see frontend/.env.example. Free keys end in ':fx'.",
     );
     process.exit(1);
   }

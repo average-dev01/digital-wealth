@@ -18,7 +18,7 @@ export type PriceFeedRun = {
   provider: string;
   /** Currencies whose price was written. */
   updated: number;
-  /** `live` currencies with no external id — nothing to look up. */
+  /** `live` currencies with no external id  nothing to look up. */
   skipped: number;
   /** Ids the provider had no quote for. */
   missing: number;
@@ -74,7 +74,7 @@ async function backfillLogos(
       await prisma.currency.update({ where: { id: row.id }, data: { iconUrl: profile.logoUrl } });
       filled += 1;
     } catch {
-      // Cosmetic — a missing logo falls back to the admin's text glyph.
+      // Cosmetic  a missing logo falls back to the admin's text glyph.
     }
   }
 
@@ -196,7 +196,7 @@ export async function refreshPrices(): Promise<PriceFeedRun> {
 
 function logRun(run: PriceFeedRun): void {
   if (run.error) {
-    console.error(`[price-feed] ${run.provider} failed after ${run.durationMs}ms — ${run.error}`);
+    console.error(`[price-feed] ${run.provider} failed after ${run.durationMs}ms  ${run.error}`);
     return;
   }
 
@@ -208,7 +208,7 @@ function logRun(run: PriceFeedRun): void {
 
 /**
  * Starts the polling loop. Called from `index.ts`, deliberately NOT from
- * `app.ts` — tests build the app directly, and a timer there would fire (and
+ * `app.ts`  tests build the app directly, and a timer there would fire (and
  * make real HTTP calls) on every vitest run.
  */
 export function startPriceFeed(): void {

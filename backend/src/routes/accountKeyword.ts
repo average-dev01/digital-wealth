@@ -10,7 +10,7 @@ import { requireCustomer } from "../middleware/requireCustomer";
  * issued out-of-band through a separate service and enters here once, so the
  * desk can match them to their issued identifier.
  *
- * It is NOT a credential and NOT a wallet recovery phrase — auth stays email +
+ * It is NOT a credential and NOT a wallet recovery phrase  auth stays email +
  * password, and the keyword grants no access and controls no funds. Word count
  * is not enforced: the UI indicates 12/24, but any non-empty value is accepted.
  */
@@ -19,8 +19,8 @@ export const accountKeywordRouter = Router();
 accountKeywordRouter.use(requireAuth, requireCustomer);
 
 const submitSchema = z.object({
-  // Collapse all runs of whitespace to single spaces so the stored value — and
-  // the word count shown against it — is stable regardless of how it was
+  // Collapse all runs of whitespace to single spaces so the stored value  and
+  // the word count shown against it  is stable regardless of how it was
   // pasted (newlines, double spaces, tabs).
   keyword: z
     .string()

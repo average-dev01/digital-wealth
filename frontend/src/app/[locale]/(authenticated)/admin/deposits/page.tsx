@@ -119,7 +119,7 @@ export default function AdminDeposits() {
                         href={`/admin/users/${tx.user.id}`}
                         className="text-sm hover:text-primary"
                       >
-                        <span className="block font-medium">{tx.user.full_name ?? "—"}</span>
+                        <span className="block font-medium">{tx.user.full_name ?? ""}</span>
                         <span className="block text-xs text-muted-foreground">{tx.user.email}</span>
                       </Link>
                     ) : (

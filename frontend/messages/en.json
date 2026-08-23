@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Digital Wealth Partners — Digital Asset Wealth Management",
+    "title": "Digital Wealth Partners  Digital Asset Wealth Management",
     "description": "Institutional-grade custody and multi-currency crypto portfolio management for private clients.",
     "ogTitle": "Digital Wealth Partners",
     "ogDescription": "Institutional-grade digital asset custody and portfolio management."
@@ -10,7 +10,6 @@
     "about": "About",
     "services": "How it works",
     "security": "Security",
-    "faq": "FAQ",
     "contact": "Contact",
     "mainLabel": "Main",
     "openMenu": "Open menu",
@@ -31,17 +30,16 @@
     "about": "About",
     "howItWorks": "How it works",
     "securityCompliance": "Security & compliance",
-    "faq": "FAQ",
     "clientAccess": "Client access",
     "logIn": "Log in",
     "openAccount": "Open an account",
     "contactUs": "Contact us",
     "riskDisclaimer": "<strong>Risk disclaimer.</strong> Digital asset prices are highly volatile and may result in the total loss of capital. Nothing on this site constitutes financial, investment, legal or tax advice, or an offer or solicitation to buy or sell any asset. Past performance is not indicative of future results. You should obtain independent professional advice before transacting.",
-    "copyright": "© {year} Digital Wealth Partners. Preview environment."
+    "copyright": "© {year} Digital Wealth Partners. "
   },
   "about": {
     "meta": {
-      "title": "About — Digital Wealth Partners",
+      "title": "About  Digital Wealth Partners",
       "description": "Who we are: a digital asset wealth manager built by private banking, custody and compliance professionals.",
       "ogDescription": "A digital asset wealth manager built by private banking and custody professionals."
     },
@@ -49,7 +47,7 @@
     "title": "Built for clients who expect custody to be boring",
     "description": "Digital Wealth Partners was founded on a simple premise: digital assets deserve the same operational discipline as any other part of a serious portfolio.",
     "storyHeading": "Our story",
-    "story1": "We started in 2019 after watching clients hold significant digital asset positions across a patchwork of exchange accounts, hardware wallets and spreadsheets — with no consolidated view and no credible custody story.",
+    "story1": "We started in 2019 after watching clients hold significant digital asset positions across a patchwork of exchange accounts, hardware wallets and spreadsheets  with no consolidated view and no credible custody story.",
     "story2": "Today we administer multi-currency accounts for private clients, family offices and independent advisors, combining institutional custody practice with reporting that fits into existing wealth structures.",
     "story3": "We are deliberately conservative. We support a small set of liquid assets, we document every balance movement, and we would rather decline a mandate than stretch our controls.",
     "pillars": {
@@ -67,7 +65,7 @@
       }
     },
     "leadership": "Leadership",
-    "leadershipNote": "Leadership profiles below are illustrative pending official confirmation.",
+    "leadershipNote": "Meet the leaders steering Digital Wealth Partners.",
     "team": {
       "ceo": {
         "name": "Elena Marsh",
@@ -93,7 +91,7 @@
   },
   "security": {
     "meta": {
-      "title": "Security & Compliance — Digital Wealth Partners",
+      "title": "Security & Compliance  Digital Wealth Partners",
       "description": "Cold storage, two-factor authentication, multi-approval withdrawals, KYC/AML programme and regulatory disclosures.",
       "ogDescription": "Cold storage, 2FA, multi-approval withdrawals and our KYC/AML programme."
     },
@@ -104,7 +102,7 @@
     "controls": {
       "coldStorage": {
         "title": "Cold storage by default",
-        "body": "The majority of client assets are held offline in geographically distributed storage with tamper-evident key ceremonies. [Placeholder ratio: 97.5% cold / 2.5% operational.]"
+        "body": "The majority of client assets are held offline in geographically distributed storage with tamper-evident key ceremonies. "
       },
       "keyManagement": {
         "title": "Multi-party key management",
@@ -138,55 +136,9 @@
     "disclaimer1": "Digital Wealth Partners is presented here as a pre-launch preview and is not currently licensed, registered or authorised by any financial regulator. Nothing on this site is an offer, solicitation or recommendation to buy, sell or hold any digital asset.",
     "disclaimer2": "Digital assets are volatile, are generally not covered by deposit-insurance or investor-compensation schemes, and may lose all value. Balances, prices, conversion rates and performance figures in this environment are illustrative and must not be relied upon."
   },
-  "faq": {
-    "meta": {
-      "title": "Frequently Asked Questions — Digital Wealth Partners",
-      "description": "Answers on custody, verification, deposits, withdrawals, fees, supported assets and account security.",
-      "ogDescription": "Custody, verification, deposits, withdrawals, fees and account security explained."
-    },
-    "eyebrow": "FAQ",
-    "title": "Questions clients ask before funding",
-    "description": "If your question is not answered here, our client team will respond within one business day.",
-    "questions": {
-      "custody": {
-        "q": "Who holds my assets?",
-        "a": "Assets are held in segregated wallet structures administered by Digital Wealth Partners. Your account ledger records your entitlement per asset, and every movement is recorded with a timestamp and reason."
-      },
-      "verification": {
-        "q": "How long does verification take?",
-        "a": "Most identity checks are reviewed within one business day. You can explore your dashboard while your verification is pending; a banner will show your current status."
-      },
-      "deposit": {
-        "q": "How do I deposit?",
-        "a": "Choose the asset in your dashboard, copy the deposit address shown for that network, send your funds, then confirm the transfer. Operations reconcile the deposit and credit your wallet."
-      },
-      "withdrawal": {
-        "q": "How do withdrawals work?",
-        "a": "Submit a destination address and amount. The request is screened and approved before settlement. You will see it as pending in your transaction history until it is completed."
-      },
-      "assets": {
-        "q": "Which assets do you support?",
-        "a": "The assets listed in your dashboard. We deliberately support a small set of liquid assets rather than a long tail, and the list is maintained by our desk."
-      },
-      "fees": {
-        "q": "What do you charge?",
-        "a": "An indicative 0.55% annual administration fee, network cost plus 0.10% on withdrawals, and 0.35% on conversions. See the fee schedule for the full list."
-      },
-      "live": {
-        "q": "Is this environment live?",
-        "a": "Not yet. This is a pre-launch preview — balances, prices, deposit addresses and conversion rates are illustrative, and no real funds or blockchain transactions are involved."
-      },
-      "twoFactor": {
-        "q": "Can I enable two-factor authentication?",
-        "a": "Yes — two-factor authentication is offered in your security settings and can be required for withdrawals."
-      }
-    },
-    "askTeam": "Ask our client team",
-    "openAccount": "Open an account"
-  },
   "services": {
     "meta": {
-      "title": "How It Works & Fees — Digital Wealth Partners",
+      "title": "How It Works & Fees  Digital Wealth Partners",
       "description": "Our custody model, deposit and withdrawal flow, supported networks and a clear indicative fee schedule.",
       "ogDescription": "Custody model, deposit flow, supported networks and fee schedule."
     },
@@ -194,7 +146,7 @@
     "title": "How your account works, end to end",
     "description": "From verification to custody to withdrawal, here is exactly what happens to your assets and what it costs.",
     "custodyHeading": "The custody model",
-    "custodyBody": "Client assets are recorded in segregated per-asset wallet ledgers. Each account receives a dedicated deposit address per supported network. Outbound movements require a client request, a compliance check and internal approval before settlement — no single operator can move client assets alone.",
+    "custodyBody": "Client assets are recorded in segregated per-asset wallet ledgers. Each account receives a dedicated deposit address per supported network. Outbound movements require a client request, a compliance check and internal approval before settlement  no single operator can move client assets alone.",
     "steps": {
       "deposit": {
         "title": "Deposit",
@@ -251,13 +203,13 @@
   },
   "home": {
     "meta": {
-      "title": "Digital Wealth Partners — Digital Asset Wealth Management",
+      "title": "Digital Wealth Partners  Digital Asset Wealth Management",
       "description": "Custody, portfolio reporting and multi-currency crypto accounts for private clients and family offices. Open an account in minutes.",
       "ogDescription": "Custody, portfolio reporting and multi-currency crypto accounts for private clients and family offices."
     },
     "eyebrow": "Regulated-style custody model",
     "heroTitle": "Digital asset wealth management, <gold>held to institutional standards</gold>",
-    "heroBody": "Digital Wealth Partners gives private clients a single, verified account for their digital assets — with segregated wallets, documented custody, and reporting your accountant will recognise.",
+    "heroBody": "Digital Wealth Partners gives private clients a single, verified account for their digital assets  with segregated wallets, documented custody, and reporting your accountant will recognise.",
     "openAccount": "Open an account",
     "seeCustody": "See how custody works",
     "placeholderFigure": "Illustrative figure",
@@ -351,7 +303,7 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact — Digital Wealth Partners",
+      "title": "Contact  Digital Wealth Partners",
       "description": "Talk to our client team about onboarding, custody or reporting. We respond within one business day.",
       "ogDescription": "Talk to our client team about onboarding, custody or reporting."
     },
@@ -365,7 +317,7 @@
     "send": "Send message",
     "sending": "Sending…",
     "sentTitle": "Message received",
-    "sentBody": "Thank you — a member of the client team will be in touch shortly.",
+    "sentBody": "Thank you  a member of the client team will be in touch shortly.",
     "sendAnother": "Send another message",
     "errors": {
       "nameMin": "Please enter your full name",
@@ -386,7 +338,7 @@
   },
   "auth": {
     "meta": {
-      "title": "Client Login & Account Opening — Digital Wealth Partners",
+      "title": "Client Login & Account Opening  Digital Wealth Partners",
       "description": "Log in to your Digital Wealth Partners portfolio or open a new multi-currency digital asset account.",
       "ogDescription": "Log in to your portfolio or open a new digital asset account."
     },
@@ -424,7 +376,7 @@
   },
   "forgotPassword": {
     "meta": {
-      "title": "Reset Your Password — Digital Wealth Partners",
+      "title": "Reset Your Password  Digital Wealth Partners",
       "description": "Request a secure password reset link for your Digital Wealth Partners client account.",
       "ogDescription": "Request a secure password reset link."
     },
@@ -441,7 +393,7 @@
   },
   "resetPassword": {
     "meta": {
-      "title": "Set a New Password — Digital Wealth Partners",
+      "title": "Set a New Password  Digital Wealth Partners",
       "description": "Choose a new password for your Digital Wealth Partners client account.",
       "ogDescription": "Choose a new password for your client account."
     },

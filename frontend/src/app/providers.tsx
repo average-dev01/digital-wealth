@@ -13,7 +13,7 @@ export function Providers({ children }: { children: ReactNode }) {
         defaultOptions: {
           queries: {
             // Without this the default is 0, so every page mount refetches
-            // data another page fetched a moment ago — navigating
+            // data another page fetched a moment ago  navigating
             // Wallets -> Transactions -> Overview re-requested the same
             // wallets and transactions each time. Mutations still invalidate
             // explicitly, so user-initiated changes show up immediately.

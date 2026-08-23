@@ -4,7 +4,7 @@ import { z } from "zod";
 import { prisma } from "../lib/prisma";
 import { contactRateLimit } from "../middleware/rateLimit";
 
-/** Public — the marketing site's contact form posts here unauthenticated. */
+/** Public  the marketing site's contact form posts here unauthenticated. */
 export const contactRouter = Router();
 
 const contactSchema = z.object({
@@ -21,7 +21,7 @@ contactRouter.post("/", contactRateLimit, async (req, res) => {
   }
 
   await prisma.contactSubmission.create({ data: parsed.data });
-  // No notification is sent — there's no email provider in this build. The
+  // No notification is sent  there's no email provider in this build. The
   // submission is stored for the desk to read.
   res.status(201).json({ ok: true });
 });

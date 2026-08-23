@@ -16,7 +16,7 @@ import { locales, localeNames, type Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
 /**
- * Switches locale while staying on the current page — `/en/wallets` becomes
+ * Switches locale while staying on the current page  `/en/wallets` becomes
  * `/ar/wallets`, not the homepage. `usePathname` here is the locale-aware one
  * from i18n/navigation, so it returns the path *without* the locale prefix and
  * the router re-adds the new one.

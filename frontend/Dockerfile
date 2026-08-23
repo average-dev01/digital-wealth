@@ -14,7 +14,7 @@ COPY pnpm-workspace.yaml pnpm-lock.yaml package.json ./
 COPY frontend/package.json ./frontend/package.json
 COPY backend/package.json ./backend/package.json
 # The workspace-root postinstall hook (`prisma generate` for backend) fires
-# on *any* `pnpm install` here, filtered or not — so backend's schema and
+# on *any* `pnpm install` here, filtered or not  so backend's schema and
 # its own deps have to be part of this install too, or that hook fails.
 # Backend's dependency tree is small, so this costs little.
 COPY backend/prisma ./backend/prisma
@@ -35,27 +35,27 @@ RUN pnpm --filter frontend build
 FROM base AS runner
 ENV NODE_ENV=production
 # No hardcoded PORT: the standalone server.js reads process.env.PORT itself
-# (defaulting to 3000), and Railway injects its own PORT at runtime — baking
+# (defaulting to 3000), and Railway injects its own PORT at runtime  baking
 # one in here would make the app listen on the wrong port if Railway assigns
 # something else, and the healthcheck prober would hit that mismatch as
 # "service unavailable" with no visible crash in the logs.
 #
 # HOSTNAME is different: Docker auto-sets it to the container ID, and the
-# standalone server.js does `hostname = process.env.HOSTNAME || '0.0.0.0'` —
+# standalone server.js does `hostname = process.env.HOSTNAME || '0.0.0.0'` 
 # so without this override it binds to that container-ID hostname (which
 # resolves to the container's own specific IP) instead of all interfaces.
 # Confirmed via /proc/net/tcp: without this, the listening socket showed the
-# container's single IP, not 0.0.0.0 — works by accident under Docker
+# container's single IP, not 0.0.0.0  works by accident under Docker
 # Desktop's NAT, but not under Railway's real proxy networking, causing
 # "Application failed to respond" even though the app itself is healthy.
 ENV HOSTNAME=0.0.0.0
 
 # outputFileTracingRoot is the repo root, so .next/standalone mirrors the
 # whole repo-relative path (frontend/server.js, root-level node_modules,
-# etc.) — copy the entire tree to /app, not into /app/frontend.
+# etc.)  copy the entire tree to /app, not into /app/frontend.
 COPY --from=build /app/frontend/.next/standalone ./
 # standalone output deliberately omits static assets and public/, per Next's
-# own docs — copy them in separately.
+# own docs  copy them in separately.
 COPY --from=build /app/frontend/.next/static ./frontend/.next/static
 COPY --from=build /app/frontend/public ./frontend/public
 

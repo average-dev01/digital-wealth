@@ -153,7 +153,7 @@ describe("refreshPrices", () => {
   });
 
   it("backfills a missing logo and caps how many it fetches per run", async () => {
-    // All three fixtures live, none with a logo — the cap is 3, so raising it
+    // All three fixtures live, none with a logo  the cap is 3, so raising it
     // above the cap is what proves the cap exists.
     await makeLive("BTC", BTC_ID, null);
     await makeLive("ETH", ETH_ID, null);

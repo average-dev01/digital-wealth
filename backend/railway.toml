@@ -1,6 +1,6 @@
 # Point this service's "Config File Path" (Railway dashboard → service →
 # Settings → Config-as-code) at backend/railway.toml. Root Directory stays
-# the repo root for both services — see docs/RAILWAY_DEPLOY.md for why.
+# the repo root for both services  see docs/RAILWAY_DEPLOY.md for why.
 
 [build]
 builder = "DOCKERFILE"

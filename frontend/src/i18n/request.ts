@@ -6,7 +6,7 @@ import { routing } from "./routing";
 /**
  * Loads the message catalogue for the active request.
  *
- * Messages are plain JSON generated ahead of time (see scripts/translate.ts) —
+ * Messages are plain JSON generated ahead of time (see scripts/translate.ts) 
  * nothing calls a translation service at runtime. A key missing from a locale
  * falls back to English rather than rendering blank, so a partially translated
  * file is always safe to ship.
@@ -28,7 +28,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
   };
 });
 
-/** English underneath, the target locale on top — so any untranslated key still renders. */
+/** English underneath, the target locale on top  so any untranslated key still renders. */
 function deepMerge(
   base: Record<string, unknown>,
   override: Record<string, unknown>,

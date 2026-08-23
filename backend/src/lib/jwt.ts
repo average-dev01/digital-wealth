@@ -40,13 +40,13 @@ export function verifyAccessToken(token: string): AccessTokenPayload | null {
 
 /**
  * Refresh tokens are stateless-verifiable JWTs (self-contained expiry/subject)
- * AND tracked server-side via a SHA-256 hash in the `refresh_tokens` table —
+ * AND tracked server-side via a SHA-256 hash in the `refresh_tokens` table 
  * the DB record is what actually allows revocation (logout, rotation) since
  * a JWT signature alone can't be invalidated before it expires.
  *
  * The `jti` claim exists purely so two tokens signed for the same user within
  * the same second (jwt.sign's `iat` has 1s granularity) never come out
- * byte-identical — without it they'd hash to the same tokenHash and collide
+ * byte-identical  without it they'd hash to the same tokenHash and collide
  * on the table's unique constraint.
  */
 export function signRefreshToken(payload: RefreshTokenPayload): string {

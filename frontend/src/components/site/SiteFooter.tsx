@@ -42,11 +42,6 @@ export function SiteFooter() {
                   {t("securityCompliance")}
                 </Link>
               </li>
-              <li>
-                <Link href="/faq" className="transition-colors hover:text-foreground">
-                  {t("faq")}
-                </Link>
-              </li>
             </ul>
           </div>
 

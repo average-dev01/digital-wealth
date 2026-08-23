@@ -1,6 +1,6 @@
 /**
  * Root 404. It renders above `app/[locale]/`, where no locale is known and
- * `app/layout.tsx` is a pass-through — so this has to supply `<html>`/`<body>`
+ * `app/layout.tsx` is a pass-through  so this has to supply `<html>`/`<body>`
  * itself, exactly as global-error.tsx does. Without them the response is a
  * document fragment with no <head>, so none of the styling applies.
  *

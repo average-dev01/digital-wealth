@@ -1,4 +1,4 @@
-// The currency catalogue — the source of truth for which assets exist.
+// The currency catalogue  the source of truth for which assets exist.
 // Creating/deactivating a currency drives customer wallet provisioning on the
 // backend, and `listCurrencies()` below is how the customer app resolves the
 // display metadata (name, glyph, decimals, price) for a wallet, so a
@@ -33,7 +33,7 @@ export type CurrencyInput = {
   name: string;
   decimals: number;
   icon: string | null;
-  /** Optional for a live currency — the backend seeds it from the provider. */
+  /** Optional for a live currency  the backend seeds it from the provider. */
   mock_price_usd?: number;
   price_source: PriceSource;
   external_price_id: string | null;
@@ -100,7 +100,7 @@ export async function getAllCurrencies(): Promise<Currency[]> {
 }
 
 /**
- * Public catalogue read — no admin rights needed, so customer screens can
+ * Public catalogue read  no admin rights needed, so customer screens can
  * resolve an asset's real name/glyph/decimals/price. Deactivated currencies
  * are included so a customer still holding one sees a correct card (with
  * deposits disabled) rather than the wallet disappearing.

@@ -1,7 +1,7 @@
 # Adding a price provider
 
 Everything the app needs from a market data source is the `PriceProvider`
-interface in [`types.ts`](./types.ts) — three methods. Nothing outside this
+interface in [`types.ts`](./types.ts)  three methods. Nothing outside this
 folder knows which provider is in use.
 
 ## The three methods
@@ -17,16 +17,16 @@ free tier runs out. Coinpaprika does this by pulling the full ticker list in one
 call and filtering locally; CoinGecko would use `/simple/price?ids=a,b,c`. Never
 loop one call per currency on this path.
 
-Ids the provider doesn't recognise are **omitted from the result**, not thrown —
+Ids the provider doesn't recognise are **omitted from the result**, not thrown 
 one bad id must not cost every other currency its price update.
 
 ## Recipe
 
 1. **Write `<provider>.ts`.** Use `getJson`, `toNumber` and `toDate` from
-   [`http.ts`](./http.ts) — they handle timeouts, non-2xx, numeric strings and
+   [`http.ts`](./http.ts)  they handle timeouts, non-2xx, numeric strings and
    junk timestamps. Export a `const` satisfying `PriceProvider`.
 
-2. **Register it** — one line in [`index.ts`](./index.ts):
+2. **Register it**  one line in [`index.ts`](./index.ts):
 
    ```ts
    const providers: Record<string, PriceProvider> = {
@@ -35,7 +35,7 @@ one bad id must not cost every other currency its price update.
    };
    ```
 
-3. **Add it to the contract test** — one line in
+3. **Add it to the contract test**  one line in
    `src/__tests__/priceProviderContract.test.ts`. That suite stubs `fetch` and
    asserts the behaviour `lib/priceFeed.ts` relies on, so a new provider is
    covered without writing new tests.
@@ -46,7 +46,7 @@ That's the whole change. No route, schema, or frontend edit.
 
 ## The one real gotcha: ids are not portable
 
-`Currency.externalPriceId` holds a **provider-specific** id — Bitcoin is
+`Currency.externalPriceId` holds a **provider-specific** id  Bitcoin is
 `btc-bitcoin` on Coinpaprika and `bitcoin` on CoinGecko. Switching providers
 without remapping leaves every live currency unpriced (they'd show up as
 `missing` in the `[price-feed]` log and keep their last known price).
@@ -54,7 +54,7 @@ without remapping leaves every live currency unpriced (they'd show up as
 Remap with the helper script rather than by hand:
 
 ```sh
-pnpm --filter backend price-ids:remap            # dry run — prints the plan
+pnpm --filter backend price-ids:remap            # dry run  prints the plan
 pnpm --filter backend price-ids:remap --apply    # writes it
 ```
 
@@ -66,5 +66,5 @@ you to fix in the admin panel.
 
 Today one provider serves the whole catalogue. Per-currency providers would mean
 adding a `priceProvider` column to `Currency` and grouping by it in
-`refreshPrices()` before dispatching. Deliberately not built — it buys nothing
+`refreshPrices()` before dispatching. Deliberately not built  it buys nothing
 until there is a real need for it.

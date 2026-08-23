@@ -44,7 +44,7 @@ export function AssetSearchField({
   const [debounced, setDebounced] = useState(defaultQuery);
 
   // Debounced because the backend proxies this to the provider, whose free
-  // tier has a monthly call budget — one request per keystroke would burn it.
+  // tier has a monthly call budget  one request per keystroke would burn it.
   useEffect(() => {
     const id = setTimeout(() => setDebounced(query.trim()), 300);
     return () => clearTimeout(id);

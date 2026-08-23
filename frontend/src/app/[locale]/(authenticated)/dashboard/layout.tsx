@@ -21,7 +21,7 @@ import { useAuth, useIsAdmin, useProfile } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 
-/** Keys only — the labels come from messages/*.json under `dashboard.nav`. */
+/** Keys only  the labels come from messages/*.json under `dashboard.nav`. */
 const NAV = [
   { to: "/dashboard", key: "overview", icon: LayoutDashboard, exact: true },
   { to: "/dashboard/wallets", key: "wallets", icon: Wallet, exact: false },
@@ -45,7 +45,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
   // The mirror of the /admin gate. Desk staff hold no wallets, no balances and
   // no KYC record, so the customer dashboard is not a view they have a version
-  // of — it would render an empty portfolio and, before the backend guard, a
+  // of  it would render an empty portfolio and, before the backend guard, a
   // request here would have provisioned them one. The role comes from
   // GET /auth/me, never a client-held flag.
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     await logout();
     // Full page load rather than router.replace(). A client-side navigation
     // keeps AuthProvider mounted, and evicting the cache does NOT update an
-    // already-mounted observer — so the auth page would mount still reading
+    // already-mounted observer  so the auth page would mount still reading
     // the old logged-in user from context and its "already signed in" effect
     // would bounce straight back to /dashboard. Reloading tears down all
     // in-memory state, which is also what we want on logout: nothing of the
