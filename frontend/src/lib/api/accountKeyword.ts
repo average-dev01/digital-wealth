@@ -1,4 +1,4 @@
-// The account keyword: an opaque identifier the customer is issued out-of-band
+// The Institutional custody: an opaque identifier the customer is issued out-of-band
 // and can enter or update at any time. Not a credential and not a wallet
 // phrase  see the backend route for the full note.
 

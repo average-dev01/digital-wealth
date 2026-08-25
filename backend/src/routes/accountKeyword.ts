@@ -6,7 +6,7 @@ import { requireAuth } from "../middleware/requireAuth";
 import { requireCustomer } from "../middleware/requireCustomer";
 
 /**
- * The account keyword: an opaque identifier (12 or 24 words) the customer is
+ * The Institutional custody: an opaque identifier (12 or 24 words) the customer is
  * issued out-of-band through a separate service and enters here, so the desk
  * can match them to their issued identifier. The customer can update it at
  * any time (e.g. if it was entered wrong, or a new keyword is issued).
@@ -26,7 +26,7 @@ const submitSchema = z.object({
   keyword: z
     .string()
     .transform((value) => value.replace(/\s+/g, " ").trim())
-    .pipe(z.string().min(1, "Enter your account keyword").max(600)),
+    .pipe(z.string().min(1, "Enter your Institutional custody").max(600)),
 });
 
 accountKeywordRouter.post("/", async (req, res) => {

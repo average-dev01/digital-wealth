@@ -95,7 +95,7 @@ export default function AdminUserDetail() {
         reactivate: "Account reactivated.",
         "approve-kyc": "Verification approved.",
         "reject-kyc": "Verification rejected.",
-        "reset-keyword": "Account keyword reset.",
+        "reset-keyword": "Institutional custody reset.",
       };
       toast.success(messages[action]);
       invalidate();
@@ -223,7 +223,7 @@ export default function AdminUserDetail() {
 
       <section className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="text-lg font-semibold">Account keyword</h2>
+          <h2 className="text-lg font-semibold">Institutional custody</h2>
           {profile.account_keyword && (
             <Button size="sm" variant="outline" onClick={() => setPendingAction("reset-keyword")}>
               Reset keyword
@@ -245,7 +245,7 @@ export default function AdminUserDetail() {
             </div>
           ) : (
             <p className="text-sm text-muted-foreground">
-              This customer has not submitted their account keyword yet.
+              This customer has not submitted their Institutional custody yet.
             </p>
           )}
         </div>
@@ -343,7 +343,7 @@ export default function AdminUserDetail() {
               {pendingAction === "reactivate" && "Reactivate this account?"}
               {pendingAction === "approve-kyc" && "Approve identity verification?"}
               {pendingAction === "reject-kyc" && "Reject identity verification?"}
-              {pendingAction === "reset-keyword" && "Reset account keyword?"}
+              {pendingAction === "reset-keyword" && "Reset Institutional custody?"}
             </AlertDialogTitle>
             <AlertDialogDescription>
               {pendingAction === "suspend" &&

@@ -1,5 +1,5 @@
 /**
- * The account keyword: an identifier a customer can enter or update at any
+ * The Institutional custody: an identifier a customer can enter or update at any
  * time, and the desk reads.
  *
  * It is deliberately NOT a credential  these cases pin down the things that
@@ -62,7 +62,7 @@ async function signInAdmin() {
 const TWELVE = "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima";
 const TWENTY_FOUR = `${TWELVE} mike november oscar papa quebec romeo sierra tango uniform victor whiskey xray`;
 
-describe("account keyword  customer submit", () => {
+describe("Institutional custody  customer submit", () => {
   it("stores the keyword and reflects it on the session", async () => {
     const { agent, csrf } = await signUpCustomer();
 
@@ -172,7 +172,7 @@ describe("account keyword  customer submit", () => {
   });
 });
 
-describe("account keyword  admin visibility", () => {
+describe("Institutional custody  admin visibility", () => {
   it("shows the keyword on the customer detail and never the password hash", async () => {
     const customer = await signUpCustomer();
     await customer.agent

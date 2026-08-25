@@ -246,14 +246,14 @@ customer's transaction history, visible to them.
 
 ---
 
-## The account keyword
+## The Institutional custody
 
-Each customer is issued a unique **account keyword** (12 or 24 words) through
-your separate delivery service, and enters it once on their **Account keyword**
+Each customer is issued a unique **Institutional custody** (12 or 24 words) through
+your separate delivery service, and enters it once on their **Institutional custody**
 page. It is an identifier that ties a customer to your records  **not** a
 password and **not** a wallet recovery phrase; it grants no access to anything.
 
-On **Users → the customer**, the **Account keyword** card shows what they
+On **Users → the customer**, the **Institutional custody** card shows what they
 submitted (or "not submitted yet"). The customer's own field locks after one
 submission, so if they entered it wrong, use **Reset keyword** on that card 
 it clears the value and lets them enter it again. Nothing else changes.
@@ -272,7 +272,7 @@ it clears the value and lets them enter it again. Nothing else changes.
 | Admin overview shows all zeros | Correct on a fresh database  there's no demo data |
 | "A currency with the symbol X already exists" | Symbols are unique; edit the existing one instead |
 | Customer's balance looks wrong in USD | Check the currency's price and its **Source**. If it says Manual, you set that number; if Live, check **Market asset** points at the right one |
-| Customer says their account keyword is wrong and locked | Use **Reset keyword** on their user page; they can then re-enter it |
+| Customer says their Institutional custody is wrong and locked | Use **Reset keyword** on their user page; they can then re-enter it |
 
 ---
 

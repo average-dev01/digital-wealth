@@ -221,7 +221,7 @@ adminUsersRouter.post("/:id/adjust-balance", customersOnly, async (req, res) => 
 });
 
 /**
- * Clears a customer's account keyword so they can re-enter it. The customer
+ * Clears a customer's Institutional custody so they can re-enter it. The customer
  * field is one-time and locks after submission, so without this a mistyped
  * keyword would be stuck forever.
  */

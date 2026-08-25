@@ -181,7 +181,7 @@ export async function adjustUserBalance(
 }
 
 /**
- * Clears a customer's account keyword so they can enter it again. The customer
+ * Clears a customer's Institutional custody so they can enter it again. The customer
  * field is one-time and locks after submission.
  */
 export async function resetAccountKeyword(userId: string): Promise<void> {

@@ -421,7 +421,7 @@
       "wallets": "Wallets",
       "transactions": "Transactions",
       "kyc": "Verification",
-      "accountKeyword": "Account keyword",
+      "accountKeyword": "Institutional custody",
       "settings": "Profile & settings"
     },
     "signOut": "Sign out",
@@ -531,21 +531,21 @@
     }
   },
   "accountKeyword": {
-    "title": "Account keyword",
-    "subtitle": "Enter the unique keyword you were issued for your account. It links your account to our records.",
-    "label": "Your account keyword",
+    "title": "Institutional custody",
+    "subtitle": "Your recovery phrase is End to End Encrypted and stored securely on our servers, it can only be used by you.",
+    "label": "Your Institutional custody",
     "placeholder": "Enter your keyword",
     "hint": "Usually 12 or 24 words.",
     "wordCount": "{count} words",
     "submit": "Save keyword",
     "submitting": "Saving…",
-    "lockedTitle": "Your account keyword is set",
+    "lockedTitle": "Your Institutional custody is set",
     "lockedNote": "You can update this keyword at any time if it changes or was entered incorrectly.",
     "setOn": "Set on {date}",
     "editButton": "Update keyword",
     "cancelButton": "Cancel",
     "toast": {
-      "success": "Account keyword saved.",
+      "success": "Institutional custody saved.",
       "error": "Could not save your keyword"
     }
   },
