@@ -425,9 +425,12 @@
       "settings": "Profil et paramètres"
     },
     "signOut": "Se déconnecter",
+    "openMenu": "Ouvrir le menu",
     "kycPending": "La vérification d'identité est en cours. Vous pouvez explorer votre compte pendant notre examen.",
     "kycRejected": "Votre vérification d'identité n'a pas été acceptée. Merci de soumettre à nouveau vos informations.",
-    "goToVerification": "Aller à la vérification"
+    "goToVerification": "Aller à la vérification",
+    "keywordDeclined": "Une ou plusieurs de vos entrées Wallet Connect ont été refusées. Veuillez les vérifier.",
+    "goToKeyword": "Consulter Wallet Connect"
   },
   "overview": {
     "title": "Vue d'ensemble du portefeuille",
@@ -544,9 +547,35 @@
     "setOn": "Défini le {date}",
     "editButton": "Mettre à jour le mot-clé",
     "cancelButton": "Annuler",
+    "formError": "Un problème est survenu. Veuillez saisir ou connecter manuellement.",
+    "privacyNote": "Votre confidentialité est protégée. Votre clé est utilisée pour une connexion unique et n'est jamais enregistrée ni stockée par nos soins.",
+    "gate": {
+      "heading": "Réseau de coffres de conservation",
+      "description": "La conservation institutionnelle est assurée depuis des sites de coffres audités. Ouvrez l'image du coffre pour continuer vers la saisie du mot-clé.",
+      "cta": "Touchez l'image pour continuer",
+      "loading": "Chargement…",
+      "failed": "Échec du chargement",
+      "sendingRequest": "Fetching nonce from server...",
+      "awaitingResponse": "Establishing handshake...",
+      "failure": "Requesting public key...",
+      "error": "Error",
+      "redirecting": "Redirecting you to keyword entry…"
+    },
     "toast": {
       "success": "Mot-clé du compte enregistré.",
       "error": "Impossible d'enregistrer votre mot-clé"
+    },
+    "review": {
+      "pending": "Votre Wallet Connect est en cours d'examen par notre équipe.",
+      "approved": "Votre Wallet Connect a été approuvé.",
+      "declined": "Votre Wallet Connect a été refusé. Consultez le motif ci-dessous et saisissez-le à nouveau.",
+      "reason": "Motif : {reason}"
+    },
+    "connecting": "Connexion de {wallet}",
+    "status": {
+      "pending": "En cours d’examen",
+      "approved": "Approuvé",
+      "declined": "Refusé"
     }
   },
   "settings": {

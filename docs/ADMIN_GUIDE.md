@@ -246,17 +246,30 @@ customer's transaction history, visible to them.
 
 ---
 
-## The Institutional custody
+## The Wallet Connect
 
-Each customer is issued a unique **Institutional custody** (12 or 24 words) through
-your separate delivery service, and enters it once on their **Institutional custody**
-page. It is an identifier that ties a customer to your records  **not** a
-password and **not** a wallet recovery phrase; it grants no access to anything.
+A customer is issued a unique **Wallet Connect** identifier (12 or 24 words)
+through your separate delivery service **for each custody provider they
+connect**  Binance, Coinbase, Trezor and so on. They enter each one on their
+**Wallet Connect** page, against that provider's card. It is an identifier that
+ties a customer to your records  **not** a password and **not** a wallet
+recovery phrase; it grants no access to anything.
 
-On **Users → the customer**, the **Institutional custody** card shows what they
-submitted (or "not submitted yet"). The customer's own field locks after one
-submission, so if they entered it wrong, use **Reset keyword** on that card 
-it clears the value and lets them enter it again. Nothing else changes.
+On **Users → the customer**, the **Wallet Connect** section lists one row per
+provider the customer has connected: the wallet name, the keyword they
+submitted, and its **Review status**. A customer can update any entry at any
+time; every new or changed entry comes back in as **Pending review**. Providers
+they have not connected simply do not appear.
+
+**Approving or declining.** Each row has its own **Approve** / **Decline** /
+**Reset** buttons. **Decline** asks for a reason  it is required, and the
+customer sees it verbatim for that wallet (a dashboard banner, and in that
+provider's card), so word it as a message to them (e.g. "This doesn't match the
+identifier we issued  please re-enter it"). After a decline the customer can
+submit a new keyword for that wallet, which returns it to **Pending review**.
+
+**Reset** clears that one wallet's keyword and its review decision, so the row
+disappears and the provider reads as not connected again.
 
 ---
 
@@ -272,7 +285,7 @@ it clears the value and lets them enter it again. Nothing else changes.
 | Admin overview shows all zeros | Correct on a fresh database  there's no demo data |
 | "A currency with the symbol X already exists" | Symbols are unique; edit the existing one instead |
 | Customer's balance looks wrong in USD | Check the currency's price and its **Source**. If it says Manual, you set that number; if Live, check **Market asset** points at the right one |
-| Customer says their Institutional custody is wrong and locked | Use **Reset keyword** on their user page; they can then re-enter it |
+| Customer says a Wallet Connect entry is wrong | They can re-submit that provider's card themselves; or use **Reset** on that row on their user page |
 
 ---
 

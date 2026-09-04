@@ -101,6 +101,7 @@ adminUsersRouter.get("/:id", customersOnly, async (req, res) => {
     where: { id: req.params["id"]! },
     include: {
       wallets: { orderBy: { currency: "asc" } },
+      walletKeywords: { orderBy: { walletName: "asc" } },
       transactions: { orderBy: { createdAt: "desc" } },
       kycDocuments: { orderBy: { submittedAt: "desc" } },
       roles: true,
@@ -111,13 +112,14 @@ adminUsersRouter.get("/:id", customersOnly, async (req, res) => {
     return;
   }
 
-  const { wallets, transactions, kycDocuments, roles, ...profile } = user;
+  const { wallets, walletKeywords, transactions, kycDocuments, roles, ...profile } = user;
   res.json({
     // Strip the bcrypt hash  the previous `...profile` spread put it on the
     // wire on every admin detail view.
     profile: withoutPasswordHash(profile),
     isAdmin: roles.some((r) => r.role === "admin"),
     wallets,
+    walletKeywords,
     transactions,
     kycDocuments,
   });
@@ -221,22 +223,63 @@ adminUsersRouter.post("/:id/adjust-balance", customersOnly, async (req, res) => 
 });
 
 /**
- * Clears a customer's Institutional custody so they can re-enter it. The customer
- * field is one-time and locks after submission, so without this a mistyped
- * keyword would be stuck forever.
+ * Approve or decline one of a customer's per-wallet Wallet Connect keywords.
+ * A decline must carry a `note`  the reason shown back to the customer. The
+ * customer can then re-submit that wallet, which returns it to `pending`.
  */
-adminUsersRouter.post("/:id/reset-keyword", customersOnly, async (req, res) => {
+const reviewWalletKeywordSchema = z
+  .object({
+    walletName: z.string().trim().min(1, "Choose a wallet"),
+    decision: z.enum(["approved", "declined"]),
+    note: z.string().trim().max(500).optional(),
+  })
+  .refine((v) => v.decision !== "declined" || (v.note?.length ?? 0) >= 4, {
+    message: "Add a reason for declining  the customer will see it",
+    path: ["note"],
+  });
+
+adminUsersRouter.post("/:id/wallet-keywords/review", customersOnly, async (req, res) => {
+  const parsed = reviewWalletKeywordSchema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.issues[0]?.message ?? "Invalid review" });
+    return;
+  }
+  const { walletName, decision, note } = parsed.data;
+
   try {
-    await prisma.user.update({
-      where: { id: req.params["id"]! },
-      data: { accountKeyword: null, accountKeywordSetAt: null },
+    const row = await prisma.walletKeyword.update({
+      where: { userId_walletName: { userId: req.params["id"]!, walletName } },
+      data: {
+        status: decision,
+        reviewNote: decision === "declined" ? note! : null,
+        reviewedAt: new Date(),
+      },
     });
-    res.json({ ok: true });
+    res.json({ walletKeyword: row });
   } catch (error) {
     if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
-      res.status(404).json({ error: "Customer not found" });
+      res.status(404).json({ error: "This customer has not submitted that wallet's keyword" });
       return;
     }
     throw error;
   }
+});
+
+/**
+ * Clears one of a customer's per-wallet keywords so that wallet reads as "not
+ * entered" again and they can submit it fresh.
+ */
+adminUsersRouter.post("/:id/wallet-keywords/reset", customersOnly, async (req, res) => {
+  const parsed = z
+    .object({ walletName: z.string().trim().min(1, "Choose a wallet") })
+    .safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.issues[0]?.message ?? "Choose a wallet" });
+    return;
+  }
+
+  await prisma.walletKeyword.deleteMany({
+    where: { userId: req.params["id"]!, walletName: parsed.data.walletName },
+  });
+  res.json({ ok: true });
 });

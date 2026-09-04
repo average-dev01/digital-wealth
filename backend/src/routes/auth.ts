@@ -52,8 +52,6 @@ function publicUser(user: {
   country: string | null;
   dob: Date | null;
   kycStatus: string;
-  accountKeyword: string | null;
-  accountKeywordSetAt: Date | null;
   createdAt: Date;
 }) {
   return {
@@ -63,11 +61,6 @@ function publicUser(user: {
     country: user.country,
     dob: user.dob,
     kycStatus: user.kycStatus,
-    // The customer's own out-of-band identifier  carried on the session so
-    // the account-keyword page can render its locked state without a second
-    // request. Never returned for anyone but the account holder here.
-    accountKeyword: user.accountKeyword,
-    accountKeywordSetAt: user.accountKeywordSetAt,
     createdAt: user.createdAt,
   };
 }

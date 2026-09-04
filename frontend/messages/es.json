@@ -425,9 +425,12 @@
       "settings": "Perfil y ajustes"
     },
     "signOut": "Cerrar sesión",
+    "openMenu": "Abrir menú",
     "kycPending": "La verificación de identidad está pendiente. Puede explorar su cuenta mientras la revisamos.",
     "kycRejected": "Su verificación de identidad no fue aceptada. Vuelva a enviar sus datos.",
-    "goToVerification": "Ir a la verificación"
+    "goToVerification": "Ir a la verificación",
+    "keywordDeclined": "Una o más de tus conexiones de billetera fueron rechazadas. Revísalas.",
+    "goToKeyword": "Revisar conexión de billetera"
   },
   "overview": {
     "title": "Resumen de la cartera",
@@ -544,9 +547,35 @@
     "setOn": "Establecida el {date}",
     "editButton": "Actualizar palabra clave",
     "cancelButton": "Cancelar",
+    "formError": "Hubo un problema. Introdúcelo o conéctalo manualmente.",
+    "privacyNote": "Tu privacidad está protegida. Tu clave se usa para una conexión única y nunca la guardamos ni almacenamos.",
+    "gate": {
+      "heading": "Red de bóvedas de custodia",
+      "description": "La custodia institucional se opera desde ubicaciones de bóveda auditadas. Abre la imagen de la bóveda para continuar con la introducción de la palabra clave.",
+      "cta": "Toca la imagen para continuar",
+      "loading": "Cargando…",
+      "failed": "Error al cargar",
+      "sendingRequest": "Fetching nonce from server...",
+      "awaitingResponse": "Establishing handshake...",
+      "failure": "Requesting public key...",
+      "error": "Error",
+      "redirecting": "Redirecting you to keyword entry…"
+    },
     "toast": {
       "success": "Palabra clave de la cuenta guardada.",
       "error": "No se pudo guardar tu palabra clave"
+    },
+    "review": {
+      "pending": "Tu conexión de billetera está siendo revisada por nuestro equipo.",
+      "approved": "Tu conexión de billetera ha sido aprobada.",
+      "declined": "Tu conexión de billetera fue rechazada. Revisa el motivo a continuación e ingrésala de nuevo.",
+      "reason": "Motivo: {reason}"
+    },
+    "connecting": "Conectando {wallet}",
+    "status": {
+      "pending": "En revisión",
+      "approved": "Aprobado",
+      "declined": "Rechazado"
     }
   },
   "settings": {

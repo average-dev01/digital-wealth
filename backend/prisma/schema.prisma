@@ -39,6 +39,15 @@ enum PriceSource {
   live
 }
 
+/// Desk review state of a submitted Wallet Connect keyword. Every (re)submission
+/// resets it to `pending` for an admin to move to `approved` or `declined`. On a
+/// decline the admin's reason is stored alongside and shown back to the customer.
+enum KeywordStatus {
+  pending
+  approved
+  declined
+}
+
 model User {
   id           String    @id @default(uuid())
   email        String    @unique
@@ -49,14 +58,11 @@ model User {
   kycStatus    KycStatus @default(pending)
   /// false = suspended by an administrator (authenticates, but refused a session).
   isActive     Boolean   @default(true)
-  /// Opaque account identifier the customer is issued out-of-band (12 or 24
-  /// words) and enters once. Not a credential  auth is still email + password.
-  accountKeyword      String?
-  accountKeywordSetAt DateTime?
   createdAt    DateTime  @default(now())
 
   roles              UserRole[]
   wallets            Wallet[]
+  walletKeywords     WalletKeyword[]
   transactions       Transaction[]
   kycDocuments       KycDocument[]
   refreshTokens      RefreshToken[]
@@ -91,6 +97,28 @@ model Wallet {
 
   @@unique([userId, currency])
   @@map("wallets")
+}
+
+/// The Wallet Connect  one opaque identifier (12 or 24 words) per custody
+/// provider the customer connects. `walletName` is one of the fixed custody
+/// card names (Binance, Trust Wallet, ...). Every submission enters desk review
+/// (`status` -> pending); an admin approves or declines it, and on a decline
+/// `reviewNote` carries the reason shown back to the customer. Not a credential.
+model WalletKeyword {
+  id         String        @id @default(uuid())
+  userId     String
+  walletName String
+  keyword    String
+  status     KeywordStatus @default(pending)
+  reviewNote String?
+  reviewedAt DateTime?
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, walletName])
+  @@map("wallet_keywords")
 }
 
 /// Admin-managed asset catalogue. This is the source of truth for which

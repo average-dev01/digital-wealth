@@ -2,6 +2,8 @@ import { fetchApi } from "./client";
 
 export type KycStatus = "pending" | "verified" | "rejected";
 export type UserRole = "ADMIN" | "CUSTOMER";
+/** Desk review state of a submitted Wallet Connect keyword. */
+export type KeywordStatus = "pending" | "approved" | "declined";
 
 export type Profile = {
   id: string;
@@ -10,9 +12,6 @@ export type Profile = {
   country: string | null;
   dob: string | null;
   kyc_status: KycStatus;
-  /** Opaque account identifier the customer enters once; null until they do. */
-  account_keyword: string | null;
-  account_keyword_set_at: string | null;
   role: UserRole;
   /**
    * Always true for the signed-in user: a suspended account is refused a
@@ -30,8 +29,6 @@ export type BackendUser = {
   country: string | null;
   dob: string | null;
   kycStatus: KycStatus;
-  accountKeyword: string | null;
-  accountKeywordSetAt: string | null;
   createdAt: string;
 };
 
@@ -46,8 +43,6 @@ export function toProfile(user: BackendUser, isAdmin: boolean): Profile {
     country: user.country,
     dob: user.dob,
     kyc_status: user.kycStatus,
-    account_keyword: user.accountKeyword ?? null,
-    account_keyword_set_at: user.accountKeywordSetAt ?? null,
     role: isAdmin ? "ADMIN" : "CUSTOMER",
     is_active: true,
     created_at: user.createdAt,

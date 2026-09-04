@@ -1,10 +1,13 @@
 /**
- * The Institutional custody: an identifier a customer can enter or update at any
- * time, and the desk reads.
+ * Wallet Connect  one opaque identifier per custody provider the customer
+ * connects. Each (user, walletName) pair is an independent row with its own
+ * desk-review status.
  *
  * It is deliberately NOT a credential  these cases pin down the things that
- * matter: it can be resubmitted to overwrite a previous value, it never
- * rejects on word count, and it stays on the customer side of the role split.
+ * matter: a keyword can be resubmitted per wallet to overwrite a previous
+ * value, submissions never reject on word count, each wallet's review status
+ * is tracked and shown independently, and the whole feature stays on the
+ * customer side of the role split.
  */
 import { describe, expect, it } from "vitest";
 import request from "supertest";
@@ -59,155 +62,245 @@ async function signInAdmin() {
   return { agent, csrf };
 }
 
+function submit(
+  customer: { agent: ReturnType<typeof request.agent>; csrf: string },
+  walletName: string,
+  keyword: string,
+) {
+  return customer.agent
+    .post("/account-keyword")
+    .set("X-CSRF-Token", customer.csrf)
+    .send({ walletName, keyword });
+}
+
 const TWELVE = "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima";
 const TWENTY_FOUR = `${TWELVE} mike november oscar papa quebec romeo sierra tango uniform victor whiskey xray`;
 
-describe("Institutional custody  customer submit", () => {
-  it("stores the keyword and reflects it on the session", async () => {
-    const { agent, csrf } = await signUpCustomer();
+describe("Wallet Connect  customer submit", () => {
+  it("stores a keyword per wallet and lists it back as pending review", async () => {
+    const customer = await signUpCustomer();
 
-    const res = await agent
-      .post("/account-keyword")
-      .set("X-CSRF-Token", csrf)
-      .send({ keyword: TWELVE });
-
+    const res = await submit(customer, "Binance", TWELVE);
     expect(res.status).toBe(200);
-    expect(res.body.accountKeyword).toBe(TWELVE);
-    expect(res.body.accountKeywordSetAt).toBeTruthy();
+    expect(res.body).toMatchObject({
+      walletName: "Binance",
+      keyword: TWELVE,
+      status: "pending",
+      reviewNote: null,
+    });
 
-    const me = await agent.get("/auth/me");
-    expect(me.body.user.accountKeyword).toBe(TWELVE);
-    expect(me.body.user.accountKeywordSetAt).toBeTruthy();
+    const list = await customer.agent.get("/account-keyword");
+    expect(list.status).toBe(200);
+    expect(list.body).toHaveLength(1);
+    expect(list.body[0]).toMatchObject({
+      walletName: "Binance",
+      keyword: TWELVE,
+      status: "pending",
+    });
   });
 
-  it("allows overwriting a previously submitted keyword", async () => {
-    const { agent, csrf } = await signUpCustomer();
-    await agent.post("/account-keyword").set("X-CSRF-Token", csrf).send({ keyword: TWELVE });
+  it("tracks each wallet independently", async () => {
+    const customer = await signUpCustomer();
+    await submit(customer, "Binance", TWELVE);
+    await submit(customer, "Coinbase", TWENTY_FOUR);
 
-    const second = await agent
-      .post("/account-keyword")
-      .set("X-CSRF-Token", csrf)
-      .send({ keyword: TWENTY_FOUR });
+    const list = await customer.agent.get("/account-keyword");
+    const byWallet = Object.fromEntries(
+      (list.body as Array<{ walletName: string; keyword: string }>).map((r) => [
+        r.walletName,
+        r.keyword,
+      ]),
+    );
+    expect(byWallet).toEqual({ Binance: TWELVE, Coinbase: TWENTY_FOUR });
+  });
 
+  it("overwrites a previously submitted keyword for the same wallet", async () => {
+    const customer = await signUpCustomer();
+    await submit(customer, "Trezor", TWELVE);
+
+    const second = await submit(customer, "Trezor", TWENTY_FOUR);
     expect(second.status).toBe(200);
-    expect(second.body.accountKeyword).toBe(TWENTY_FOUR);
-    const me = await agent.get("/auth/me");
-    expect(me.body.user.accountKeyword).toBe(TWENTY_FOUR); // overwritten
+    expect(second.body.keyword).toBe(TWENTY_FOUR);
+
+    const list = await customer.agent.get("/account-keyword");
+    expect(list.body).toHaveLength(1);
+    expect(list.body[0].keyword).toBe(TWENTY_FOUR);
   });
 
-  it("accepts both 12 and 24 word keywords verbatim", async () => {
-    const twelve = await signUpCustomer();
-    const r12 = await twelve.agent
-      .post("/account-keyword")
-      .set("X-CSRF-Token", twelve.csrf)
-      .send({ keyword: TWELVE });
-    expect(r12.body.accountKeyword.split(" ")).toHaveLength(12);
+  it("accepts both 12 and 24 word keywords verbatim and does not enforce word count", async () => {
+    const customer = await signUpCustomer();
 
-    const twentyFour = await signUpCustomer();
-    const r24 = await twentyFour.agent
-      .post("/account-keyword")
-      .set("X-CSRF-Token", twentyFour.csrf)
-      .send({ keyword: TWENTY_FOUR });
-    expect(r24.body.accountKeyword.split(" ")).toHaveLength(24);
-  });
+    const r12 = await submit(customer, "Binance", TWELVE);
+    expect(r12.body.keyword.split(" ")).toHaveLength(12);
 
-  it("does not reject a non 12/24 word count", async () => {
-    const { agent, csrf } = await signUpCustomer();
-
-    const res = await agent
-      .post("/account-keyword")
-      .set("X-CSRF-Token", csrf)
-      .send({ keyword: "one two three four five six seven" });
-
-    // Word count is indicated in the UI, never enforced by the API.
-    expect(res.status).toBe(200);
-    expect(res.body.accountKeyword.split(" ")).toHaveLength(7);
+    const r7 = await submit(customer, "Exodus", "one two three four five six seven");
+    expect(r7.status).toBe(200);
+    expect(r7.body.keyword.split(" ")).toHaveLength(7);
   });
 
   it("collapses newlines and extra whitespace before storing", async () => {
-    const { agent, csrf } = await signUpCustomer();
+    const customer = await signUpCustomer();
 
-    const res = await agent
-      .post("/account-keyword")
-      .set("X-CSRF-Token", csrf)
-      .send({ keyword: "  alpha\n\nbravo   charlie\tdelta  " });
-
+    const res = await submit(customer, "Metamask", "  alpha\n\nbravo   charlie\tdelta  ");
     expect(res.status).toBe(200);
-    expect(res.body.accountKeyword).toBe("alpha bravo charlie delta");
+    expect(res.body.keyword).toBe("alpha bravo charlie delta");
   });
 
   it("rejects an empty keyword", async () => {
-    const { agent, csrf } = await signUpCustomer();
-
-    const res = await agent
-      .post("/account-keyword")
-      .set("X-CSRF-Token", csrf)
-      .send({ keyword: "   \n  " });
-
+    const customer = await signUpCustomer();
+    const res = await submit(customer, "Binance", "   \n  ");
     expect(res.status).toBe(400);
   });
 
-  it("allows resubmitting the same value idempotently", async () => {
-    const { agent, csrf } = await signUpCustomer();
-    await agent.post("/account-keyword").set("X-CSRF-Token", csrf).send({ keyword: TWELVE });
-
-    const res = await agent
-      .post("/account-keyword")
-      .set("X-CSRF-Token", csrf)
-      .send({ keyword: TWELVE });
-
-    expect(res.status).toBe(200);
-    expect(res.body.accountKeyword).toBe(TWELVE);
+  it("rejects an unknown wallet name", async () => {
+    const customer = await signUpCustomer();
+    const res = await submit(customer, "MyBank", TWELVE);
+    expect(res.status).toBe(400);
   });
 
   it("refuses a desk admin (customers only)", async () => {
-    const { agent, csrf } = await signInAdmin();
-
-    const res = await agent
+    const admin = await signInAdmin();
+    const res = await admin.agent
       .post("/account-keyword")
-      .set("X-CSRF-Token", csrf)
-      .send({ keyword: TWELVE });
-
+      .set("X-CSRF-Token", admin.csrf)
+      .send({ walletName: "Binance", keyword: TWELVE });
     expect(res.status).toBe(403);
   });
 });
 
-describe("Institutional custody  admin visibility", () => {
-  it("shows the keyword on the customer detail and never the password hash", async () => {
+describe("Wallet Connect  desk review", () => {
+  async function customerWith(walletName: string) {
     const customer = await signUpCustomer();
-    await customer.agent
-      .post("/account-keyword")
-      .set("X-CSRF-Token", customer.csrf)
-      .send({ keyword: TWELVE });
+    await submit(customer, walletName, TWELVE);
+    return customer;
+  }
+
+  it("shows every submitted keyword on the customer detail and never the password hash", async () => {
+    const customer = await signUpCustomer();
+    await submit(customer, "Binance", TWELVE);
+    await submit(customer, "Coinbase", TWENTY_FOUR);
 
     const { agent } = await signInAdmin();
     const res = await agent.get(`/admin/users/${customer.userId}`);
 
     expect(res.status).toBe(200);
-    expect(res.body.profile.accountKeyword).toBe(TWELVE);
     expect(res.body.profile.passwordHash).toBeUndefined();
+    const names = (res.body.walletKeywords as Array<{ walletName: string }>).map(
+      (r) => r.walletName,
+    );
+    expect(names.sort()).toEqual(["Binance", "Coinbase"]);
   });
 
-  it("lets an admin clear the keyword on a customer's behalf", async () => {
+  it("approves one wallet without touching another", async () => {
     const customer = await signUpCustomer();
-    await customer.agent
-      .post("/account-keyword")
-      .set("X-CSRF-Token", customer.csrf)
-      .send({ keyword: TWELVE });
-
+    await submit(customer, "Binance", TWELVE);
+    await submit(customer, "Coinbase", TWENTY_FOUR);
     const admin = await signInAdmin();
+
+    const res = await admin.agent
+      .post(`/admin/users/${customer.userId}/wallet-keywords/review`)
+      .set("X-CSRF-Token", admin.csrf)
+      .send({ walletName: "Binance", decision: "approved" });
+    expect(res.status).toBe(200);
+    expect(res.body.walletKeyword).toMatchObject({ walletName: "Binance", status: "approved" });
+
+    const list = await customer.agent.get("/account-keyword");
+    const byWallet = Object.fromEntries(
+      (list.body as Array<{ walletName: string; status: string }>).map((r) => [
+        r.walletName,
+        r.status,
+      ]),
+    );
+    expect(byWallet).toEqual({ Binance: "approved", Coinbase: "pending" });
+  });
+
+  it("declines with a reason the customer can read for that wallet", async () => {
+    const customer = await customerWith("Trust Wallet");
+    const admin = await signInAdmin();
+
+    const res = await admin.agent
+      .post(`/admin/users/${customer.userId}/wallet-keywords/review`)
+      .set("X-CSRF-Token", admin.csrf)
+      .send({
+        walletName: "Trust Wallet",
+        decision: "declined",
+        note: "Does not match the identifier we issued you.",
+      });
+    expect(res.status).toBe(200);
+
+    const list = await customer.agent.get("/account-keyword");
+    expect(list.body[0]).toMatchObject({
+      walletName: "Trust Wallet",
+      status: "declined",
+      reviewNote: "Does not match the identifier we issued you.",
+    });
+  });
+
+  it("rejects a decline with no reason", async () => {
+    const customer = await customerWith("Binance");
+    const admin = await signInAdmin();
+
+    const res = await admin.agent
+      .post(`/admin/users/${customer.userId}/wallet-keywords/review`)
+      .set("X-CSRF-Token", admin.csrf)
+      .send({ walletName: "Binance", decision: "declined" });
+    expect(res.status).toBe(400);
+  });
+
+  it("returns that wallet to pending review when the customer re-submits", async () => {
+    const customer = await customerWith("Binance");
+    const admin = await signInAdmin();
+
+    await admin.agent
+      .post(`/admin/users/${customer.userId}/wallet-keywords/review`)
+      .set("X-CSRF-Token", admin.csrf)
+      .send({ walletName: "Binance", decision: "declined", note: "Please re-enter it." });
+
+    await submit(customer, "Binance", TWENTY_FOUR);
+
+    const list = await customer.agent.get("/account-keyword");
+    expect(list.body[0]).toMatchObject({
+      status: "pending",
+      reviewNote: null,
+      keyword: TWENTY_FOUR,
+    });
+  });
+
+  it("404s when reviewing a wallet the customer has not submitted", async () => {
+    const customer = await customerWith("Binance");
+    const admin = await signInAdmin();
+
+    const res = await admin.agent
+      .post(`/admin/users/${customer.userId}/wallet-keywords/review`)
+      .set("X-CSRF-Token", admin.csrf)
+      .send({ walletName: "Coinbase", decision: "approved" });
+    expect(res.status).toBe(404);
+  });
+
+  it("lets an admin reset one wallet's keyword back to not-entered", async () => {
+    const customer = await signUpCustomer();
+    await submit(customer, "Binance", TWELVE);
+    await submit(customer, "Coinbase", TWENTY_FOUR);
+    const admin = await signInAdmin();
+
     const reset = await admin.agent
-      .post(`/admin/users/${customer.userId}/reset-keyword`)
-      .set("X-CSRF-Token", admin.csrf);
+      .post(`/admin/users/${customer.userId}/wallet-keywords/reset`)
+      .set("X-CSRF-Token", admin.csrf)
+      .send({ walletName: "Binance" });
     expect(reset.status).toBe(200);
 
-    // The customer can also just resubmit directly at any time  reset isn't
-    // a prerequisite any more, but the admin escape hatch still works.
-    const resubmit = await customer.agent
-      .post("/account-keyword")
+    const list = await customer.agent.get("/account-keyword");
+    const names = (list.body as Array<{ walletName: string }>).map((r) => r.walletName);
+    expect(names).toEqual(["Coinbase"]);
+  });
+
+  it("refuses a non-admin caller", async () => {
+    const customer = await customerWith("Binance");
+
+    const res = await customer.agent
+      .post(`/admin/users/${customer.userId}/wallet-keywords/review`)
       .set("X-CSRF-Token", customer.csrf)
-      .send({ keyword: TWENTY_FOUR });
-    expect(resubmit.status).toBe(200);
-    expect(resubmit.body.accountKeyword).toBe(TWENTY_FOUR);
+      .send({ walletName: "Binance", decision: "approved" });
+    expect(res.status).toBe(403);
   });
 });

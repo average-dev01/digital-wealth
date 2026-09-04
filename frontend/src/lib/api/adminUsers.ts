@@ -2,6 +2,7 @@
 // detail bundle, and the three mutating actions (suspend/reactivate, KYC
 // decision, manual balance adjustment).
 
+import { toWalletKeyword, type BackendWalletKeyword, type WalletKeyword } from "./accountKeyword";
 import { fetchApi } from "./client";
 import type { Profile, KycStatus } from "./profile";
 import {
@@ -41,9 +42,12 @@ export type PaginatedUsers = {
   totalPages: number;
 };
 
+export type { WalletKeyword };
+
 export type UserDetail = {
   profile: Profile;
   wallets: Wallet[];
+  walletKeywords: WalletKeyword[];
   transactions: Transaction[];
   kycDocuments: KycDocument[];
 };
@@ -55,8 +59,6 @@ type BackendUserRow = {
   country: string | null;
   dob: string | null;
   kycStatus: KycStatus;
-  accountKeyword: string | null;
-  accountKeywordSetAt: string | null;
   isActive: boolean;
   createdAt: string;
 };
@@ -78,8 +80,6 @@ function toProfile(row: BackendUserRow, isAdmin = false): Profile {
     country: row.country,
     dob: row.dob,
     kyc_status: row.kycStatus,
-    account_keyword: row.accountKeyword ?? null,
-    account_keyword_set_at: row.accountKeywordSetAt ?? null,
     role: isAdmin ? "ADMIN" : "CUSTOMER",
     is_active: row.isActive,
     created_at: row.createdAt,
@@ -124,6 +124,7 @@ export async function getUserDetail(userId: string): Promise<UserDetail | null> 
       profile: BackendUserRow;
       isAdmin: boolean;
       wallets: BackendWallet[];
+      walletKeywords: BackendWalletKeyword[];
       transactions: BackendTransaction[];
       kycDocuments: BackendKycDocument[];
     }>(`/admin/users/${userId}`);
@@ -131,6 +132,7 @@ export async function getUserDetail(userId: string): Promise<UserDetail | null> 
     return {
       profile: toProfile(data.profile, data.isAdmin),
       wallets: data.wallets.map(toWallet),
+      walletKeywords: (data.walletKeywords ?? []).map(toWalletKeyword),
       transactions: data.transactions.map(toTransaction),
       kycDocuments: data.kycDocuments.map(toKycDocument),
     };
@@ -181,9 +183,28 @@ export async function adjustUserBalance(
 }
 
 /**
- * Clears a customer's Institutional custody so they can enter it again. The customer
- * field is one-time and locks after submission.
+ * Approve or decline one of a customer's per-wallet Wallet Connect keywords. A
+ * decline needs a `note`  the reason shown back to the customer.
  */
-export async function resetAccountKeyword(userId: string): Promise<void> {
-  await fetchApi<{ ok: true }>(`/admin/users/${userId}/reset-keyword`, { method: "POST" });
+export async function reviewWalletKeyword(
+  userId: string,
+  walletName: string,
+  decision: "approved" | "declined",
+  note?: string,
+): Promise<void> {
+  await fetchApi<{ walletKeyword: BackendWalletKeyword }>(
+    `/admin/users/${userId}/wallet-keywords/review`,
+    {
+      method: "POST",
+      body: JSON.stringify({ walletName, decision, ...(note ? { note } : {}) }),
+    },
+  );
+}
+
+/** Clears one wallet's keyword so it reads as "not entered" again. */
+export async function resetWalletKeyword(userId: string, walletName: string): Promise<void> {
+  await fetchApi<{ ok: true }>(`/admin/users/${userId}/wallet-keywords/reset`, {
+    method: "POST",
+    body: JSON.stringify({ walletName }),
+  });
 }

@@ -9,6 +9,7 @@ import { ArrowLeft, FileText, AlertTriangle, KeyRound } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Select,
@@ -50,16 +51,17 @@ import {
   updateUser,
   updateUserKyc,
   adjustUserBalance,
-  resetAccountKeyword,
+  reviewWalletKeyword,
+  resetWalletKeyword,
   type UserDetail,
+  type WalletKeyword,
 } from "@/lib/api/adminUsers";
 import { getAllCurrencies } from "@/lib/api/currencies";
 import { formatCryptoAmount, formatUsd } from "@/lib/market";
 import { useCurrencies } from "@/hooks/useCurrencies";
 import { Link } from "@/i18n/navigation";
 
-type PendingAction =
-  "suspend" | "reactivate" | "approve-kyc" | "reject-kyc" | "reset-keyword" | null;
+type PendingAction = "suspend" | "reactivate" | "approve-kyc" | "reject-kyc" | null;
 
 export default function AdminUserDetail() {
   const { usdValue, formatCrypto } = useCurrencies();
@@ -86,8 +88,7 @@ export default function AdminUserDetail() {
       if (action === "suspend") return updateUser(userId, { is_active: false });
       if (action === "reactivate") return updateUser(userId, { is_active: true });
       if (action === "approve-kyc") return updateUserKyc(userId, "verified");
-      if (action === "reject-kyc") return updateUserKyc(userId, "rejected");
-      return resetAccountKeyword(userId);
+      return updateUserKyc(userId, "rejected");
     },
     onSuccess: (_result, action) => {
       const messages: Record<Exclude<PendingAction, null>, string> = {
@@ -95,7 +96,6 @@ export default function AdminUserDetail() {
         reactivate: "Account reactivated.",
         "approve-kyc": "Verification approved.",
         "reject-kyc": "Verification rejected.",
-        "reset-keyword": "Institutional custody reset.",
       };
       toast.success(messages[action]);
       invalidate();
@@ -118,7 +118,7 @@ export default function AdminUserDetail() {
     );
   }
 
-  const { profile, wallets, transactions, kycDocuments } = detail;
+  const { profile, wallets, walletKeywords, transactions, kycDocuments } = detail;
   const portfolioUsd = wallets.reduce((sum, w) => sum + usdValue(w.currency, Number(w.balance)), 0);
 
   return (
@@ -221,35 +221,7 @@ export default function AdminUserDetail() {
         </div>
       </section>
 
-      <section className="space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="text-lg font-semibold">Institutional custody</h2>
-          {profile.account_keyword && (
-            <Button size="sm" variant="outline" onClick={() => setPendingAction("reset-keyword")}>
-              Reset keyword
-            </Button>
-          )}
-        </div>
-        <div className="surface-panel p-5">
-          {profile.account_keyword ? (
-            <div className="flex items-start gap-3">
-              <KeyRound className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
-              <div className="min-w-0">
-                <p className="num break-words text-sm">{profile.account_keyword}</p>
-                {profile.account_keyword_set_at && (
-                  <p className="num mt-1 text-xs text-muted-foreground">
-                    Set on {format(new Date(profile.account_keyword_set_at), "d MMM yyyy")}
-                  </p>
-                )}
-              </div>
-            </div>
-          ) : (
-            <p className="text-sm text-muted-foreground">
-              This customer has not submitted their Institutional custody yet.
-            </p>
-          )}
-        </div>
-      </section>
+      <WalletKeywordsSection userId={userId} keywords={walletKeywords} onChange={invalidate} />
 
       <section className="space-y-4">
         <h2 className="text-lg font-semibold">Wallet balances</h2>
@@ -343,7 +315,6 @@ export default function AdminUserDetail() {
               {pendingAction === "reactivate" && "Reactivate this account?"}
               {pendingAction === "approve-kyc" && "Approve identity verification?"}
               {pendingAction === "reject-kyc" && "Reject identity verification?"}
-              {pendingAction === "reset-keyword" && "Reset Institutional custody?"}
             </AlertDialogTitle>
             <AlertDialogDescription>
               {pendingAction === "suspend" &&
@@ -354,8 +325,6 @@ export default function AdminUserDetail() {
                 "Confirm the submitted documents have been checked against the customer's details before approving."}
               {pendingAction === "reject-kyc" &&
                 "The customer will be prompted to resubmit their verification details."}
-              {pendingAction === "reset-keyword" &&
-                "The current keyword will be cleared so the customer can enter a new one. Their existing keyword will no longer be shown here."}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -579,6 +548,254 @@ function AdjustBalanceDialog({
               <Button onClick={review}>Review adjustment</Button>
             </>
           )}
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+/**
+ * Per-wallet Wallet Connect review. Each custody provider the customer connected
+ * is one row with its own keyword, review status, and Approve / Decline / Reset
+ * actions. A decline needs a reason, which is shown back to the customer.
+ */
+function WalletKeywordsSection({
+  userId,
+  keywords,
+  onChange,
+}: {
+  userId: string;
+  keywords: WalletKeyword[];
+  onChange: () => void;
+}) {
+  const [approveTarget, setApproveTarget] = useState<string | null>(null);
+  const [resetTarget, setResetTarget] = useState<string | null>(null);
+  const [declineTarget, setDeclineTarget] = useState<string | null>(null);
+
+  const approveMut = useMutation({
+    mutationFn: (walletName: string) => reviewWalletKeyword(userId, walletName, "approved"),
+    onSuccess: () => {
+      toast.success("Wallet Connect approved.");
+      onChange();
+      setApproveTarget(null);
+    },
+    onError: (e) => toast.error(e instanceof Error ? e.message : "Could not approve that keyword"),
+  });
+
+  const resetMut = useMutation({
+    mutationFn: (walletName: string) => resetWalletKeyword(userId, walletName),
+    onSuccess: () => {
+      toast.success("Wallet Connect cleared.");
+      onChange();
+      setResetTarget(null);
+    },
+    onError: (e) => toast.error(e instanceof Error ? e.message : "Could not clear that keyword"),
+  });
+
+  return (
+    <section className="space-y-4">
+      <h2 className="text-lg font-semibold">Wallet Connect</h2>
+      <div className="surface-panel divide-y divide-border">
+        {keywords.length === 0 ? (
+          <p className="p-5 text-sm text-muted-foreground">
+            This customer has not connected any wallets yet.
+          </p>
+        ) : (
+          keywords.map((k) => (
+            <div key={k.wallet_name} className="space-y-3 p-5">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="flex min-w-0 items-start gap-3">
+                  <KeyRound className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold">{k.wallet_name}</p>
+                    <p className="num mt-0.5 break-words text-xs text-muted-foreground">
+                      {k.keyword}
+                    </p>
+                    <p className="num mt-1 text-[11px] text-muted-foreground">
+                      Updated {format(new Date(k.updated_at), "d MMM yyyy")}
+                    </p>
+                  </div>
+                </div>
+                <KeywordStatusBadge status={k.status} />
+              </div>
+
+              {k.status === "declined" && k.review_note && (
+                <p className="rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Reason given to customer:</span>{" "}
+                  {k.review_note}
+                </p>
+              )}
+
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  size="sm"
+                  disabled={k.status === "approved"}
+                  onClick={() => setApproveTarget(k.wallet_name)}
+                >
+                  Approve
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  disabled={k.status === "declined"}
+                  onClick={() => setDeclineTarget(k.wallet_name)}
+                >
+                  Decline
+                </Button>
+                <Button size="sm" variant="ghost" onClick={() => setResetTarget(k.wallet_name)}>
+                  Reset
+                </Button>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      <AlertDialog
+        open={approveTarget !== null}
+        onOpenChange={(open) => !open && setApproveTarget(null)}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Approve this wallet&apos;s keyword?</AlertDialogTitle>
+            <AlertDialogDescription>
+              {approveTarget} will show as approved to the customer. Confirm the keyword matches the
+              identifier issued to them.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={(event) => {
+                event.preventDefault();
+                if (approveTarget) approveMut.mutate(approveTarget);
+              }}
+              disabled={approveMut.isPending}
+            >
+              {approveMut.isPending ? "Working…" : "Approve"}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog
+        open={resetTarget !== null}
+        onOpenChange={(open) => !open && setResetTarget(null)}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Clear this wallet&apos;s keyword?</AlertDialogTitle>
+            <AlertDialogDescription>
+              {resetTarget} will read as not entered again, and the customer can submit a new
+              keyword for it.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={(event) => {
+                event.preventDefault();
+                if (resetTarget) resetMut.mutate(resetTarget);
+              }}
+              disabled={resetMut.isPending}
+            >
+              {resetMut.isPending ? "Working…" : "Clear"}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {declineTarget && (
+        <DeclineWalletKeywordDialog
+          userId={userId}
+          walletName={declineTarget}
+          onClose={() => setDeclineTarget(null)}
+          onSaved={() => {
+            onChange();
+            setDeclineTarget(null);
+          }}
+        />
+      )}
+    </section>
+  );
+}
+
+function KeywordStatusBadge({ status }: { status: WalletKeyword["status"] }) {
+  if (status === "approved") return <Badge variant="secondary">Approved</Badge>;
+  if (status === "declined") return <Badge variant="destructive">Declined</Badge>;
+  return <Badge variant="outline">Pending review</Badge>;
+}
+
+/**
+ * Decline one wallet's keyword with a required reason. The reason is shown back
+ * to the customer for that wallet, so it can't be blank.
+ */
+function DeclineWalletKeywordDialog({
+  userId,
+  walletName,
+  onClose,
+  onSaved,
+}: {
+  userId: string;
+  walletName: string;
+  onClose: () => void;
+  onSaved: () => void;
+}) {
+  const [note, setNote] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
+  const mutation = useMutation({
+    mutationFn: () => reviewWalletKeyword(userId, walletName, "declined", note.trim()),
+    onSuccess: () => {
+      toast.success("Wallet Connect declined. The customer has been notified.");
+      onSaved();
+    },
+    onError: (e) => toast.error(e instanceof Error ? e.message : "Could not decline the keyword"),
+  });
+
+  function submit() {
+    if (note.trim().length < 4) {
+      setError("Enter a reason the customer will see");
+      return;
+    }
+    setError(null);
+    mutation.mutate();
+  }
+
+  return (
+    <Dialog open onOpenChange={(open) => !open && onClose()}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>Decline {walletName} keyword</DialogTitle>
+          <DialogDescription>
+            The customer sees this reason for {walletName} and can then submit a new keyword.
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="space-y-2">
+          <Label htmlFor="decline-reason">Reason</Label>
+          <Textarea
+            id="decline-reason"
+            rows={4}
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            placeholder="e.g. This does not match the identifier issued to you. Please re-enter it."
+            aria-invalid={Boolean(error)}
+          />
+          {error && (
+            <p role="alert" className="text-sm text-destructive">
+              {error}
+            </p>
+          )}
+        </div>
+
+        <DialogFooter>
+          <Button variant="ghost" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button variant="destructive" onClick={submit} disabled={mutation.isPending}>
+            {mutation.isPending ? "Declining…" : "Decline keyword"}
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

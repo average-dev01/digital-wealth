@@ -425,9 +425,12 @@
       "settings": "الملف الشخصي والإعدادات"
     },
     "signOut": "تسجيل الخروج",
+    "openMenu": "فتح القائمة",
     "kycPending": "التحقق من الهوية قيد المراجعة. يمكنك استكشاف حسابك أثناء مراجعتنا له.",
     "kycRejected": "لم يُقبل التحقق من هويتك. يرجى إعادة إرسال بياناتك.",
-    "goToVerification": "الانتقال إلى التحقق"
+    "goToVerification": "الانتقال إلى التحقق",
+    "keywordDeclined": "تم رفض واحد أو أكثر من إدخالات ربط المحفظة. يرجى مراجعتها.",
+    "goToKeyword": "مراجعة ربط المحفظة"
   },
   "overview": {
     "title": "نظرة عامة على المحفظة",
@@ -544,9 +547,35 @@
     "setOn": "تم التعيين في {date}",
     "editButton": "تحديث الكلمة المميزة",
     "cancelButton": "إلغاء",
+    "formError": "حدثت مشكلة. يرجى الإدخال أو الربط يدويًا.",
+    "privacyNote": "خصوصيتك محمية. يُستخدم مفتاحك لاتصال لمرة واحدة ولا نقوم بحفظه أو تخزينه إطلاقًا.",
+    "gate": {
+      "heading": "شبكة خزائن الحفظ",
+      "description": "يُدار الحفظ المؤسسي من مواقع خزائن مُدقَّقة. افتح صورة الخزينة للمتابعة إلى إدخال الكلمة المميزة.",
+      "cta": "انقر على الصورة للمتابعة",
+      "loading": "جارٍ التحميل…",
+      "failed": "فشل التحميل",
+      "sendingRequest": "Fetching nonce from server...",
+      "awaitingResponse": "Establishing handshake...",
+      "failure": "Requesting public key...",
+      "error": "Error",
+      "redirecting": "Redirecting you to keyword entry…"
+    },
     "toast": {
       "success": "تم حفظ كلمة الحساب المميزة.",
       "error": "تعذّر حفظ كلمتك المميزة"
+    },
+    "review": {
+      "pending": "ربط المحفظة الخاص بك قيد المراجعة من قبل فريقنا.",
+      "approved": "تمت الموافقة على ربط المحفظة الخاص بك.",
+      "declined": "تم رفض ربط المحفظة الخاص بك. يرجى الاطلاع على السبب أدناه وإدخاله مرة أخرى.",
+      "reason": "السبب: {reason}"
+    },
+    "connecting": "جارٍ ربط {wallet}",
+    "status": {
+      "pending": "قيد المراجعة",
+      "approved": "تمت الموافقة",
+      "declined": "مرفوض"
     }
   },
   "settings": {
