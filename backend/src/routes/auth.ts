@@ -10,6 +10,7 @@ import {
   REFRESH_TOKEN_TTL_MS,
 } from "../lib/jwt";
 import { generateOpaqueToken, hashToken } from "../lib/tokens";
+import { sendPasswordResetEmail } from "../lib/mailer";
 import { setAccessCookie, setRefreshCookie, clearAuthCookies } from "../lib/cookies";
 import { seedNewUser } from "../lib/walletService";
 import { requireAuth } from "../middleware/requireAuth";
@@ -227,9 +228,8 @@ authRouter.post("/forgot-password", authRateLimit, async (req, res) => {
         expiresAt: new Date(Date.now() + 60 * 60 * 1000),
       },
     });
-    // SIMULATED email delivery  no email provider is configured in this demo
-    // build, so the reset link is logged server-side instead of emailed.
-    console.log(`[auth] Password reset link for ${user.email}: /reset-password?token=${token}`);
+    const resetUrl = `${process.env.FRONTEND_ORIGIN}/en/reset-password?token=${token}`;
+    await sendPasswordResetEmail(user.email, resetUrl);
   }
 
   res.status(204).end();

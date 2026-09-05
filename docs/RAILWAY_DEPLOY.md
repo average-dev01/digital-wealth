@@ -39,6 +39,8 @@ CLI/API token available to script it from here.
    | `PRICE_REFRESH_INTERVAL_MS` | `300000` |
    | `ADMIN_EMAIL` | the real email you'll use to log into the admin panel  see step 4 |
    | `ADMIN_PASSWORD` | a real password (not `admin1234`)  see step 4 |
+   | `RESEND_API_KEY` | your Resend API key  password reset emails silently fall back to a server-log line without it. Until you verify a sending domain in the Resend dashboard, Resend only delivers to your own account email, not real customers |
+   | `EMAIL_FROM` | e.g. `Digital Wealth Partners <noreply@yourdomain.com>`, using an address on the domain you verified above |
 6. Settings → Networking → **Generate Domain** to get a public URL.
 7. Deploy. `prisma migrate deploy` runs automatically as part of the
    container's start command (`backend/Dockerfile`'s `CMD`)  it applies
