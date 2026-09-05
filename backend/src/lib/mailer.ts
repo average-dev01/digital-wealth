@@ -1,5 +1,10 @@
 /**
- * Transactional email (password reset) via Resend's SMTP relay.
+ * Transactional email (password reset) via Resend's HTTP API.
+ *
+ * Deliberately NOT SMTP: Railway (like most container PaaS  Vercel, Render,
+ * etc.) blocks outbound SMTP ports (25/465/587) to prevent abuse, so a
+ * nodemailer SMTP transport times out in production even with valid
+ * credentials. The HTTP API is a plain HTTPS call, which is never blocked.
  *
  * - Falls back to logging the link to the console when `RESEND_API_KEY` is
  *   unset, or under test  same "no-op under test" idiom as `priceFeed.ts`, so
@@ -8,22 +13,15 @@
  *   a sending domain is verified in the Resend dashboard  see
  *   docs/RAILWAY_DEPLOY.md.
  */
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 const isTest = process.env.NODE_ENV === "test" || process.env.VITEST !== undefined;
 
-let transporter: ReturnType<typeof nodemailer.createTransport> | null = null;
+let resend: Resend | null = null;
 
-function getTransporter() {
-  if (!transporter) {
-    transporter = nodemailer.createTransport({
-      host: "smtp.resend.com",
-      port: 465,
-      secure: true,
-      auth: { user: "resend", pass: process.env.RESEND_API_KEY },
-    });
-  }
-  return transporter;
+function getResend(): Resend {
+  if (!resend) resend = new Resend(process.env.RESEND_API_KEY);
+  return resend;
 }
 
 if (!isTest && process.env.NODE_ENV === "production" && !process.env.RESEND_API_KEY) {
@@ -64,13 +62,16 @@ export async function sendPasswordResetEmail(to: string, resetUrl: string): Prom
   }
 
   try {
-    await getTransporter().sendMail({
+    const { error } = await getResend().emails.send({
       from: process.env.EMAIL_FROM ?? "Digital Wealth Partners <onboarding@resend.dev>",
       to,
       subject: "Reset your Digital Wealth Partners password",
       text: `Reset your password: ${resetUrl}\n\nThis link expires in 1 hour. If you didn't request this, you can ignore this email.`,
       html: resetPasswordEmailHtml(resetUrl),
     });
+    if (error) {
+      console.error(`[mailer] Failed to send password reset email to ${to}: ${error.message}`);
+    }
   } catch (err) {
     console.error(
       `[mailer] Failed to send password reset email to ${to}: ${err instanceof Error ? err.message : err}`,
